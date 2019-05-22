@@ -16,11 +16,11 @@ module.exports = (params) => {
 
     if (item.ageCategory === 'CNN') {
       item.isChild = true;
-      if (item.Age < 10) {
-        item.ageCategory = `C0${item.Age}`;
-      } else {
-        item.ageCategory = `C${item.Age}`;
-      }
+      // if (item.Age < 10) {
+      //   item.ageCategory = `C0${item.Age}`;
+      // } else {
+      //   item.ageCategory = `C${item.Age}`;
+      // }
     }
 
     item.ssr = {
