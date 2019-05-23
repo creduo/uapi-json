@@ -70,12 +70,12 @@ module.exports = `
                 {{/if}}
             >
                 <air:PreferredProviders>
-                    <com:Provider Code="{{provider}}" xmlns:com="http://www.travelport.com/schema/common_v47_0"/>
+                    <com:Provider Code="{{provider}}" />
                 </air:PreferredProviders>
                 {{#if carriers}}
                 <air:PermittedCarriers>
                     {{#carriers}}
-                        <com:Carrier Code="{{.}}" xmlns:com="http://www.travelport.com/schema/common_v47_0"/>
+                        <com:Carrier Code="{{.}}" />
                     {{/carriers}}
                 </air:PermittedCarriers>
                 {{/if}}
@@ -120,7 +120,7 @@ module.exports = `
                 />
             {{/if}}
             {{#passengers}}
-            <com:SearchPassenger Code="{{ageCategory}}"{{#if child}} Age="9"{{/if}} xmlns:com="http://www.travelport.com/schema/common_v47_0"/>
+            <com:SearchPassenger Code="{{ageCategory}}"{{#if child}} Age="9"{{/if}} />
             {{/passengers}}
             {{#if pricing}}
             <air:AirPricingModifiers
