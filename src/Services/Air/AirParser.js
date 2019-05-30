@@ -237,7 +237,7 @@ function airPriceRspPricingSolutionXML(obj) {
 
     const pricingInfo = pricingInfos.find(info => info.$.Key === reservationKey);
 
-    let passengerType = {
+    const passengerType = {
       BookingTravelerRef: 'P_' + index,
       Code: passenger.ageCategory,
     };
