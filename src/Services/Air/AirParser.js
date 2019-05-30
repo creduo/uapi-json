@@ -237,12 +237,17 @@ function airPriceRspPricingSolutionXML(obj) {
 
     const pricingInfo = pricingInfos.find(info => info.$.Key === reservationKey);
 
+    let passengerType = {
+      BookingTravelerRef: 'P_' + index,
+      Code: passenger.ageCategory,
+    };
+
+    if (passenger.ageCategory === 'CNN') {
+      passengerType.Age = passenger.Age;
+    }
+
     pricingInfo['air:PassengerType'].push({
-      $: {
-        BookingTravelerRef: 'P_' + index,
-        Code: passenger.ageCategory,
-        Age: passenger.Age,
-      },
+      $: passengerType,
     });
   });
 
