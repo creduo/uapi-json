@@ -91,6 +91,8 @@ module.exports = {
   AIR_CANCEL_UR: params => params,
   UNIVERSAL_RECORD_FOID: params => params,
 
+  FLIGHT_TIME_TABLE: params => params,
+
   AIR_FLIGHT_INFORMATION: compose(
     validate(
       validators.flightInfo

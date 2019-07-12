@@ -2,6 +2,7 @@ const createReservation = require('./AIR_CREATE_RESERVATION_REQUEST.handlebars')
 const exchange = require('./AIR_EXCHANGE.handlebars');
 const exchangeQuote = require('./AIR_EXCHANGE_QUOTE.handlebars');
 const fareRules = require('./AIR_FARE_RULES_REQUEST.handlebars');
+const flightTimeTable = require('./FLIGHT_TIME_TABLE_REQUEST.handlebars');
 const flightInformation = require('./AIR_FLIGHT_INFORMATION_REQUEST.handlebars');
 const lowFareSearch = require('./AIR_LOW_FARE_SEARCH_REQUEST.handlebars');
 const price = require('./AIR_PRICE_REQ.handlebars');
@@ -21,6 +22,7 @@ module.exports = {
   exchange,
   exchangeQuote,
   fareRules,
+  flightTimeTable,
   flightInformation,
   lowFareSearch,
   price,

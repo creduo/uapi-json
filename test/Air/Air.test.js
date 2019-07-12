@@ -860,6 +860,21 @@ describe('#AirService', () => {
     });
   });
 
+  describe('flightTimeTable', () => {
+    it('should check if correct function from service is called', () => {
+      const flightTimeTable = sinon.spy(() => {
+
+      });
+
+      const service = () => ({ flightTimeTable });
+      const createAirService = proxyquire('../../src/Services/Air/Air', {
+        './AirService': service,
+      });
+      createAirService({ auth }).flightTimeTable();
+      expect(flightTimeTable.calledOnce).to.be.equal(true);
+    });
+  });
+
   describe('getTicket', () => {
     it('should fail when no itinerary present to import', () => {
       const AirService = () => ({
