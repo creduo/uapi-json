@@ -13,11 +13,19 @@ module.exports = `
             >
             <com:BillingPointOfSaleInfo OriginApplication="uAPI"/>
 
-
             {{#if emulatePcc}}
             <com:OverridePCC ProviderCode="{{provider}}" PseudoCityCode="{{emulatePcc}}"/>
             {{/if}}
-        </air:AirFareDisplayReq>
+
+            <air:AirFareDisplayModifiers 
+                {{#if departureDate}}DepartureDate="{{departureDate}}"{{/if}}
+                {{#if returnDate}}ReturnDate="{{returnDate}}"{{/if}}
+                FaresIndicator="PublicAndPrivateFares"
+                IncludeSurcharges="true"
+                IncludeEstimatedTaxes="true"
+                ValidatedFaresOnly="true">
+            </air:AirFareDisplayModifiers>                   
+</air:AirFareDisplayReq>
     </soap:Body>
 </soap:Envelope>
 `;

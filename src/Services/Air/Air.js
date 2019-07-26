@@ -362,5 +362,9 @@ module.exports = (settings) => {
           uapi_reservation_locator: booking.uapi_reservation_locator,
         }));
     },
+
+    airFareDisplay(options) {
+      return service.airFareDisplay(options);
+    },
   };
 };

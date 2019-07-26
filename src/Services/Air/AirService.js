@@ -211,5 +211,17 @@ module.exports = function (settings) {
       debug,
       options
     ),
+
+    airFareDisplay: uApiRequest(
+      config.AirService.url,
+      auth,
+      templates.airFareDisplay,
+      'air:AirFareDisplayRsp',
+      AirValidator.AIR_FARE_DISPLAY,
+      AirParser.AIR_ERRORS,
+      AirParser.AIR_FARE_DISPLAY,
+      debug,
+      options
+    ),
   };
 };

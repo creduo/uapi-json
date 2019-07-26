@@ -1786,4 +1786,16 @@ describe('#AirService', () => {
       });
     });
   });
+
+  describe('airFareDisplay', () => {
+    it('should check the function to be called', () => {
+      const airFareDisplay = sinon.spy(() => {});
+      const service = () => ({ airFareDisplay });
+      const createAirService = proxyquire('../../src/Services/Air/Air', {
+        './AirService': service,
+      });
+      createAirService({ auth }).airFareDisplay({});
+      expect(airFareDisplay.calledOnce).to.be.equal(true);
+    });
+  });
 });
