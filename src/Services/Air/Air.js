@@ -366,5 +366,13 @@ module.exports = (settings) => {
     airFareDisplay(options) {
       return service.airFareDisplay(options);
     },
+    airFareRules(options) {
+      const request = {
+        ...options,
+        fetchFareRules: true,
+      };
+
+      return service.airFareRule(request);
+    },
   };
 };

@@ -1223,4 +1223,5 @@ module.exports = {
   AIR_EXCHANGE: exchangeBooking,
   AIR_AVAILABILITY: availability,
   AIR_FARE_DISPLAY: airFareDisplay,
+  AIR_FARE_RULES: extractFareRules,
 };

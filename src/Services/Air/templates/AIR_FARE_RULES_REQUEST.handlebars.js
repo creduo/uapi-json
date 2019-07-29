@@ -4,14 +4,16 @@ module.exports = `
     <soapenv:Body>
         <air:AirFareRulesReq
             TraceId="test" AuthorizedBy="{{requestId}}" TargetBranch="{{TargetBranch}}"
-            RetrieveProviderReservationDetails="false" FareRuleType="long"
+            RetrieveProviderReservationDetails="false" FareRuleType="{{#if fareRuleType}}{{fareRuleType}}{{else}}long{{/if}}"
             xmlns:air="http://www.travelport.com/schema/air_v47_0"
             xmlns:com="http://www.travelport.com/schema/common_v47_0"
             >
             <com:BillingPointOfSaleInfo OriginApplication="uAPI" xmlns:com="http://www.travelport.com/schema/common_v47_0"/>
+            {{#if uapi_fare_rule_key}}
             <air:FareRuleKey FareInfoRef="0" ProviderCode="{{provider}}">{{uapi_fare_rule_key}}</air:FareRuleKey>
+            {{/if}}
             {{#each provider_cmds}}
-            <air:AirFareDisplayRuleKey ProviderCode="{{provider}}">{{this}}</air:AirFareDisplayRuleKey>
+            <air:AirFareDisplayRuleKey ProviderCode="{{../provider}}">{{this}}</air:AirFareDisplayRuleKey>
             {{/each}}
             {{#if emulatePcc}}
             <com:OverridePCC ProviderCode="{{provider}}" PseudoCityCode="{{emulatePcc}}"/>

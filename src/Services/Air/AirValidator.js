@@ -151,9 +151,12 @@ module.exports = {
   ),
 
   AIR_FARE_DISPLAY: compose(
-    validate(
-    ),
+    validate(),
     transform()
   ),
 
+  AIR_FARE_RULES: compose(
+    validate(),
+    transform()
+  ),
 };

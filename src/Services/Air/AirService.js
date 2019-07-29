@@ -223,5 +223,16 @@ module.exports = function (settings) {
       debug,
       options
     ),
+    airFareRule: uApiRequest(
+      config.AirService.url,
+      auth,
+      templates.fareRules,
+      'air:AirFareRulesRsp',
+      AirValidator.AIR_FARE_RULES,
+      AirParser.AIR_ERRORS,
+      AirParser.AIR_FARE_RULES,
+      debug,
+      options
+    ),
   };
 };
