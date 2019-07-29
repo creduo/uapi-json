@@ -153,7 +153,8 @@ function flightTimeTableRsp(obj) {
       response.push({
         ...data[detailKey]
       });
-    });
+    }
+  );
 
   return {
     nextResultRef,
