@@ -82,18 +82,21 @@ module.exports = `
               {{#if flightType}}
               <air:FlightType 
                   RequireSingleCarrier="false"
-                  {{#if flightType.maxConnections }}
-                  MaxConnections="{{ flightType.maxConnections }}"
-                  {{else}}
-                  MaxConnections="-1"
-                  {{/if}}
-                  {{#if flightType.maxStops }}
-                  MaxStops="{{ flightType.maxStops }}"
-                  {{else}}
-                  MaxStops="-1"
-                  {{/if}}
                   {{#if flightType.nonStopDirects }}
-                  NonStopDirects="{{flightType.nonStopDirects}}" 
+                  NonStopDirects="{{flightType.nonStopDirects}}"
+                  MaxConnections="0"
+                  MaxStops="0"
+                  {{else}} 
+                    {{#if flightType.maxConnections }}
+                    MaxConnections="{{ flightType.maxConnections }}"
+                    {{else}}
+                    MaxConnections="-1"
+                    {{/if}}
+                    {{#if flightType.maxStops }}
+                    MaxStops="{{ flightType.maxStops }}"
+                    {{else}}
+                    MaxStops="-1"
+                    {{/if}}
                   {{/if}}
                   {{#if flightType.stopDirects }}
                   StopDirects="{{flightType.stopDirects}}" 
