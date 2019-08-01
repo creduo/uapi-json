@@ -58,6 +58,13 @@ module.exports = `
                         {{/each}}
                     </air:PreferredCabins>
                     {{/if}}
+                    {{#if ../bookingClass}}
+                    <air:PermittedBookingCodes>
+                        {{#each ../bookingClass}}
+                            <air:BookingCode Code="{{this}}" />
+                        {{/each}}
+                    </air:PermittedBookingCodes>
+                    {{/if}}    
                 </air:AirLegModifiers>
             </air:SearchAirLeg>
             {{/legs}}
@@ -79,13 +86,6 @@ module.exports = `
                     {{/carriers}}
                 </air:PermittedCarriers>
                 {{/if}}
-                {{#if bookingClass}}
-                <air:PermittedBookingCodes>
-                    {{#bookingClass}}
-                        <air:BookingCode Code="{{.}}" />
-                    {{/bookingClass}}
-                </air:PermittedBookingCodes>
-                {{/if}}    
             </air:AirSearchModifiers>
             {{#passengers}}
             <com:SearchPassenger Code="{{ageCategory}}"{{#if child}} Age="9"{{/if}} xmlns:com="http://www.travelport.com/schema/common_v47_0"/>
