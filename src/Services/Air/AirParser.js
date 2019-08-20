@@ -149,6 +149,25 @@ function fillAirFlightInfoResponseItem(data) {
   };
 }
 
+function flightTimeTableRsp(obj) {
+  const data = obj['air:FlightTimeTableList']['air:FlightTimeDetail'];
+  const nextResultRef = obj['common_v47_0:NextResultReference'];
+
+  const response = [];
+  Object.keys(data).forEach(
+    (detailKey) => {
+      response.push({
+        ...data[detailKey]
+      });
+    }
+  );
+
+  return {
+    nextResultRef,
+    flightTimeTable: response,
+  };
+}
+
 function airFlightInfoRsp(obj) {
   const data = this.mergeLeafRecursive(obj, 'air:FlightInformationRsp')['air:FlightInfo'];
 
@@ -1326,6 +1345,7 @@ module.exports = {
   AIR_CANCEL_UR: nullParsing,
   UNIVERSAL_RECORD_FOID: nullParsing,
   AIR_ERRORS: AirErrorHandler, // errors handling
+  FLIGHT_TIME_TABLE: flightTimeTableRsp,
   AIR_FLIGHT_INFORMATION: airFlightInfoRsp,
   AIR_GET_TICKET: airGetTicket,
   AIR_GET_TICKETS: airGetTickets,

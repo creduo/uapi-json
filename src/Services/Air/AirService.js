@@ -165,6 +165,17 @@ module.exports = function (settings) {
       debug,
       options
     ),
+    flightTimeTable: uApiRequest(
+      config.AirService.url,
+      auth,
+      templates.flightTimeTable,
+      'air:FlightTimeTableRsp',
+      AirValidator.FLIGHT_TIME_TABLE,
+      AirParser.AIR_ERRORS,
+      AirParser.FLIGHT_TIME_TABLE,
+      debug,
+      options
+    ),
     flightInfo: uApiRequest(
       config.FlightService.url,
       auth,

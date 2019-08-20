@@ -190,6 +190,10 @@ module.exports = (settings) => {
         }));
     },
 
+    flightTimeTable(options) {
+      return service.flightTimeTable(options);
+    },
+
     flightInfo(options) {
       const parameters = {
         flightInfoCriteria: Array.isArray(options) ? options : [options],
