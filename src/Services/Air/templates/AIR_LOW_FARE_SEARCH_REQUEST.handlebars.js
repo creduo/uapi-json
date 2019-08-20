@@ -70,6 +70,13 @@ module.exports = `
                         {{/each}}
                     </air:PreferredCabins>
                     {{/if}}
+                    {{#if ../bookingClass}}
+                    <air:PermittedBookingCodes>
+                        {{#each ../bookingClass}}
+                            <air:BookingCode Code="{{this}}" />
+                        {{/each}}
+                    </air:PermittedBookingCodes>
+                    {{/if}}    
                 </air:AirLegModifiers>
             </air:SearchAirLeg>
             {{/legs}}
