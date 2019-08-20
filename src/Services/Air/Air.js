@@ -377,5 +377,17 @@ module.exports = (settings) => {
           uapi_reservation_locator: booking.uapi_reservation_locator,
         }));
     },
+
+    airFareDisplay(options) {
+      return service.airFareDisplay(options);
+    },
+    airFareRules(options) {
+      const request = {
+        ...options,
+        fetchFareRules: true,
+      };
+
+      return service.airFareRule(request);
+    },
   };
 };
