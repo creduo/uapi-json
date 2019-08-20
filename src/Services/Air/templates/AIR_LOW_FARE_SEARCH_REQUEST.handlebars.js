@@ -89,18 +89,61 @@ module.exports = `
                 {{/if}}
             >
                 <air:PreferredProviders>
-                    <com:Provider Code="{{provider}}" xmlns:com="http://www.travelport.com/schema/common_v47_0"/>
+                    <com:Provider Code="{{provider}}" />
                 </air:PreferredProviders>
                 {{#if carriers}}
                 <air:PermittedCarriers>
                     {{#carriers}}
-                        <com:Carrier Code="{{.}}" xmlns:com="http://www.travelport.com/schema/common_v47_0"/>
+                        <com:Carrier Code="{{.}}" />
                     {{/carriers}}
                 </air:PermittedCarriers>
                 {{/if}}
+              {{#if flightType}}
+              <air:FlightType 
+                  RequireSingleCarrier="false"
+                  {{#if flightType.nonStopDirects }}
+                  NonStopDirects="{{flightType.nonStopDirects}}"
+                  MaxConnections="0"
+                  MaxStops="0"
+                  {{else}} 
+                    {{#if flightType.maxConnections }}
+                    MaxConnections="{{ flightType.maxConnections }}"
+                    {{else}}
+                    MaxConnections="-1"
+                    {{/if}}
+                    {{#if flightType.maxStops }}
+                    MaxStops="{{ flightType.maxStops }}"
+                    {{else}}
+                    MaxStops="-1"
+                    {{/if}}
+                  {{/if}}
+                  {{#if flightType.stopDirects }}
+                  StopDirects="{{flightType.stopDirects}}" 
+                  {{/if}}
+                  {{#if flightType.singleOnlineCon }}
+                  SingleOnlineCon="{{flightType.singleOnlineCon}}"
+                  {{/if}}
+                  {{#if flightType.doubleOnlineCon }}
+                  DoubleOnlineCon="{{flightType.doubleOnlineCon}}"
+                  {{/if}}
+                  {{#if flightType.tripleOnlineCon }}
+                  TripleOnlineCon="{{flightType.tripleOnlineCon}}"
+                  {{/if}}
+                  {{#if flightType.singleInterlineCon }}
+                  SingleInterlineCon="{{flightType.singleInterlineCon}}"
+                  {{/if}}
+                  {{#if flightType.doubleInterlineCon }}
+                  DoubleInterlineCon="{{flightType.doubleInterlineCon}}"
+                  {{/if}}
+                  {{#if flightType.tripleInterlineCon }}
+                  TripleInterlineCon="{{flightType.tripleInterlineCon}}"
+                  {{/if}}
+                  />
+              {{/if}}
             </air:AirSearchModifiers>
+
             {{#passengers}}
-            <com:SearchPassenger Code="{{ageCategory}}"{{#if child}} Age="9"{{/if}} xmlns:com="http://www.travelport.com/schema/common_v47_0"/>
+            <com:SearchPassenger Code="{{ageCategory}}"{{#if child}} Age="9"{{/if}} />
             {{/passengers}}
             {{#if pricing}}
             <air:AirPricingModifiers
