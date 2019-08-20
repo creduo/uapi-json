@@ -845,7 +845,7 @@ describe('#AirParser', () => {
         passCountry: 'UA',
         passNumber: 'ES221731',
         birthDate: '19680725',
-        Age: 30,
+        // Age: 30,
         gender: 'M',
         ageCategory: 'ADT',
       }];
@@ -870,7 +870,7 @@ describe('#AirParser', () => {
         passCountry: 'UA',
         passNumber: 'ES221731',
         birthDate: '19680725',
-        Age: 30,
+        // Age: 30,
         gender: 'M',
         ageCategory: 'ADT',
       }];
@@ -895,7 +895,7 @@ describe('#AirParser', () => {
         passCountry: 'UA',
         passNumber: 'ES221731',
         birthDate: '19680725',
-        Age: 30,
+        // Age: 30,
         gender: 'M',
         ageCategory: 'ADT',
       }];

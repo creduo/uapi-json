@@ -23,7 +23,7 @@ module.exports = `
             <com:OverridePCC ProviderCode="{{provider}}" PseudoCityCode="{{emulatePcc}}"/>
             {{/if}}
             {{#each passengers}}
-            <com:BookingTraveler Key="P_{{@index}}" Age="{{Age}}" DOB="{{DOB}}" Gender="{{gender}}" TravelerType="{{ageCategory}}">
+            <com:BookingTraveler Key="P_{{@index}}" {{#if isChild}}Age="{{Age}}"{{/if}} DOB="{{DOB}}" Gender="{{gender}}" TravelerType="{{ageCategory}}">
                 <com:BookingTravelerName First="{{firstName}}" Last="{{lastName}}" {{#if Prefix}}Prefix="{{title}}"{{/if}}/>
                 {{#if ../deliveryInformation}}
                 <com:DeliveryInfo>
@@ -57,7 +57,7 @@ module.exports = `
                 {{/ssr}}
                 {{#if isChild}}
                 <com:NameRemark Key="P_{{@index}}">
-                    <com:RemarkData>P-{{ageCategory}}</com:RemarkData>
+                    <com:RemarkData>P-{{childCategory}}</com:RemarkData>
                 </com:NameRemark>
                 {{/if}}
             </com:BookingTraveler>
