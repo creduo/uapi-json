@@ -67,7 +67,9 @@ Each leg represents one part of the journey. For example, a typical roundtrip IE
 | Param | Type | Description |
 | --- | --- | --- |
 | from | `String` | IATA code. |
+| fromCodeType | `String` | 'Airport', 'City' or 'CityOrAirport', default is 'CityOrAirport' |
 | to | `String` | IATA code. |
+| toCodeType | `String` | 'Airport', 'City' or 'CityOrAirport', default is 'CityOrAirport' |
 | departureDate | `String` | Date in format `YYYY-MM-DD`. |
 
 ### Search Passengers object
