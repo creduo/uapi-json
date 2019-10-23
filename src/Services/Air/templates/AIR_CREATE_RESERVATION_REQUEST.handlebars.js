@@ -53,15 +53,13 @@ module.exports = `
                     />
                 {{/if}}
                 {{#ssr}}
-                    {{#equal type "FQTV"}}
-                        <com:LoyaltyCard Key="P_{{@index}}_FQTV" SupplierType="Air" SupplierCode="{{carrier}}" CardNumber="{{text}}" />
-                    {{else}}
-                        <com:SSR Type="{{type}}" {{#if carrier}}Carrier="{{carrier}}" {{/if}}{{#if segmentRef}}SegmentRef="{{{segmentRef}}}" {{/if}}FreeText="{{text}}" />
-                    {{/equal}}
+                <com:SSR Type="{{type}}" FreeText="{{text}}"/>
+                <!--<com:SSR Carrier="F9" FreeText="P/IN/F1234567/IN/05Jan85/M/13Dec14/Jones/Stephen"-->
+                         <!--SegmentRef="IVaa0tGWQ+2grqSIL81xPQ==" Status="HK" Type="DOCS"/>-->
                 {{/ssr}}
                 {{#if isChild}}
                 <com:NameRemark Key="P_{{@index}}">
-                    <com:RemarkData>P-{{childCategory}}</com:RemarkData>
+                    <com:RemarkData>P-{{ageCategory}}</com:RemarkData>
                 </com:NameRemark>
                 {{/if}}
             </com:BookingTraveler>
