@@ -1260,7 +1260,7 @@ function exchangeBooking(rsp) {
   if (rsp['air:AirReservation']) {
     return true;
   }
-  throw new AirRuntimeError.CantDetectExchangeReponse(rsp);
+  throw new AirRuntimeError.CantDetectExchangeResponse(rsp);
 }
 
 function availability(rsp) {
