@@ -697,6 +697,32 @@ describe('#AirParser', () => {
     });
 
 
+    it('Should throw ResponseDataMissing if any of mandatory attribute is missing from LFS ', () => {
+      const dummyObj1 = {
+        AirSegment: null, FareInfo: null, FlightDetails: null, Route: null
+      };
+      const dummyObj2 = {
+        'air:AirPricePointList': null, FareInfo: null, FlightDetails: null
+      };
+
+      const uParser = new Parser('air:LowFareSearchRsp', 'v47_0', { faresOnly: true });
+      const parseFunction = airParser.AIR_LOW_FARE_SEARCH_REQUEST;
+
+      try {
+        parseFunction.call(uParser, dummyObj1);
+        assert().fail('Failed to throw an exception');
+      } catch (err) {
+        expect(err).to.be.an.instanceof(AirParsingError.ResponseDataMissing);
+      }
+
+      try {
+        parseFunction.call(uParser, dummyObj2);
+        assert().fail('Failed to throw an exception');
+      } catch (err) {
+        expect(err).to.be.an.instanceof(AirParsingError.ResponseDataMissing);
+      }
+    });
+
     it('Should properly parse xml files', (done) => {
       Promise.all(
         [
@@ -1189,7 +1215,7 @@ describe('#AirParser', () => {
     it('should parse booking with no details on some segments', () => {
       const uParser = new Parser('universal:UniversalRecordImportRsp', 'v47_0', { });
       const parseFunction = airParser.AIR_CREATE_RESERVATION_REQUEST;
-      const xml = fs.readFileSync(`${xmlFolder}/getPNR-no-details.xml`).toString();
+      const xml = fs.readFileSync(`${xmlFolder}/getBooking-no-details.xml`).toString();
       return uParser.parse(xml)
         .then(json => parseFunction.call(uParser, json))
         .then((result) => {
@@ -1208,7 +1234,7 @@ describe('#AirParser', () => {
     it('should parse booking with XF and ZP taxes in FQ', () => {
       const uParser = new Parser('universal:UniversalRecordImportRsp', 'v47_0', { });
       const parseFunction = airParser.AIR_CREATE_RESERVATION_REQUEST;
-      const xml = fs.readFileSync(`${xmlFolder}/getPNR_XF_ZP.xml`).toString();
+      const xml = fs.readFileSync(`${xmlFolder}/getBooking_XF_ZP.xml`).toString();
       return uParser.parse(xml)
         .then(json => parseFunction.call(uParser, json))
         .then((result) => {
@@ -1232,12 +1258,12 @@ describe('#AirParser', () => {
         });
     });
 
-    it('should get flight details from separate requests if not available in importPNR');
+    it('should get flight details from separate requests if not available in importBooking');
 
     it('should parse split booking child', () => {
       const uParser = new Parser('universal:UniversalRecordImportRsp', 'v47_0');
       const parseFunction = airParser.AIR_CREATE_RESERVATION_REQUEST;
-      const xml = fs.readFileSync(`${xmlFolder}/getPnr_split_child.xml`).toString();
+      const xml = fs.readFileSync(`${xmlFolder}/getBooking_split_child.xml`).toString();
       return uParser.parse(xml)
         .then(json => parseFunction.call(uParser, json))
         .then((result) => {
@@ -1248,7 +1274,7 @@ describe('#AirParser', () => {
     it('should parse split booking parent', () => {
       const uParser = new Parser('universal:UniversalRecordImportRsp', 'v47_0');
       const parseFunction = airParser.AIR_CREATE_RESERVATION_REQUEST;
-      const xml = fs.readFileSync(`${xmlFolder}/getPnr_split_parent.xml`).toString();
+      const xml = fs.readFileSync(`${xmlFolder}/getBooking_split_parent.xml`).toString();
       return uParser.parse(xml)
         .then(json => parseFunction.call(uParser, json))
         .then((result) => {
@@ -1259,7 +1285,7 @@ describe('#AirParser', () => {
     it('should parse booking with emails', () => {
       const uParser = new Parser('universal:UniversalRecordImportRsp', 'v47_0', { });
       const parseFunction = airParser.AIR_CREATE_RESERVATION_REQUEST;
-      const xml = fs.readFileSync(`${xmlFolder}/getPnr_emails.xml`).toString();
+      const xml = fs.readFileSync(`${xmlFolder}/getBooking_emails.xml`).toString();
       return uParser.parse(xml)
         .then(json => parseFunction.call(uParser, json))
         .then((result) => {
@@ -1278,7 +1304,7 @@ describe('#AirParser', () => {
     it('should parse exchanged ticket booking with conjunction', () => {
       const uParser = new Parser('universal:UniversalRecordImportRsp', 'v47_0', { });
       const parseFunction = airParser.AIR_CREATE_RESERVATION_REQUEST;
-      const xml = fs.readFileSync(`${xmlFolder}/getPNR_EXCHANGE_CONJ.xml`).toString();
+      const xml = fs.readFileSync(`${xmlFolder}/getBooking_EXCHANGE_CONJ.xml`).toString();
       return uParser.parse(xml)
         .then(json => parseFunction.call(uParser, json))
         .then((result) => {
@@ -1296,7 +1322,7 @@ describe('#AirParser', () => {
     it('should parse booking with issued EMD-s', () => {
       const uParser = new Parser('universal:UniversalRecordImportRsp', 'v47_0', { });
       const parseFunction = airParser.AIR_CREATE_RESERVATION_REQUEST;
-      const xml = fs.readFileSync(`${xmlFolder}/getPNR-EMD-issued.xml`).toString();
+      const xml = fs.readFileSync(`${xmlFolder}/getBooking-EMD-issued.xml`).toString();
       return uParser.parse(xml)
         .then(json => parseFunction.call(uParser, json))
         .then((result) => {
@@ -1311,7 +1337,7 @@ describe('#AirParser', () => {
     it('should correclty parse segments order with service segment', () => {
       const uParser = new Parser('universal:UniversalRecordImportRsp', 'v47_0', { });
       const parseFunction = airParser.AIR_CREATE_RESERVATION_REQUEST;
-      const xml = fs.readFileSync(`${xmlFolder}/getPNR-with-service-segments.xml`).toString();
+      const xml = fs.readFileSync(`${xmlFolder}/getBooking-with-service-segments.xml`).toString();
       return uParser.parse(xml)
         .then(json => parseFunction.call(uParser, json))
         .then((result) => {
@@ -1642,7 +1668,7 @@ describe('#AirParser', () => {
     it('should parse pnr without segments', () => {
       const uParser = new Parser('universal:UniversalRecordImportRsp', 'v47_0', {});
       const parseFunction = airParser.AIR_IMPORT_REQUEST;
-      const xml = fs.readFileSync(`${xmlFolder}/importPNR.noSegments.xml`).toString();
+      const xml = fs.readFileSync(`${xmlFolder}/importBooking.noSegments.xml`).toString();
       return uParser.parse(xml).then((json) => {
         const jsonResult = parseFunction.call(uParser, json);
         testBooking(jsonResult, false);
@@ -1652,7 +1678,7 @@ describe('#AirParser', () => {
     it('should parse pnr with remark which does not contain service segment', () => {
       const uParser = new Parser('universal:UniversalRecordImportRsp', 'v47_0', {});
       const parseFunction = airParser.AIR_IMPORT_REQUEST;
-      const xml = fs.readFileSync(`${xmlFolder}/importPNR.remark.xml`).toString();
+      const xml = fs.readFileSync(`${xmlFolder}/importBooking.remark.xml`).toString();
       return uParser.parse(xml).then((json) => {
         const jsonResult = parseFunction.call(uParser, json);
         testBooking(jsonResult, false);
@@ -1662,7 +1688,7 @@ describe('#AirParser', () => {
     it('should parse pnr having fare quotes without taxes', () => {
       const uParser = new Parser('universal:UniversalRecordImportRsp', 'v47_0', {});
       const parseFunction = airParser.AIR_IMPORT_REQUEST;
-      const xml = fs.readFileSync(`${xmlFolder}/importPNR.fq.noTaxes.xml`).toString();
+      const xml = fs.readFileSync(`${xmlFolder}/importBooking.fq.noTaxes.xml`).toString();
       return uParser.parse(xml).then((json) => {
         const jsonResult = parseFunction.call(uParser, json);
         testBooking(jsonResult, false);
@@ -1672,7 +1698,7 @@ describe('#AirParser', () => {
     it('should detect correct number of passengers in reservation', () => {
       const uParser = new Parser('universal:UniversalRecordImportRsp', 'v47_0', {});
       const parseFunction = airParser.AIR_IMPORT_REQUEST;
-      const xml = fs.readFileSync(`${xmlFolder}/importPNR.fq.complex.xml`).toString();
+      const xml = fs.readFileSync(`${xmlFolder}/importBooking.fq.complex.xml`).toString();
       return uParser.parse(xml).then((json) => {
         const jsonResult = parseFunction.call(uParser, json);
         // Skipping booking test as it fails for segment info
