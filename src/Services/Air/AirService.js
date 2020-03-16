@@ -244,5 +244,29 @@ module.exports = function (settings) {
       debug,
       options
     ),
+
+    airFareDisplay: uApiRequest(
+      config.AirService.url,
+      auth,
+      templates.airFareDisplay,
+      'air:AirFareDisplayRsp',
+      AirValidator.AIR_FARE_DISPLAY,
+      AirParser.AIR_ERRORS,
+      AirParser.AIR_FARE_DISPLAY,
+      debug,
+      options
+    ),
+
+    airFareRule: uApiRequest(
+      config.AirService.url,
+      auth,
+      templates.fareRules,
+      'air:AirFareRulesRsp',
+      AirValidator.AIR_FARE_RULES,
+      AirParser.AIR_ERRORS,
+      AirParser.AIR_FARE_RULES,
+      debug,
+      options
+    ),
   };
 };

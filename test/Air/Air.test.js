@@ -1740,6 +1740,22 @@ describe('#AirService', () => {
     });
   });
 
+  describe('airFareDisplay', () => {
+    it('should check the function to be called', () => {
+      const airFareDisplay = sinon.spy(() => {});
+      const service = () => ({ airFareDisplay });
+      const createAirService = proxyquire('../../src/Services/Air/Air', {
+        './AirService': service,
+      });
+      createAirService({ auth }).airFareDisplay({
+        origin: 'ICN',
+        destination: 'PVG',
+        providerCode: '1G'
+      });
+      expect(airFareDisplay.calledOnce).to.be.equal(true);
+    });
+  });
+
   describe('fareRules', () => {
     it('should check function to be called', () => {
       const fetch = sinon.spy(({ segments, passengers, fetchFareRules }) => {

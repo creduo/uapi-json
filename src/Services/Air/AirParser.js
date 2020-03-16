@@ -1112,6 +1112,53 @@ function airPriceFareRules(data) {
   return extractFareRules(data['air:AirPriceResult']);
 }
 
+function airFareDisplay(rsp) {
+  return {
+    traceId: rsp.TraceId,
+    transactionId: rsp.TransactionId,
+    responseTime: rsp.ResponseTime,
+    responseMessage: rsp[`common_${this.uapi_version}:ResponseMessage`].map((msg) => {
+      return {
+        code: msg.Code,
+        type: msg.Type,
+        providerCode: msg.ProviderCode,
+        message: msg._,
+      };
+    }),
+    fareDisplay: rsp['air:FareDisplay'].map((fare) => {
+      return {
+        carrier: fare.Carrier,
+        fareBasis: fare.FareBasis,
+        amount: fare.Amount,
+        tripType: fare.TripType,
+        mileOrRouteBasedFare: fare.MileOrRouteBasedFare,
+        globalIndicator: fare.GlobalIndicator,
+        origin: fare.Origin,
+        destination: fare.Destination,
+        rule: {
+          advancedPurchase: fare['air:FareDisplayRule']['air:RuleAdvancedPurchase'],
+          minimumStay: fare['air:FareDisplayRule']['air:RuleLengthOfStay']['air:MinimumStay'],
+          maximumStay: fare['air:FareDisplayRule']['air:RuleLengthOfStay']['air:MaximumStay'],
+        },
+        fareDisplayRule: fare['air:FareDisplayRule'],
+        farePricing: {
+          passengerType: fare['air:FarePricing'].PassengerType,
+          totalFareAmount: fare['air:FarePricing'].TotalFareAmount,
+          totalNetFareAmount: fare['air:FarePricing'].TotalNetFareAmount || 0,
+          privateFare: fare['air:FarePricing'].PrivateFare,
+          negotiatedFare: fare['air:FarePricing'].NegotiatedFare,
+          autoPriceable: fare['air:FarePricing'].AutoPriceable,
+          baseFare: fare['air:FarePricing'].BaseFare,
+          taxes: fare['air:FarePricing'].Taxes,
+        },
+        fareRestriction: fare['air:FareRestriction'],
+        fareRuleKey: fare['air:AirFareDisplayRuleKey']._,
+        bookingCode: fare['air:BookingCode'].Code,
+      };
+    }),
+  };
+}
+
 function gdsQueue(req) {
   // TODO implement all major error cases
   // https://support.travelport.com/webhelp/uapi/uAPI.htm#Error_Codes/QUESVC_Service_Error_Codes.htm%3FTocPath%3DError%2520Codes%2520and%2520Messages|_____9
@@ -1330,4 +1377,6 @@ module.exports = {
   AIR_EXCHANGE_QUOTE: exchangeQuote,
   AIR_EXCHANGE: exchangeBooking,
   AIR_AVAILABILITY: availability,
+  AIR_FARE_DISPLAY: airFareDisplay,
+  AIR_FARE_RULES: extractFareRules,
 };

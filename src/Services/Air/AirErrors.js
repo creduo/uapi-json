@@ -36,6 +36,7 @@ Object.assign(AirValidationError, createErrorsList({
   ExchangeToken: 'Missing exchangeToken in request. See data.',
   CreditCardMissing: 'Missing creditCard in request. See data.',
   IncorrectConnectionsFormat: 'Connections should be an array with IATA codes.',
+  AirFareDisplayRuleKeyInvalid: 'AirFareDisplayRuleKey should be a string.',
   PlatingCarrierInvalid: 'Plating Carrier Invalid',
   SearchIdMissing: 'SearchId is missing'
 }, AirValidationError));
