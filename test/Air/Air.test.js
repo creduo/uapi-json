@@ -1819,4 +1819,19 @@ describe('#AirService', () => {
       expect(airFareDisplay.calledOnce).to.be.equal(true);
     });
   });
+
+  describe('ackScheduleChange', () => {
+    it('should check if correct function from service is called', () => {
+      const ackScheduleChange = sinon.spy(() => {});
+      const service = () => ({ ackScheduleChange });
+      const createAirService = proxyquire('../../src/Services/Air/Air', {
+        './AirService': service,
+      });
+      createAirService({ auth }).ackScheduleChange({
+        universalRecordLocatorCode: 'AABBCC',
+        version: 2
+      });
+      expect(ackScheduleChange.calledOnce).to.be.equal(true);
+    });
+  });
 });
