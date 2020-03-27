@@ -10,8 +10,9 @@ module.exports = `<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/env
 
             <air:FlightTimeTableCriteria>
                 <air:GeneralTimeTable 
+                {{#if includeConnection}}IncludeConnection="true"{{/if}}
                 StartDate="{{startDate}}"
-                EndDate="{{endDate}}">
+                {{#if}}EndDate="{{endDate}}"{{/if}}>
                     <air:DaysOfOperation Mon="true" Tue="true" Wed="true" Thu="true" Fri="true" Sat="true" Sun="true" />
                     <air:FlightOrigin>
                         <com:CityOrAirport Code="{{from}}"></com:CityOrAirport>
