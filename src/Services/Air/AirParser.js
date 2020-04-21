@@ -495,7 +495,7 @@ function getTicketFromEtr(etr, obj) {
   const passengersList = etr[`common_${this.uapi_version}:BookingTraveler`];
   const passengers = Object.keys(passengersList).map(
     (passengerKey) => {
-      const travelerDetails = passengersList[passengerKey][`common_${this.uapi_version}:BookingTravelerName`];
+      const [travelerDetails] = passengersList[passengerKey][`common_${this.uapi_version}:BookingTravelerName`];
       const firstName = travelerDetails.First.concat(travelerDetails.Prefix || '');
       const lastName = travelerDetails.Last;
 
@@ -839,7 +839,7 @@ function extractBookings(obj) {
         if (!traveler) {
           throw new AirRuntimeError.TravelersListError();
         }
-        const name = traveler[`common_${this.uapi_version}:BookingTravelerName`];
+        const [name] = traveler[`common_${this.uapi_version}:BookingTravelerName`];
         const travelerEmails = traveler[`common_${this.uapi_version}:Email`];
         if (travelerEmails) {
           Object.keys(travelerEmails).forEach(
@@ -1106,6 +1106,29 @@ function importRequest(data) {
 function universalRecordRetrieveRequest(data) {
   const response = extractBookings.call(this, data);
   return response;
+}
+
+function formatProviderReservationInfo(data) {
+  return {
+    passengers: data['common_v47_0:BookingTravelerName'].map((bookingtTravelerName) => {
+      return {
+        firstName: bookingtTravelerName.First.concat(bookingtTravelerName.Prefix || ''),
+        lastName: bookingtTravelerName.Last
+      };
+    }),
+    provider: data.ProviderCode,
+    pnr: data.ProviderLocatorCode,
+    uapi_ur_locator: data.UniversalLocatorCode
+  };
+}
+
+function providerReservationDivideRequest(rsp) {
+  return {
+    parent: formatProviderReservationInfo(rsp['universal:ParentProviderReservationInfo']),
+    child: formatProviderReservationInfo(rsp['universal:ChildProviderReservationInfo']),
+    transactionId: rsp.TransactionId,
+    responseTime: rsp.ResponseTime
+  };
 }
 
 function extractFareRules(obj) {
@@ -1393,6 +1416,7 @@ module.exports = {
   AIR_TICKET_REQUEST: ticketParse,
   AIR_IMPORT_REQUEST: importRequest,
   UNIVERSAL_RECORD_RETRIEVE_REQUEST: universalRecordRetrieveRequest,
+  PROVIDER_RESERVATION_DIVIDE: providerReservationDivideRequest,
   GDS_QUEUE_PLACE_RESPONSE: gdsQueue,
   AIR_CANCEL_UR: nullParsing,
   UNIVERSAL_RECORD_FOID: nullParsing,

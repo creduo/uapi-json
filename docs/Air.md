@@ -452,3 +452,21 @@ This method sends a acknowledge request to all schedule changes. TK statuses wil
 | version | `String` | UniversalRecord Version |
 
 **See: <a href="../examples/Air/getUniversalRecord.js">Example</a>**
+
+## .providerReservationDivide(params)
+<a name="providerReservationDivide"></a>
+
+Sends a pnr divide request and returns parent and child reservation information with divided passenger list.
+
+**Returns**: `Promise` 
+
+**See**: [Dividing Universal Records](https://support.travelport.com/webhelp/uapi/uapi.htm#Booking/UniversalRecord/Dividing_Universal_Records.htm%3FTocPath%3DUniversal%2520Records%2520and%2520Bookings%7C_____5)
+and <a href="../examples/Air/divide.js">providerReservationDivide example</a>**
+
+| Param | Type | Description |
+| --- | --- | --- |
+| uapi_ur_locator | `Object` | Universal Record Locator |
+| provider | `String` | GDS provider code eg. '1G' |
+| pnr | `String` | PNR |
+| passengers | `Array` | List of passenger objects containing uapi_passenger_ref |
+
