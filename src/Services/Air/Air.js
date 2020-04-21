@@ -383,8 +383,8 @@ module.exports = (settings) => {
         }));
     },
 
-    ackScheduleChange(options) {
-      return service.ackScheduleChange(options);
+    acknowledgeScheduleChange(options) {
+      return service.acknowledgeScheduleChange(options);
     },
 
     exchangeBooking(options) {
