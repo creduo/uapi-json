@@ -19,6 +19,7 @@ const universalRecordImport = require('./UNIVERSAL_RECORD_IMPORT_REQUEST.handleb
 const universalRecordRetrieve = require('./UNIVERSAL_RECORD_RETRIEVE_REQUEST.handlebars');
 const providerReservationDivide = require('./PROVIDER_RESERVATION_DIVIDE_REQ.handlebars');
 const availability = require('./AIR_AVAILABILTIY_REQUEST.handlebars');
+const airFareDisplay = require('./AIR_FARE_DISPLAY_REQUEST.handlebar');
 
 module.exports = {
   createReservation,
@@ -42,4 +43,5 @@ module.exports = {
   universalRecordRetrieve,
   providerReservationDivide,
   availability,
+  airFareDisplay,
 };

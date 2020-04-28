@@ -190,4 +190,14 @@ module.exports = {
       transformers.decodeExchangeToken
     )
   ),
+
+  AIR_FARE_DISPLAY: compose(
+    validate(),
+    transform()
+  ),
+
+  AIR_FARE_RULES: compose(
+    validate(),
+    transform()
+  ),
 };

@@ -2214,6 +2214,32 @@ describe('#AirParser', () => {
     });
   });
 
+  describe('AIR_FAREDISPLAY', () => {
+    it('parse fareDisplay Response', () => {
+      const uParser = new Parser('air:AirFareDisplayRsp', 'v47_0', {});
+      const parseFunction = airParser.AIR_FARE_DISPLAY;
+      const xml = fs.readFileSync(`${xmlFolder}/AirFareDisplay.xml`).toString();
+      return uParser.parse(xml).then((json) => {
+        const result = parseFunction.call(uParser, json);
+        assert(result);
+
+        expect(result.responseMessage).to.have.length(11);
+        expect(result.fareDisplay).to.have.length(250);
+
+        const [fare] = result.fareDisplay;
+        expect(fare.carrier).to.be.equal('NX');
+        expect(fare.fareBasis).to.be.equal('RLO14SEL');
+        expect(fare.amount).to.be.equal('KRW133600');
+        expect(fare.origin).to.be.equal('SEL');
+        expect(fare.destination).to.be.equal('SHA');
+        expect(fare.tripType).to.be.equal('OneWay');
+
+        expect(fare.farePricing).to.be.an('object');
+        expect(fare.farePricing.passengerType).to.be.equal('ADT');
+      }).catch(err => assert(false, 'Error during parsing' + err.stack));
+    });
+  });
+
   describe('AIR_ERROR', () => {
     it('should correctly handle archived booking', () => {
       const uParser = new Parser('air:LowFareSearchRsp', 'v47_0', {});
