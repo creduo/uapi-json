@@ -145,17 +145,33 @@ module.exports = `
             {{#passengers}}
             <com:SearchPassenger Code="{{ageCategory}}"{{#if child}} Age="9"{{/if}} />
             {{/passengers}}
-            {{#if pricing}}
             <air:AirPricingModifiers
+              {{#if priсing}}
                 {{#if pricing.currency}}
                 CurrencyType="{{pricing.currency}}"
                 {{/if}}
-
                 {{#if pricing.eTicketability}}
                 ETicketability="{{pricing.eTicketability}}"
                 {{/if}}
+                {{#if pricing.faresIndicator}}
+                FaresIndicator="{{pricing.faresIndicator}}"
+                {{else}}
+                FaresIndicator="PublicAndPrivateFares"
+                {{/if}}
+              {{/if}}
+              {{#if platingCarrier}}
+                PlatingCarrier="{{platingCarrier}}"
+              {{/if}}
+            {{#if business}}
+            >
+                <air:PermittedCabins>
+                    <com:CabinClass Type="Business" />
+                </air:PermittedCabins>
+            </air:AirPricingModifiers>   
+            {{else}}
             />
             {{/if}}
+
             {{#if emulatePcc}}
             <air:PCC>
                 <com:OverridePCC ProviderCode="{{provider}}" PseudoCityCode="{{emulatePcc}}"/>
