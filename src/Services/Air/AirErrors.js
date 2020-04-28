@@ -38,7 +38,8 @@ Object.assign(AirValidationError, createErrorsList({
   IncorrectConnectionsFormat: 'Connections should be an array with IATA codes.',
   AirFareDisplayRuleKeyInvalid: 'AirFareDisplayRuleKey should be a string.',
   PlatingCarrierInvalid: 'Plating Carrier Invalid',
-  SearchIdMissing: 'SearchId is missing'
+  SearchIdMissing: 'SearchId is missing',
+  VersionMissing: 'Version is missing in request',
 }, AirValidationError));
 
 const GdsValidationError = createErrorClass(

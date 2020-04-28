@@ -1,3 +1,4 @@
+const moment = require('moment');
 const parsers = require('../../utils/parsers');
 const { AirParsingError } = require('./AirErrors');
 
@@ -86,7 +87,7 @@ function getBaggageInfo(info) {
 }
 
 function formatSegment(segment) {
-  return {
+  const seg = {
     from: segment.Origin,
     to: segment.Destination,
     group: Number(segment.Group),
@@ -96,6 +97,29 @@ function formatSegment(segment) {
     flightNumber: segment.FlightNumber,
     uapi_segment_ref: segment.Key,
   };
+
+  if (segment['air:FlightDetails']) {
+    Object.assign(seg, {
+      details: Object.keys(segment['air:FlightDetails'])
+        .map((flightKey) => {
+          const detail = segment['air:FlightDetails'][flightKey];
+
+          return {
+            origin: detail.Origin,
+            originTerminal: detail.OriginTerminal,
+            destination: detail.Destination,
+            destinationTerminal: detail.DestinationTerminal,
+            departure: detail.DepartureTime,
+            flightTime: detail.FlightTime,
+            travelTime: detail.TravelTime,
+            equipment: detail.Equipment,
+            stat: detail.ElStat
+          };
+        })
+    });
+  }
+
+  return seg;
 }
 
 function formatServiceSegment(segment, remark) {
@@ -127,6 +151,9 @@ function formatTrip(segment, flightDetails) {
   const plane = flightInfo.map(details => details.Equipment || 'Unknown');
   const duration = flightInfo.map(details => details.FlightTime || 0);
   const techStops = flightInfo.slice(1).map(details => details.Origin);
+
+  segment['air:FlightDetails'] = flightInfo;
+
   return {
     ...formatSegment(segment),
     serviceClass: segment.CabinClass,
@@ -486,6 +513,25 @@ function setIndexesForSegments(
   };
 }
 
+function buildPassenger(name, traveler) {
+  return Object.assign(
+    {
+      lastName: name.Last,
+      firstName: name.First,
+      uapi_passenger_ref: traveler.Key,
+    },
+    traveler.DOB ? {
+      birthDate: moment(traveler.DOB).format('YYYY-MM-DD'),
+    } : null,
+    traveler.TravelerType ? {
+      ageCategory: traveler.TravelerType,
+    } : null,
+    traveler.Gender ? {
+      gender: traveler.Gender,
+    } : null
+  );
+}
+
 module.exports = {
   formatLowFaresSearch,
   formatFarePricingInfo,
@@ -498,4 +544,5 @@ module.exports = {
   setIndexesForSegments,
   getBaggage,
   getBaggageInfo,
+  buildPassenger,
 };
