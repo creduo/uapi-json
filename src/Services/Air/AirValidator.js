@@ -123,6 +123,8 @@ module.exports = {
     transform()
   ),
 
+  FLIGHT_TIME_TABLE: params => params,
+
   AIR_FLIGHT_INFORMATION: compose(
     validate(
       validators.flightInfo
