@@ -13,6 +13,13 @@ module.exports = {
     )
   ),
 
+  AIR_RETRIEVE_LOW_FARE_SEARCH_REQUEST: compose(
+    validate(
+      validators.searchId
+    ),
+    transform()
+  ),
+
   AIR_PRICE_FARE_RULES_REQUEST: compose(
     validate(
       validators.segments,
@@ -24,6 +31,20 @@ module.exports = {
       // transformers.setGroupsForSegments, <air:Connection/> hack fails validation on pre-prod
       transformers.setHasFareBasisFlag,
       transformers.convertPassengersObjectToArray
+    )
+  ),
+
+  AIR_PRICE_REQUEST: compose(
+    validate(
+      validators.segments,
+      validators.passengers,
+      validators.platingCarrier
+    ),
+    transform(
+      transformers.setBusinessFlag,
+      transformers.convertPassengersObjectToArray,
+      transformers.setGroupsForSegments,
+      transformers.setHasFareBasisFlag
     )
   ),
 
@@ -49,7 +70,8 @@ module.exports = {
     ),
     transform(
       transformers.setPassengersAge,
-      transformers.addMetaPassengersBooking
+      transformers.addMetaPassengersBooking,
+      transformers.setSegmentRefForSSR
     )
   ),
 
@@ -90,6 +112,16 @@ module.exports = {
 
   AIR_CANCEL_UR: params => params,
   UNIVERSAL_RECORD_FOID: params => params,
+  UNIVERSAL_RECORD_MODIFY: compose(
+    validate(
+      validators.pnr,
+      validators.version,
+      validators.universalRecordLocator,
+      validators.reservationLocator,
+      validators.segments
+    ),
+    transform()
+  ),
 
   AIR_FLIGHT_INFORMATION: compose(
     validate(
