@@ -391,12 +391,17 @@ function airPriceRspPricingSolutionXML(obj) {
 
     const pricingInfo = pricingInfos.find(info => info.$.Key === reservationKey);
 
+    const passengerType = {
+      BookingTravelerRef: 'P_' + index,
+      Code: passenger.ageCategory,
+    };
+
+    if (passenger.ageCategory === 'CNN') {
+      passengerType.Age = passenger.Age;
+    }
+
     pricingInfo['air:PassengerType'].push({
-      $: {
-        BookingTravelerRef: 'P_' + index,
-        Code: passenger.ageCategory,
-        Age: passenger.Age,
-      },
+      $: passengerType,
     });
   });
 
@@ -1415,6 +1420,53 @@ function availability(rsp) {
   return {
     legs: results,
     nextResultReference: rsp[`common_${this.uapi_version}:NextResultReference`] || null,
+  };
+}
+
+function airFareDisplay(rsp) {
+  return {
+    traceId: rsp.TraceId,
+    transactionId: rsp.TransactionId,
+    responseTime: rsp.ResponseTime,
+    responseMessage: rsp[`common_${this.uapi_version}:ResponseMessage`].map((msg) => {
+      return {
+        code: msg.Code,
+        type: msg.Type,
+        providerCode: msg.ProviderCode,
+        message: msg._,
+      };
+    }),
+    fareDisplay: rsp['air:FareDisplay'].map((fare) => {
+      return {
+        carrier: fare.Carrier,
+        fareBasis: fare.FareBasis,
+        amount: fare.Amount,
+        tripType: fare.TripType,
+        mileOrRouteBasedFare: fare.MileOrRouteBasedFare,
+        globalIndicator: fare.GlobalIndicator,
+        origin: fare.Origin,
+        destination: fare.Destination,
+        rule: {
+          advancedPurchase: fare['air:FareDisplayRule']['air:RuleAdvancedPurchase'],
+          minimumStay: fare['air:FareDisplayRule']['air:RuleLengthOfStay']['air:MinimumStay'],
+          maximumStay: fare['air:FareDisplayRule']['air:RuleLengthOfStay']['air:MaximumStay'],
+        },
+        fareDisplayRule: fare['air:FareDisplayRule'],
+        farePricing: {
+          passengerType: fare['air:FarePricing'].PassengerType,
+          totalFareAmount: fare['air:FarePricing'].TotalFareAmount,
+          totalNetFareAmount: fare['air:FarePricing'].TotalNetFareAmount || 0,
+          privateFare: fare['air:FarePricing'].PrivateFare,
+          negotiatedFare: fare['air:FarePricing'].NegotiatedFare,
+          autoPriceable: fare['air:FarePricing'].AutoPriceable,
+          baseFare: fare['air:FarePricing'].BaseFare,
+          taxes: fare['air:FarePricing'].Taxes,
+        },
+        fareRestriction: fare['air:FareRestriction'],
+        fareRuleKey: fare['air:AirFareDisplayRuleKey']._,
+        bookingCode: fare['air:BookingCode'].Code,
+      };
+    }),
   };
 }
 

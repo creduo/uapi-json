@@ -120,6 +120,7 @@ describe('#AirFormat', () => {
       }).catch(err => assert(false, 'Error during parsing' + err.stack));
     });
   });
+
   describe('.getBaggageInfo()', () => {
     it('should work when object is null and undefined', () => {
       const parsed = AirFormat.getBaggageInfo(null);
