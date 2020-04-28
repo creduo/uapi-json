@@ -253,7 +253,17 @@ module.exports = function (settings) {
       debug,
       options
     ),
-
+    acknowledgeScheduleChange: uApiRequest(
+      config.UniversalRecord.url,
+      auth,
+      templates.acknowledgeScheduleChange,
+      'universal:AckScheduleChangeRsp',
+      AirValidator.AIR_ACKNOWLEDGE_SCHEDULE_CHANGE,
+      AirParser.AIR_ERRORS,
+      AirParser.AIR_ACKNOWLEDGE_SCHEDULE_CHANGE,
+      debug,
+      options
+    ),
     exchangeQuote: uApiRequest(
       config.AirService.url,
       auth,
