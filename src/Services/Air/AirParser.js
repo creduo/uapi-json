@@ -936,6 +936,10 @@ function extractBookings(obj) {
             fareLegKey => format.getBaggage(fareInfo[fareLegKey]['air:BaggageAllowance'])
           );
 
+          const fareBasisCodes = fareInfo && Object.keys(fareInfo).map(
+            fareLegKey => fareInfo[fareLegKey].FareBasis
+          );
+
           const passengersCount = (pricingInfo['air:PassengerType'] || [])
             .reduce((acc, data) => Object.assign(acc, {
               [data.Code]: (acc[data.Code] || 0) + 1,
@@ -1025,6 +1029,7 @@ function extractBookings(obj) {
               passengersCount,
               taxesInfo,
               baggage,
+              fareBasisCodes,
               timeToReprice: pricingInfo.LatestTicketingTime,
             },
             parseFareCalculation(pricingInfo['air:FareCalc'])
