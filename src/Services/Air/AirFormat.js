@@ -359,6 +359,7 @@ function formatLowFaresSearch(searchRequest, searchResult) {
               bookingClass: bookingInfo.BookingCode,
               baggage: [getBaggage(fareInfo['air:BaggageAllowance'])],
               fareBasisCode: fareInfo.FareBasis,
+              fareRuleKey: fareInfo['air:FareRuleKey']._
             },
             seatsAvailable ? { seatsAvailable } : null
           );
@@ -397,6 +398,7 @@ function formatLowFaresSearch(searchRequest, searchResult) {
                 bookingClass: segmentInfo.BookingCode,
                 baggage: [getBaggage(fareInfo['air:BaggageAllowance'])],
                 fareBasisCode: fareInfo.FareBasis,
+                fareRuleKey: fareInfo['air:FareRuleKey']._
               },
               seatsAvailable ? { seatsAvailable } : null
             );
