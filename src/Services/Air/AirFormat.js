@@ -417,6 +417,7 @@ function formatLowFaresSearch(searchRequest, searchResult) {
     }
 
     const { passengerCounts, passengerFares } = this.formatPassengerCategories(price['air:AirPricingInfo']);
+    const fareInfo = this.formatFarePricingInfo(thisFare);
 
     const result = {
       totalPrice: price.TotalPrice,
@@ -434,6 +435,7 @@ function formatLowFaresSearch(searchRequest, searchResult) {
       ],
       passengerFares,
       passengerCounts,
+      fareInfo,
     };
 
     fares.push(result);
