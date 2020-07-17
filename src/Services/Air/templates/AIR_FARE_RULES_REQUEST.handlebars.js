@@ -12,8 +12,8 @@ module.exports = `
             {{#if uapi_fare_rule_key}}
             <air:FareRuleKey FareInfoRef="0" ProviderCode="{{provider}}">{{uapi_fare_rule_key}}</air:FareRuleKey>
             {{/if}}
-            {{#if universalRecordLocatorCode}}
-            <air:AirReservationSelector AirReservationLocatorCode="{{universalRecordLocatorCode}}" />
+            {{#if reservationLocatorCode}}
+            <air:AirReservationSelector AirReservationLocatorCode="{{reservationLocatorCode}}" />
             {{/if}}
             {{#each provider_cmds}}
             <air:AirFareDisplayRuleKey ProviderCode="{{../provider}}">{{this}}</air:AirFareDisplayRuleKey>
