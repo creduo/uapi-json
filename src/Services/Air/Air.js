@@ -434,7 +434,7 @@ module.exports = (settings) => {
         fetchFareRules: true,
       };
 
-      return service.airFareRule(request);
+      return service.airFareRules(request);
     },
   };
 };

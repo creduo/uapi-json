@@ -28,6 +28,8 @@ The Air workflow allows you to do what most travel agents did in the past and wh
 * [.cancelBooking(params)](#cancelBooking)
 * [.addSegments(params)](#addSegments)
 * [.acknowledgeScheduleChange(params)](#acknowledgeScheduleChange)
+* [.airFareDisplay(params)](#airFareDisplay)
+* [.airFareRules(params)](#airFareRules)
 
 ## .shop(params)
 <a name="shop"></a>
@@ -487,3 +489,34 @@ This method sends a acknowledge request to all schedule changes. TK statuses wil
 | version | `String` | UniversalRecord Version |
 
 **See: <a href="../examples/Air/getUniversalRecord.js">Example</a>**
+
+## .airFareDisplay(params)
+<a name="airFareDisplay"></a>
+
+Displays available fares using given schedule.
+
+**Returns**: `Promise` which is resolved with response message.
+
+| Param | Type | Description |
+| --- | --- | --- |
+| from | `String` | departure airport IATA code |
+| to | `String` | destination IATA code |
+| departureDate | `Date` | Optional. Departure date. "YYYY-MM-DD" |
+| returnDate | `Date` | Optional. Return date. "YYYY-MM-DD" |
+
+## .airFareRules(params)
+<a name="airFareRules"></a>
+
+Add segments to an existing reservation record.
+
+**Returns**: `Promise` which is resolved with response message.
+
+| Param | Type | Description |
+| --- | --- | --- |
+| provider | `String` | Provider eg. '1G' |
+| uapi_fare_rule_key | `Array` | Array of uapi_fare_rule_key retruned from LowFareShopping or AirPrice |
+
+| Param | Type | Description |
+| --- | --- | --- |
+| reservationLocatorCode | `String` | uAPI reservation locator code |
+

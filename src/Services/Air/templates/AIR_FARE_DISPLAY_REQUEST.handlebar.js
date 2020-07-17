@@ -23,7 +23,7 @@ module.exports = `
                 FaresIndicator="PublicAndPrivateFares"
                 IncludeSurcharges="true"
                 IncludeEstimatedTaxes="true"
-                ValidatedFaresOnly="true">
+                {{#if validatedFaresOnly}}ValidatedFaresOnly="true"{{/if}}>
             </air:AirFareDisplayModifiers>                   
         </air:AirFareDisplayReq>
     </soap:Body>

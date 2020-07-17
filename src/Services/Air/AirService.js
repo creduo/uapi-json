@@ -300,7 +300,7 @@ module.exports = function (settings) {
       options
     ),
 
-    airFareRule: uApiRequest(
+    airFareRules: uApiRequest(
       config.AirService.url,
       auth,
       templates.fareRules,
