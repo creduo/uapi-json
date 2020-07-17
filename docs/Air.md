@@ -27,6 +27,8 @@ The Air workflow allows you to do what most travel agents did in the past and wh
 * [.cancelTicket(params)](#cancelTicket)
 * [.cancelBooking(params)](#cancelBooking)
 * [.addSegments(params)](#addSegments)
+* [.airFareDisplay(params)](#airFareDisplay)
+* [.airFareRules(params)](#airFareRules)
 
 ## .shop(params)
 <a name="shop"></a>
@@ -452,3 +454,34 @@ Add segments to an existing reservation record.
 | reservationLocatorCode | `String` | Optional. uAPI reservation locator code |
 
 It is recommended to pass `version` param in order to ensure that the last version of the PNR was reviewed before modification.
+
+## .airFareDisplay(params)
+<a name="airFareDisplay"></a>
+
+Displays available fares using given schedule.
+
+**Returns**: `Promise` which is resolved with response message.
+
+| Param | Type | Description |
+| --- | --- | --- |
+| from | `String` | departure airport IATA code |
+| to | `String` | destination IATA code |
+| departureDate | `Date` | Optional. Departure date. "YYYY-MM-DD" |
+| returnDate | `Date` | Optional. Return date. "YYYY-MM-DD" |
+
+## .airFareRules(params)
+<a name="airFareRules"></a>
+
+Add segments to an existing reservation record.
+
+**Returns**: `Promise` which is resolved with response message.
+
+| Param | Type | Description |
+| --- | --- | --- |
+| provider | `String` | Provider eg. '1G' |
+| uapi_fare_rule_key | `Array` | Array of uapi_fare_rule_key retruned from LowFareShopping or AirPrice |
+
+| Param | Type | Description |
+| --- | --- | --- |
+| reservationLocatorCode | `String` | uAPI reservation locator code |
+
