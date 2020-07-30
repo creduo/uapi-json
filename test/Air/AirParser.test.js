@@ -2226,15 +2226,22 @@ describe('#AirParser', () => {
     });
   });
 
-  describe('AIR_ACKNOWLEDGE_SCHEDULE_CHANGE', () => {
+  describe('AIR_ACCEPT_SCHEDULE_CHANGE', () => {
     it('should test parsing of universal record retrieve request', () => {
       const uParser = new Parser('universal:AckScheduleChangeRsp', 'v47_0', {});
-      const parseFunction = airParser.AIR_ACKNOWLEDGE_SCHEDULE_CHANGE;
+      const parseFunction = airParser.AIR_ACCEPT_SCHEDULE_CHANGE;
       const xml = fs.readFileSync(`${xmlFolder}/AckScheduleChangeRsp.xml`).toString();
       return uParser.parse(xml)
         .then((json) => {
           const jsonResult = parseFunction.call(uParser, json);
           testBooking(jsonResult);
+
+          const [firstReservation] = jsonResult;
+
+          expect(firstReservation.pnr).to.be.equal('4GVJJM');
+
+          expect(firstReservation.segments).to.be.an('array').and.have.length.above(0);
+          expect(firstReservation.segments[0].status).to.be.equal('HK');
         });
     });
   });
