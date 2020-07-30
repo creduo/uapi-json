@@ -146,7 +146,7 @@ module.exports = `
             <com:SearchPassenger Code="{{ageCategory}}"{{#if child}} Age="9"{{/if}} />
             {{/passengers}}
             <air:AirPricingModifiers
-              {{#if priсing}}
+              {{#if pricing}}
                 {{#if pricing.currency}}
                 CurrencyType="{{pricing.currency}}"
                 {{/if}}
@@ -161,16 +161,21 @@ module.exports = `
               {{/if}}
               {{#if platingCarrier}}
                 PlatingCarrier="{{platingCarrier}}"
-              {{/if}}
-            {{#if business}}
-            >
-                <air:PermittedCabins>
-                    <com:CabinClass Type="Business" />
-                </air:PermittedCabins>
+              {{/if}}>
+                {{#if business}}
+                    <air:PermittedCabins>
+                        <com:CabinClass Type="Business" />
+                    </air:PermittedCabins>
+                {{else}}
+                    {{#if cabins}}
+                    <air:PermittedCabins>
+                        {{#each cabins}}
+                        <com:CabinClass Type="{{this}}"/>
+                        {{/each}}
+                    </air:PermittedCabins>
+                    {{/if}}
+                {{/if}}
             </air:AirPricingModifiers>   
-            {{else}}
-            />
-            {{/if}}
 
             {{#if emulatePcc}}
             <air:PCC>
