@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SOAP:Envelope xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP:Body>
+    <universal:AirMerchandisingFulfillmentRsp xmlns:universal="http://www.travelport.com/schema/universal_v42_0" xmlns:common_v42_0="http://www.travelport.com/schema/common_v42_0" xmlns:air="http://www.travelport.com/schema/air_v42_0" TraceId="5053b04a-50b2-410a-99a3-e87a5cd17ad9" TransactionId="15A4CE030A07647895C4A04AE342960A" ResponseTime="27596">
+      <common_v42_0:ResponseMessage Code="14001" Type="Warning" ProviderCode="ACH">Reservation system error-Valid Credit Card Payment Types: ,VI,UP,MC,AX,TP</common_v42_0:ResponseMessage>
+      <common_v42_0:ResponseMessage Code="15094" Type="Warning" ProviderCode="ACH">Miscellaneous alert returned from vendor-ENSURE PASSENGER MEETS GOVERNMENT DESIGNATED EXIT ROW CRITERIA</common_v42_0:ResponseMessage>
+      <universal:UniversalRecord LocatorCode="0TJ1O7" Version="1" Status="Active">
+        <common_v42_0:BookingTraveler Key="WW92WWM5cU5yNVdjczJUOA==" TravelerType="ADT" Age="40" DOB="1980-03-26" Gender="M">
+          <common_v42_0:BookingTravelerName Prefix="Mr" First="John" Last="Smith" />
+          <common_v42_0:DeliveryInfo>
+            <common_v42_0:ShippingAddress Key="WW92WWM5cU5yNVdjczJUOA==">
+              <common_v42_0:AddressName>JOHNMR SMITH</common_v42_0:AddressName>
+              <common_v42_0:Street>Via Augusta 59 5</common_v42_0:Street>
+              <common_v42_0:City>Madrid</common_v42_0:City>
+              <common_v42_0:State>IA</common_v42_0:State>
+              <common_v42_0:PostalCode>50156</common_v42_0:PostalCode>
+              <common_v42_0:Country>US</common_v42_0:Country>
+              <common_v42_0:ProviderReservationInfoRef Key="H8PiTE4R2BKAZ2qTAAAAAA==" />
+            </common_v42_0:ShippingAddress>
+          </common_v42_0:DeliveryInfo>
+          <common_v42_0:PhoneNumber Key="H8PiTE4R2BKAK2qTAAAAAA==" Type="None" Location="DEN" CountryCode="1" Number="123456789" AreaCode="303">
+            <common_v42_0:ProviderReservationInfoRef Key="H8PiTE4R2BKAZ2qTAAAAAA==" />
+          </common_v42_0:PhoneNumber>
+          <common_v42_0:Email Key="H8PiTE4R2BKAM2qTAAAAAA==" EmailID="johnsmith@travelportuniversalapidemo.com">
+            <common_v42_0:ProviderReservationInfoRef Key="H8PiTE4R2BKAZ2qTAAAAAA==" />
+          </common_v42_0:Email>
+          <common_v42_0:SSR Key="H8PiTE4R2BKAL2qTAAAAAA==" Status="HK" Type="DOCS" FreeText="P/GB/S12345678/GB/20JUL76/M/01JAN16/SMITH/JOHN -1SMITH/JOHNMR" Carrier="UA" ProviderReservationInfoRef="H8PiTE4R2BKAZ2qTAAAAAA==" />
+          <common_v42_0:AirSeatAssignment Key="H8PiTE4R2BKAEWtTAAAAAA==" Status="HK" Seat="46J" SeatTypeCode="RQST" SegmentRef="6AuUuD3R2BKAgiskFAAAAA==" FlightDetailsRef="H8PiTE4R2BKAk2qTAAAAAA==" ElStat="A" />
+          <common_v42_0:AirSeatAssignment Key="H8PiTE4R2BKAd2qTAAAAAA==" Status="HK" Seat="035D" SegmentRef="6AuUuD3R2BKAiiskFAAAAA==" FlightDetailsRef="H8PiTE4R2BKAc2qTAAAAAA==" />
+          <common_v42_0:Address Key="H8PiTE4R2BKAN2qTAAAAAA==">
+            <common_v42_0:AddressName>DemoSiteAddress</common_v42_0:AddressName>
+            <common_v42_0:Street>Via Augusta 59 5</common_v42_0:Street>
+            <common_v42_0:City>Madrid</common_v42_0:City>
+            <common_v42_0:State>IA</common_v42_0:State>
+            <common_v42_0:PostalCode>50156</common_v42_0:PostalCode>
+            <common_v42_0:Country>US</common_v42_0:Country>
+            <common_v42_0:ProviderReservationInfoRef Key="H8PiTE4R2BKAZ2qTAAAAAA==" />
+          </common_v42_0:Address>
+        </common_v42_0:BookingTraveler>
+        <common_v42_0:ActionStatus Key="H8PiTE4R2BKAR2qTAAAAAA==" Type="ACTIVE" ProviderReservationInfoRef="H8PiTE4R2BKAZ2qTAAAAAA==" ProviderCode="1G" />
+        <universal:ProviderReservationInfo Key="H8PiTE4R2BKAZ2qTAAAAAA==" ProviderCode="1G" LocatorCode="8M587G" CreateDate="2020-03-26T06:59:44.433+00:00" ModifiedDate="2020-03-26T07:01:22.291+00:00" HostCreateDate="2020-03-26" OwningPCC="8SE1" />
+        <air:AirReservation LocatorCode="0TJ1OB" CreateDate="2020-03-26T06:59:43.681+00:00" ModifiedDate="2020-03-26T07:01:22.291+00:00">
+          <common_v42_0:SupplierLocator SupplierCode="UA" SupplierLocatorCode="GX3B71" ProviderReservationInfoRef="H8PiTE4R2BKAZ2qTAAAAAA==" CreateDateTime="2020-03-26T06:59:00.000+00:00" />
+          <common_v42_0:BookingTravelerRef Key="WW92WWM5cU5yNVdjczJUOA==" />
+          <common_v42_0:ProviderReservationInfoRef Key="H8PiTE4R2BKAZ2qTAAAAAA==" />
+          <air:AirSegment Key="6AuUuD3R2BKAgiskFAAAAA==" Group="0" Carrier="UA" CabinClass="Economy" FlightNumber="1882" ProviderCode="1G" Origin="LAX" Destination="EWR" DepartureTime="2020-09-16T21:15:00.000-07:00" ArrivalTime="2020-09-17T05:23:00.000-04:00" TravelTime="308" Distance="2436" ClassOfService="G" ETicketability="Yes" Status="HK" ChangeOfPlane="false" GuaranteedPaymentCarrier="No" ProviderReservationInfoRef="H8PiTE4R2BKAZ2qTAAAAAA==" TravelOrder="1" ProviderSegmentOrder="1" OptionalServicesIndicator="false">
+            <air:FlightDetails Key="H8PiTE4R2BKAk2qTAAAAAA==" Origin="LAX" Destination="EWR" DepartureTime="2020-09-16T21:15:00.000-07:00" ArrivalTime="2020-09-17T05:23:00.000-04:00" FlightTime="308" TravelTime="308" Equipment="781" OriginTerminal="7" DestinationTerminal="C" AutomatedCheckin="false" />
+            <common_v42_0:SellMessage>DEPARTS LAX TERMINAL 7  - ARRIVES EWR TERMINAL C</common_v42_0:SellMessage>
+            <common_v42_0:SellMessage>*ADV PAX FLT ARRIVES TERMINAL-C*</common_v42_0:SellMessage>
+            <common_v42_0:SellMessage>*ADV PAX FLT DEPARTS TERMINAL-7*</common_v42_0:SellMessage>
+            <common_v42_0:SellMessage>* BUSINESSFIRST OFFERED THIS FLIGHT*</common_v42_0:SellMessage>
+            <common_v42_0:SellMessage>* JNZNPNPZINONRNYNHNXN*</common_v42_0:SellMessage>
+            <common_v42_0:SellMessage>* 78J*</common_v42_0:SellMessage>
+          </air:AirSegment>
+          <air:AirSegment Key="6AuUuD3R2BKAiiskFAAAAA==" Group="1" Carrier="UA" CabinClass="Economy" FlightNumber="628" ProviderCode="1G" Origin="EWR" Destination="LAX" DepartureTime="2020-09-23T20:00:00.000-04:00" ArrivalTime="2020-09-23T23:03:00.000-07:00" TravelTime="363" Distance="2436" ClassOfService="G" ETicketability="Yes" Status="HK" ChangeOfPlane="false" GuaranteedPaymentCarrier="No" ProviderReservationInfoRef="H8PiTE4R2BKAZ2qTAAAAAA==" TravelOrder="2" ProviderSegmentOrder="2" OptionalServicesIndicator="false">
+            <air:FlightDetails Key="H8PiTE4R2BKAc2qTAAAAAA==" Origin="EWR" Destination="LAX" DepartureTime="2020-09-23T20:00:00.000-04:00" ArrivalTime="2020-09-23T23:03:00.000-07:00" FlightTime="363" TravelTime="363" Equipment="752" OriginTerminal="C" DestinationTerminal="7" AutomatedCheckin="false" />
+            <common_v42_0:SellMessage>DEPARTS EWR TERMINAL C  - ARRIVES LAX TERMINAL 7</common_v42_0:SellMessage>
+            <common_v42_0:SellMessage>*ADV PAX FLT ARRIVES TERMINAL-7*</common_v42_0:SellMessage>
+            <common_v42_0:SellMessage>*ADV PAX FLT DEPARTS TERMINAL-C*</common_v42_0:SellMessage>
+            <common_v42_0:SellMessage>* BUSINESSFIRST OFFERED THIS FLIGHT*</common_v42_0:SellMessage>
+            <common_v42_0:SellMessage>* JNZNPNPZINYNHNXN*</common_v42_0:SellMessage>
+            <common_v42_0:SellMessage>* 75B*</common_v42_0:SellMessage>
+          </air:AirSegment>
+          <air:AirPricingInfo Key="6AuUuD3R2BKAniskFAAAAA==" TotalPrice="GBP255.50" BasePrice="USD282.80" EquivalentBasePrice="GBP217.00" Taxes="GBP38.50" LatestTicketingTime="2020-03-27T23:59:00.000+00:00" TrueLastDateToTicket="2020-03-27T23:59:00.000+00:00" PricingMethod="Guaranteed" Exchangeable="true" IncludesVAT="false" ETicketability="Yes" ProviderCode="1G" ProviderReservationInfoRef="H8PiTE4R2BKAZ2qTAAAAAA==" AirPricingInfoGroup="1" PricingType="StoredFare" FareCalculationInd="G">
+            <air:FareInfo Key="H8PiTE4R2BKAV2qTAAAAAA==" FareBasis="GAA2AQDN" PassengerTypeCode="ADT" Origin="LAX" Destination="EWR" EffectiveDate="2020-03-26T00:00:00.000+00:00" Amount="USD141.40" NotValidBefore="2020-09-16" NotValidAfter="2020-09-16" PseudoCityCode="8SE1">
+              <common_v42_0:Endorsement Value="NONREF/0VALUAFTDPT/CHGFEE" />
+              <air:BaggageAllowance>
+                <air:NumberOfPieces>0</air:NumberOfPieces>
+              </air:BaggageAllowance>
+              <air:Brand BrandID="169914" Name="Economy" Carrier="UA">
+                <air:Title Type="External">Economy</air:Title>
+                <air:Title Type="Short">ECONOMY</air:Title>
+                <air:Text Type="MarketingConsumer">Our standard Economy fare; choose your seats and enjoy other options for customizing your travel
+
+                  • Seat selection at booking, if seats are available
+                  • Eligible to change ticket1
+                  • Eligible for Economy Plus®1, paid upgrades and complimentary upgrades
+                  • One personal item and one full-size carry-on bag
+                  • Earn award miles and lifetime miles, and toward Premier® qualification
+                  • 1Fees may apply.
+                  ---
+                  • Please note that if the flight is operated by another airline then the onboard product or service maybe different to that described above.</air:Text>
+                <air:Text Type="MarketingAgent">Our standard Economy fare; choose your seats and enjoy other options for customizing your travel
+
+                  • Seat selection at booking, if seats are available
+                  • Eligible to change ticket1
+                  • Eligible for Economy Plus®1, paid upgrades and complimentary upgrades
+                  • One personal item and one full-size carry-on bag
+                  • Earn award miles and lifetime miles, and toward Premier® qualification
+                  • 1Fees may apply.
+                  ---
+                  • Please note that if the flight is operated by another airline then the onboard product or service maybe different to that described above.</air:Text>
+                <air:Text Type="Strapline">Our lowest available fare with options to customize travel and without the restrictions of Budget E</air:Text>
+                <air:ImageLocation Type="Consumer" ImageWidth="2000" ImageHeight="1529">https://cdn.travelport.com/united/UA_general_large_42309.jpg</air:ImageLocation>
+                <air:ImageLocation Type="Agent" ImageWidth="150" ImageHeight="150">https://cdn.travelport.com/united/UA_general_medium_1662.jpg</air:ImageLocation>
+                <air:OptionalServices>
+                  <air:OptionalService Type="PreReservedSeatAssignment" CreateDate="2020-03-26T06:59:43.705+00:00" Key="6AuUuD3R2BKA0iskFAAAAA==" AssessIndicator="MileageAndCurrency" Chargeable="Included in the brand">
+                    <common_v42_0:ServiceInfo>
+                      <common_v42_0:Description>Advanced seat assignment</common_v42_0:Description>
+                    </common_v42_0:ServiceInfo>
+                    <air:EMD AssociatedItem="Flight" />
+                  </air:OptionalService>
+                  <air:OptionalService Type="Baggage" CreateDate="2020-03-26T06:59:43.705+00:00" Key="6AuUuD3R2BKAtiskFAAAAA==" AssessIndicator="MileageAndCurrency" Chargeable="Included in the brand">
+                    <common_v42_0:ServiceInfo>
+                      <common_v42_0:Description>Carry on bags</common_v42_0:Description>
+                    </common_v42_0:ServiceInfo>
+                    <air:EMD AssociatedItem="Flight" />
+                  </air:OptionalService>
+                  <air:OptionalService Type="Baggage" CreateDate="2020-03-26T06:59:43.705+00:00" Key="6AuUuD3R2BKAviskFAAAAA==" AssessIndicator="MileageAndCurrency" Chargeable="Included in the brand">
+                    <common_v42_0:ServiceInfo>
+                      <common_v42_0:Description>Personal Item (9 in x 10 in x 17 in)</common_v42_0:Description>
+                    </common_v42_0:ServiceInfo>
+                    <air:EMD AssociatedItem="Flight" />
+                  </air:OptionalService>
+                </air:OptionalServices>
+              </air:Brand>
+            </air:FareInfo>
+            <air:FareInfo Key="H8PiTE4R2BKAW2qTAAAAAA==" FareBasis="GAA2AQDN" PassengerTypeCode="ADT" Origin="EWR" Destination="LAX" EffectiveDate="2020-03-26T00:00:00.000+00:00" Amount="USD141.40" NotValidBefore="2020-09-23" NotValidAfter="2020-09-23" PseudoCityCode="8SE1">
+              <common_v42_0:Endorsement Value="NONREF/0VALUAFTDPT/CHGFEE" />
+              <air:BaggageAllowance>
+                <air:NumberOfPieces>0</air:NumberOfPieces>
+              </air:BaggageAllowance>
+              <air:Brand BrandID="169914" Name="Economy" Carrier="UA">
+                <air:Title Type="External">Economy</air:Title>
+                <air:Title Type="Short">ECONOMY</air:Title>
+                <air:Text Type="MarketingConsumer">Our standard Economy fare; choose your seats and enjoy other options for customizing your travel
+
+                  • Seat selection at booking, if seats are available
+                  • Eligible to change ticket1
+                  • Eligible for Economy Plus®1, paid upgrades and complimentary upgrades
+                  • One personal item and one full-size carry-on bag
+                  • Earn award miles and lifetime miles, and toward Premier® qualification
+                  • 1Fees may apply.
+                  ---
+                  • Please note that if the flight is operated by another airline then the onboard product or service maybe different to that described above.</air:Text>
+                <air:Text Type="MarketingAgent">Our standard Economy fare; choose your seats and enjoy other options for customizing your travel
+
+                  • Seat selection at booking, if seats are available
+                  • Eligible to change ticket1
+                  • Eligible for Economy Plus®1, paid upgrades and complimentary upgrades
+                  • One personal item and one full-size carry-on bag
+                  • Earn award miles and lifetime miles, and toward Premier® qualification
+                  • 1Fees may apply.
+                  ---
+                  • Please note that if the flight is operated by another airline then the onboard product or service maybe different to that described above.</air:Text>
+                <air:Text Type="Strapline">Our lowest available fare with options to customize travel and without the restrictions of Budget E</air:Text>
+                <air:ImageLocation Type="Consumer" ImageWidth="2000" ImageHeight="1529">https://cdn.travelport.com/united/UA_general_large_42309.jpg</air:ImageLocation>
+                <air:ImageLocation Type="Agent" ImageWidth="150" ImageHeight="150">https://cdn.travelport.com/united/UA_general_medium_1662.jpg</air:ImageLocation>
+                <air:OptionalServices>
+                  <air:OptionalService Type="PreReservedSeatAssignment" CreateDate="2020-03-26T06:59:43.705+00:00" Key="6AuUuD3R2BKACjskFAAAAA==" AssessIndicator="MileageAndCurrency" Chargeable="Included in the brand">
+                    <common_v42_0:ServiceInfo>
+                      <common_v42_0:Description>Advanced seat assignment</common_v42_0:Description>
+                    </common_v42_0:ServiceInfo>
+                    <air:EMD AssociatedItem="Flight" />
+                  </air:OptionalService>
+                  <air:OptionalService Type="Baggage" CreateDate="2020-03-26T06:59:43.705+00:00" Key="6AuUuD3R2BKA7iskFAAAAA==" AssessIndicator="MileageAndCurrency" Chargeable="Included in the brand">
+                    <common_v42_0:ServiceInfo>
+                      <common_v42_0:Description>Carry on bags</common_v42_0:Description>
+                    </common_v42_0:ServiceInfo>
+                    <air:EMD AssociatedItem="Flight" />
+                  </air:OptionalService>
+                  <air:OptionalService Type="Baggage" CreateDate="2020-03-26T06:59:43.705+00:00" Key="6AuUuD3R2BKA9iskFAAAAA==" AssessIndicator="MileageAndCurrency" Chargeable="Included in the brand">
+                    <common_v42_0:ServiceInfo>
+                      <common_v42_0:Description>Personal Item (9 in x 10 in x 17 in)</common_v42_0:Description>
+                    </common_v42_0:ServiceInfo>
+                    <air:EMD AssociatedItem="Flight" />
+                  </air:OptionalService>
+                </air:OptionalServices>
+              </air:Brand>
+            </air:FareInfo>
+            <air:BookingInfo BookingCode="G" CabinClass="Economy" FareInfoRef="H8PiTE4R2BKAV2qTAAAAAA==" SegmentRef="6AuUuD3R2BKAgiskFAAAAA==" />
+            <air:BookingInfo BookingCode="G" CabinClass="Economy" FareInfoRef="H8PiTE4R2BKAW2qTAAAAAA==" SegmentRef="6AuUuD3R2BKAiiskFAAAAA==" />
+            <air:TaxInfo Category="AY" Amount="GBP8.60" Key="6AuUuD3R2BKAoiskFAAAAA==" />
+            <air:TaxInfo Category="US" Amount="GBP16.30" Key="6AuUuD3R2BKApiskFAAAAA==" />
+            <air:TaxInfo Category="XF" Amount="GBP7.00" Key="6AuUuD3R2BKAqiskFAAAAA==">
+              <common_v42_0:TaxDetail Amount="USD4.50" OriginAirport="LAX" />
+              <common_v42_0:TaxDetail Amount="USD4.50" OriginAirport="EWR" />
+            </air:TaxInfo>
+            <air:TaxInfo Category="ZP" Amount="GBP6.60" Key="6AuUuD3R2BKAriskFAAAAA==">
+              <common_v42_0:TaxDetail Amount="USD4.30" OriginAirport="LAX" />
+              <common_v42_0:TaxDetail Amount="USD4.30" OriginAirport="EWR" />
+            </air:TaxInfo>
+            <air:FareCalc>LAX UA EWR 141.40GAA2AQDN UA LAX 141.40GAA2AQDN USD282.80END</air:FareCalc>
+            <air:PassengerType Code="ADT" BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+              <air:FareGuaranteeInfo GuaranteeDate="2020-03-26" GuaranteeType="Guaranteed" />
+            </air:PassengerType>
+            <common_v42_0:BookingTravelerRef Key="WW92WWM5cU5yNVdjczJUOA==" />
+            <air:ChangePenalty>
+              <air:Amount>GBP153.00</air:Amount>
+            </air:ChangePenalty>
+            <air:CancelPenalty>
+              <air:Percentage>100.00</air:Percentage>
+            </air:CancelPenalty>
+            <air:TicketingModifiersRef Key="H8PiTE4R2BKAj2qTAAAAAA==" />
+          </air:AirPricingInfo>
+          <air:TicketingModifiers PlatingCarrier="UA" Key="H8PiTE4R2BKAj2qTAAAAAA==">
+            <air:DocumentSelect IssueElectronicTicket="true" />
+          </air:TicketingModifiers>
+        </air:AirReservation>
+        <common_v42_0:AgencyInfo>
+          <common_v42_0:AgentAction ActionType="Created" AgentCode="uAPI1841135459-8adf4db1" BranchCode="P7087680" AgencyCode="S7087667" EventTime="2020-03-26T06:59:37.107+00:00" />
+          <common_v42_0:AgentAction ActionType="Modified" AgentCode="uAPI1841135459-8adf4db1" BranchCode="P7087680" AgencyCode="S7087667" EventTime="2020-03-26T07:01:22.291+00:00" />
+        </common_v42_0:AgencyInfo>
+        <common_v42_0:FormOfPayment Key="H8PiTE4R2BKAO2qTAAAAAA==" Type="Check" Reusable="false" ProfileKey="lg2cpMbyS+iFDjIjwzdw0w==">
+          <common_v42_0:Check RoutingNumber="456" AccountNumber="7890" CheckNumber="1234567" />
+          <common_v42_0:ProviderReservationInfoRef Key="H8PiTE4R2BKAZ2qTAAAAAA==" />
+        </common_v42_0:FormOfPayment>
+      </universal:UniversalRecord>
+    </universal:AirMerchandisingFulfillmentRsp>
+  </SOAP:Body>
+</SOAP:Envelope>

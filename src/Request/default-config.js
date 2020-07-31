@@ -20,6 +20,8 @@ module.exports = function defaultConfig(ver) {
     'common_' + ver + ':BookingTraveler',
     'air:BaggageAllowanceInfo',
     'air:CarryOnAllowanceInfo',
+    'air:Rows',
+    'air:Characteristic',
     'hotel:RateInfo',
     'hotel:HotelSearchResult',
     // 'hotel:Amenities',

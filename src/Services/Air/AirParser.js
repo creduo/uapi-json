@@ -872,7 +872,30 @@ function extractBookings(obj) {
           );
         }
 
-        return format.buildPassenger(name, traveler);
+        let seatAssignments = [];
+        const seatAssignmentObject = traveler[`common_${this.uapi_version}:AirSeatAssignment`];
+
+        Object.keys(seatAssignmentObject).forEach((key) => {
+          const seatAssignment = seatAssignmentObject[key];
+          seatAssignments.push({
+            key: seatAssignment.Key,
+            status: seatAssignment.Status,
+            seat: seatAssignment.Seat,
+            seatTypeCode: seatAssignment.SeatTypeCode,
+            uapi_segment_ref: seatAssignment.SegmentRef,
+            uapi_flight_detail_ref: seatAssignment.FlightDetailsRef,
+            elStat: seatAssignment.ElStat
+          });
+        });
+
+        // TODO: Add seatAssignment
+
+        return Object.assign(
+          format.buildPassenger(name, traveler),
+          seatAssignments.length > 0 ? {
+            seatAssignments,
+          } : null
+        );
       }
     );
 
@@ -1334,6 +1357,80 @@ function availability(rsp) {
   };
 }
 
+function seatMap(rsp) {
+  let messages = [];
+
+  if (rsp[`common_${this.uapi_version}:ResponseMessage`]) {
+    messages = rsp[`common_${this.uapi_version}:ResponseMessage`].map((msg) => {
+      return {
+        providerCode: msg.ProviderCode,
+        code: msg.Code,
+        type: msg.Type,
+        text: msg._,
+      };
+    });
+  }
+
+  const segments = Object.keys(rsp['air:AirSegment']).map((segKey) => {
+    const seg = rsp['air:AirSegment'][segKey];
+    return format.formatSegment(seg);
+  });
+
+  const travelers = Object.keys(rsp['air:SearchTraveler']).map((paxKey) => {
+    const pax = rsp['air:SearchTraveler'][paxKey];
+    return pax;
+  });
+
+  const optionalServices = rsp['air:OptionalServices'] ? Object.keys(rsp['air:OptionalServices']).map((optionalServiceKey) => {
+    const optionalService = rsp['air:OptionalServices'][optionalServiceKey];
+
+    return optionalService;
+  }) : null;
+
+  const seatmap = rsp['air:Rows'].map((rowsBySegment) => {
+    return {
+      segment: format.formatSegment(rsp['air:AirSegment'][rowsBySegment.SegmentRef]),
+      rows: rowsBySegment['air:Row'].map((row) => {
+        return {
+          rowNumber: row.Number,
+          seats: row['air:Facility'].map((facility) => {
+            const remark = facility[`common_${this.uapi_version}:Remark`];
+
+            const characteristics = [
+              ...row['air:Characteristic'].map(c => c.Value),
+              ...facility['air:Characteristic'].map(c => c.Value),
+            ];
+
+            return Object.assign({
+              seatCode: facility.SeatCode,
+              type: facility.Type,
+              characteristics,
+              availability: facility.Availability,
+              isAvailable: (facility.Availability === 'Available'),
+              isPaid: facility.Paid !== 'false',
+              remark,
+            }, facility.OptionalServiceRef ? {
+              optionalService: rsp['air:OptionalServices'][facility.OptionalServiceRef]
+            } : null);
+          })
+        };
+      })
+    };
+  });
+
+  return {
+    messages,
+    segments,
+    travelers,
+    optionalServices,
+    seatmap,
+  };
+}
+
+function airMerchandisingFulfillment(rsp) {
+  return extractBookings.call(this, rsp);
+}
+
 module.exports = {
   AIR_LOW_FARE_SEARCH_REQUEST: lowFaresSearchRequest,
   AIR_PRICE_REQUEST: airPrice,
@@ -1357,4 +1454,6 @@ module.exports = {
   AIR_EXCHANGE_QUOTE: exchangeQuote,
   AIR_EXCHANGE: exchangeBooking,
   AIR_AVAILABILITY: availability,
+  SEAT_MAP: seatMap,
+  AIR_MERCHANDISING_FULFILLMENT: airMerchandisingFulfillment,
 };
