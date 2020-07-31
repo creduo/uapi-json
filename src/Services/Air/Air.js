@@ -383,7 +383,7 @@ module.exports = (settings) => {
         .then((ur) => {
           const urr = Array.isArray(ur) ? ur[0] : ur;
           const record = {
-            reservationLocatorCode: urr.uapi_reservation_locator
+            pnr: urr.uapi_reservation_locator
           };
           return (ignoreTickets
             ? Promise.resolve([])
