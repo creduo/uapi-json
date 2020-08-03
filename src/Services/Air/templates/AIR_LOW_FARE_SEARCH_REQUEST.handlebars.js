@@ -66,7 +66,7 @@ module.exports = `
                     {{#if ../cabins}}
                     <air:PreferredCabins>
                         {{#each ../cabins}}
-                        <com:CabinClass Type="{{this}}"/>
+                        <com:CabinClass Type="{{capitalize this}}"/>
                         {{/each}}
                     </air:PreferredCabins>
                     {{/if}}
@@ -170,7 +170,7 @@ module.exports = `
                     {{#if cabins}}
                     <air:PermittedCabins>
                         {{#each cabins}}
-                        <com:CabinClass Type="{{this}}"/>
+                        <com:CabinClass Type="{{capitalize this}}"/>
                         {{/each}}
                     </air:PermittedCabins>
                     {{/if}}
