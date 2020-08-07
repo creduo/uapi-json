@@ -75,6 +75,8 @@ module.exports = (settings) => {
     },
 
     book(options) {
+      console.log('-- book --', options);
+
       return service.airPricePricingSolutionXML(options).then((data) => {
         const tauDate = moment(options.tau || null);
         const tau = tauDate.isValid() ? tauDate.format() : moment().add(3, 'days').format('YYYY-MM-DD');
