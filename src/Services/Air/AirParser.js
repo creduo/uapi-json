@@ -1108,7 +1108,7 @@ function extractBookings(obj) {
         hostCreatedAt: providerInfo.HostCreateDate,
         modifiedAt: providerInfo.ModifiedDate,
         fareQuotes,
-        segments,
+        segments: format.setReferencesForSegments(segments),
         serviceSegments,
         passengers,
         emails,
