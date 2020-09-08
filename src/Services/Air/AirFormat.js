@@ -570,28 +570,6 @@ function formatServiceData(service, version) {
   };
 }
 
-function formatEMD(emd) {
-  return {
-    emd: {
-      associatedItem: emd.AssociatedItem,
-      booking: emd.Booking,
-      isCommissionable: emd.Commissionable !== 'false',
-      fulfillmentType: emd.FulfillmentType,
-      fulfillmentTypeDescription: emd.FulfillmentTypeDescription,
-      isRefundable: emd.RefundReissueIndicator === 'Refundable',
-    }
-  };
-}
-
-function formatFeeApplication(feeApplication) {
-  return {
-    feeApplication: {
-      code: feeApplication.Code,
-      text: feeApplication._,
-    }
-  };
-}
-
 function formatOptionalService(service, version) {
   const serviceInfo = {
     type: service.Type,
