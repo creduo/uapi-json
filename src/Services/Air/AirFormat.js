@@ -554,6 +554,86 @@ function setReferencesForSegments(segments) {
   });
 }
 
+function formatServiceData(service, version) {
+  const serviceData = {
+    airSegmentRef: service.AirSegmentRef,
+    bookingTravelerRef: service.BookingTravelerRef,
+    seatAttributes: service[`common_${version}:SeatAttributes`]
+      ? service[`common_${version}:SeatAttributes`].map(i => i.Value) : []
+  };
+
+  if (Object.prototype.hasOwnProperty.call(service, `common_${version}:CabinClass`)) {
+    Object.assign(serviceData, { cabinClass: service[`common_${version}:CabinClass`].Type });
+  }
+  return {
+    serviceData
+  };
+}
+
+function formatEMD(emd) {
+  return {
+    emd: {
+      associatedItem: emd.AssociatedItem,
+      booking: emd.Booking,
+      isCommissionable: emd.Commissionable !== 'false',
+      fulfillmentType: emd.FulfillmentType,
+      fulfillmentTypeDescription: emd.FulfillmentTypeDescription,
+      isRefundable: emd.RefundReissueIndicator === 'Refundable',
+    }
+  };
+}
+
+function formatFeeApplication(feeApplication) {
+  return {
+    feeApplication: {
+      code: feeApplication.Code,
+      text: feeApplication._,
+    }
+  };
+}
+
+function formatOptionalService(service, version) {
+  const serviceInfo = {
+    type: service.Type,
+    totalPrice: service.TotalPrice,
+    supplierCode: service.SupplierCode,
+    createDate: service.CreateDate,
+    sequenceNumber: service.SequenceNumber,
+    serviceSubCode: service.ServiceSubCode,
+    ssrCode: service.SSRCode,
+    issuanceReason: service.IssuanceReason,
+    key: service.Key,
+    inclusiveOfTax: service.InclusiveOfTax,
+    interlineSettlementAllowed: service.InterlineSettlementAllowed === 'true',
+    geographySpecification: service.GeographySpecification,
+    source: service.Source,
+    viewableOnly: service.ViewableOnly === 'true',
+    quantity: service.Quantity,
+    basePrice: service.BasePrice,
+    taxes: service.Taxes,
+    isRepriceRequired: service.IsRepriceRequired === 'true',
+  };
+  if (Object.prototype.hasOwnProperty.call(service, `common_${version}:ServiceData`)) {
+    Object.assign(serviceInfo, formatServiceData(service[`common_${version}:ServiceData`], version));
+  }
+
+  if (Object.prototype.hasOwnProperty.call(service, `common_${version}:ServiceInfo`)) {
+    Object.assign(serviceInfo, {
+      serviceInfo: {
+        description: service[`common_${version}:ServiceInfo`][`common_${version}:Description`]
+      },
+    });
+  }
+
+  if (Object.prototype.hasOwnProperty.call(service, 'air:EMD')) {
+    Object.assign(serviceInfo, formatEMD(service['air:EMD']));
+  }
+  if (Object.prototype.hasOwnProperty.call(service, 'air:FeeApplication')) {
+    Object.assign(serviceInfo, formatFeeApplication(['air:FeeApplication']));
+  }
+  return serviceInfo;
+}
+
 module.exports = {
   formatLowFaresSearch,
   formatFarePricingInfo,
@@ -567,5 +647,6 @@ module.exports = {
   getBaggage,
   getBaggageInfo,
   buildPassenger,
-  setReferencesForSegments
+  setReferencesForSegments,
+  formatOptionalService
 };
