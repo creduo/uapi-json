@@ -571,7 +571,7 @@ function formatServiceData(service, version) {
 }
 
 function formatOptionalService(service, version) {
-  const serviceInfo = {
+  const optionalService = {
     type: service.Type,
     totalPrice: service.TotalPrice,
     supplierCode: service.SupplierCode,
@@ -582,21 +582,34 @@ function formatOptionalService(service, version) {
     issuanceReason: service.IssuanceReason,
     key: service.Key,
     inclusiveOfTax: service.InclusiveOfTax,
-    interlineSettlementAllowed: service.InterlineSettlementAllowed === 'true',
+    interlineSettlementAllowed: service.InterlineSettlementAllowed,
     geographySpecification: service.GeographySpecification,
     source: service.Source,
-    viewableOnly: service.ViewableOnly === 'true',
+    viewableOnly: service.ViewableOnly,
     quantity: service.Quantity,
     basePrice: service.BasePrice,
     taxes: service.Taxes,
-    isRepriceRequired: service.IsRepriceRequired === 'true',
+    isRepriceRequired: service.IsRepriceRequired,
   };
   if (Object.prototype.hasOwnProperty.call(service, `common_${version}:ServiceData`)) {
-    Object.assign(serviceInfo, formatServiceData(service[`common_${version}:ServiceData`], version));
+    const serviceData = {
+      airSegmentRef: service.AirSegmentRef,
+      bookingTravelerRef: service.BookingTravelerRef,
+      seatAttributes: service[`common_${version}:SeatAttributes`]
+        ? service[`common_${version}:SeatAttributes`].map((i) => {
+          return { value: i.Value };
+        }) : []
+    };
+
+    if (Object.prototype.hasOwnProperty.call(service, `common_${version}:CabinClass`)) {
+      Object.assign(serviceData, { cabinClass: service[`common_${version}:CabinClass`].Type });
+    }
+
+    Object.assign(optionalService, serviceData);
   }
 
   if (Object.prototype.hasOwnProperty.call(service, `common_${version}:ServiceInfo`)) {
-    Object.assign(serviceInfo, {
+    Object.assign(optionalService, {
       serviceInfo: {
         description: service[`common_${version}:ServiceInfo`][`common_${version}:Description`]
       },
@@ -604,12 +617,26 @@ function formatOptionalService(service, version) {
   }
 
   if (Object.prototype.hasOwnProperty.call(service, 'air:EMD')) {
-    Object.assign(serviceInfo, formatEMD(service['air:EMD']));
+    Object.assign(optionalService, {
+      emd: {
+        associatedItem: service['air:EMD'].AssociatedItem,
+        booking: service['air:EMD'].Booking,
+        commissionable: service['air:EMD'].Commissionable,
+        fulfillmentType: service['air:EMD'].FulfillmentType,
+        fulfillmentTypeDescription: service['air:EMD'].FulfillmentTypeDescription,
+        refundReissueIndicator: service['air:EMD'].RefundReissueIndicator,
+      }
+    });
   }
   if (Object.prototype.hasOwnProperty.call(service, 'air:FeeApplication')) {
-    Object.assign(serviceInfo, formatFeeApplication(['air:FeeApplication']));
+    Object.assign(optionalService, {
+      feeApplication: {
+        code: service['air:FeeApplication'].Code,
+        _: service['air:FeeApplication']._,
+      }
+    });
   }
-  return serviceInfo;
+  return optionalService;
 }
 
 module.exports = {
