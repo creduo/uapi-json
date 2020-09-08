@@ -1,10 +1,10 @@
 module.exports = `
-<soapenv:Envelope
-  xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+<soap:Envelope
   xmlns:air="http://www.travelport.com/schema/air_v47_0"
   xmlns:univ="http://www.travelport.com/schema/universal_v47_0"
   xmlns:com="http://www.travelport.com/schema/common_v47_0"
-    <soapenv:Body>
+  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
         <air:SeatMapReq
             AuthorizedBy="user" 
             TargetBranch="{{TargetBranch}}"
@@ -26,7 +26,7 @@ module.exports = `
             <com:HostToken Key="6AuUuD3R2BKAmiskFAAAAA==">{{_}}</com:HostToken>
             {{/each}}
 
-            {{if pnr}}
+            {{#if pnr}}
             <air:HostReservation
                 Carrier="{{platingCarrier}}"
                 CarrierLocatorCode="{{carrier_pnr}}"
@@ -39,6 +39,6 @@ module.exports = `
             <com:OverridePCC ProviderCode="{{provider}}" PseudoCityCode="{{emulatePcc}}"/>
             {{/if}}
         </air:SeatMapReq>
-    </soapenv:Body>
-</soapenv:Envelope>
+    </soap:Body>
+</soap:Envelope>
 `;
