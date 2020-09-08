@@ -1378,13 +1378,22 @@ function seatMap(rsp) {
 
   const travelers = Object.keys(rsp['air:SearchTraveler']).map((paxKey) => {
     const pax = rsp['air:SearchTraveler'][paxKey];
-    return pax;
+    return {
+      key: pax.Key,
+      ageCategory: pax.Code,
+      age: Number(pax.Age),
+      name: {
+        firstName: pax[`common_${this.uapi_version}:Name`].First,
+        lastName: pax[`common_${this.uapi_version}:Name`].Last,
+        title: pax[`common_${this.uapi_version}:Name`].Prefix,
+      },
+    };
   });
 
   const optionalServices = rsp['air:OptionalServices'] ? Object.keys(rsp['air:OptionalServices']).map((optionalServiceKey) => {
     const optionalService = rsp['air:OptionalServices'][optionalServiceKey];
 
-    return optionalService;
+    return format.formatOptionalService(optionalService, this.uapi_version);
   }) : null;
 
   const seatmap = rsp['air:Rows'].map((rowsBySegment) => {
@@ -1395,12 +1404,11 @@ function seatMap(rsp) {
           rowNumber: row.Number,
           seats: row['air:Facility'].map((facility) => {
             const remark = facility[`common_${this.uapi_version}:Remark`];
+            const characteristics = [...row['air:Characteristic'].map(c => c.Value)];
 
-            const characteristics = [
-              ...row['air:Characteristic'].map(c => c.Value),
-              ...facility['air:Characteristic'].map(c => c.Value),
-            ];
-
+            if (facility['air:Characteristic']) {
+              characteristics.push(...facility['air:Characteristic'].map(c => c.Value));
+            }
             return Object.assign({
               seatCode: facility.SeatCode,
               type: facility.Type,
@@ -1410,7 +1418,7 @@ function seatMap(rsp) {
               isPaid: facility.Paid !== 'false',
               remark,
             }, facility.OptionalServiceRef ? {
-              optionalService: rsp['air:OptionalServices'][facility.OptionalServiceRef]
+              optionalService: format.formatOptionalService(rsp['air:OptionalServices'][facility.OptionalServiceRef], this.uapi_version)
             } : null);
           })
         };
