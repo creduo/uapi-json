@@ -554,22 +554,6 @@ function setReferencesForSegments(segments) {
   });
 }
 
-function formatServiceData(service, version) {
-  const serviceData = {
-    airSegmentRef: service.AirSegmentRef,
-    bookingTravelerRef: service.BookingTravelerRef,
-    seatAttributes: service[`common_${version}:SeatAttributes`]
-      ? service[`common_${version}:SeatAttributes`].map(i => i.Value) : []
-  };
-
-  if (Object.prototype.hasOwnProperty.call(service, `common_${version}:CabinClass`)) {
-    Object.assign(serviceData, { cabinClass: service[`common_${version}:CabinClass`].Type });
-  }
-  return {
-    serviceData
-  };
-}
-
 function formatOptionalService(service, version) {
   const optionalService = {
     type: service.Type,
@@ -593,19 +577,27 @@ function formatOptionalService(service, version) {
   };
   if (Object.prototype.hasOwnProperty.call(service, `common_${version}:ServiceData`)) {
     const serviceData = {
-      airSegmentRef: service.AirSegmentRef,
-      bookingTravelerRef: service.BookingTravelerRef,
-      seatAttributes: service[`common_${version}:SeatAttributes`]
-        ? service[`common_${version}:SeatAttributes`].map((i) => {
-          return { value: i.Value };
-        }) : []
+      airSegmentRef: service[`common_${version}:ServiceData`].AirSegmentRef,
+      bookingTravelerRef: service[`common_${version}:ServiceData`].BookingTravelerRef
     };
-
-    if (Object.prototype.hasOwnProperty.call(service, `common_${version}:CabinClass`)) {
-      Object.assign(serviceData, { cabinClass: service[`common_${version}:CabinClass`].Type });
+    if (Object.prototype.hasOwnProperty.call(service[`common_${version}:ServiceData`], `common_${version}:SeatAttributes`)) {
+      Object.assign(serviceData, {
+        seatAttributes: service[`common_${version}:ServiceData`][`common_${version}:SeatAttributes`].map((i) => {
+          return { value: i.Value };
+        })
+      });
+    }
+    if (Object.prototype.hasOwnProperty.call(service[`common_${version}:ServiceData`], `common_${version}:CabinClass`)) {
+      Object.assign(serviceData, {
+        cabinClass: {
+          type: service[`common_${version}:ServiceData`][`common_${version}:CabinClass`].Type
+        }
+      });
     }
 
-    Object.assign(optionalService, serviceData);
+    Object.assign(optionalService, {
+      serviceData
+    });
   }
 
   if (Object.prototype.hasOwnProperty.call(service, `common_${version}:ServiceInfo`)) {
