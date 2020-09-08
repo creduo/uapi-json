@@ -1380,12 +1380,12 @@ function seatMap(rsp) {
     const pax = rsp['air:SearchTraveler'][paxKey];
     return {
       key: pax.Key,
-      ageCategory: pax.Code,
-      age: Number(pax.Age),
+      code: pax.Code,
+      age: pax.Age,
       name: {
         firstName: pax[`common_${this.uapi_version}:Name`].First,
         lastName: pax[`common_${this.uapi_version}:Name`].Last,
-        title: pax[`common_${this.uapi_version}:Name`].Prefix,
+        prefix: pax[`common_${this.uapi_version}:Name`].Prefix,
       },
     };
   });
