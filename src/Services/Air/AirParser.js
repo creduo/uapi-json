@@ -1393,7 +1393,7 @@ function seatMap(rsp) {
   const optionalServices = rsp['air:OptionalServices'] ? Object.keys(rsp['air:OptionalServices']).map((optionalServiceKey) => {
     const optionalService = rsp['air:OptionalServices'][optionalServiceKey];
 
-    return format.formatOptionalService(optionalService, this.uapi_version);
+    return format.formatOptionalService(optionalService);
   }) : null;
 
   const seatmap = rsp['air:Rows'].map((rowsBySegment) => {
@@ -1418,7 +1418,7 @@ function seatMap(rsp) {
               isPaid: facility.Paid !== 'false',
               remark,
             }, facility.OptionalServiceRef ? {
-              optionalService: format.formatOptionalService(rsp['air:OptionalServices'][facility.OptionalServiceRef], this.uapi_version)
+              optionalService: format.formatOptionalService(rsp['air:OptionalServices'][facility.OptionalServiceRef])
             } : null);
           })
         };

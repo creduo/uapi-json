@@ -554,7 +554,7 @@ function setReferencesForSegments(segments) {
   });
 }
 
-function formatOptionalService(service, version) {
+function formatOptionalService(service) {
   const optionalService = {
     type: service.Type,
     totalPrice: service.TotalPrice,
@@ -575,22 +575,22 @@ function formatOptionalService(service, version) {
     taxes: service.Taxes,
     isRepriceRequired: service.IsRepriceRequired,
   };
-  if (Object.prototype.hasOwnProperty.call(service, `common_${version}:ServiceData`)) {
+  if (Object.prototype.hasOwnProperty.call(service, `common_${this.uapi_version}:ServiceData`)) {
     const serviceData = {
-      airSegmentRef: service[`common_${version}:ServiceData`].AirSegmentRef,
-      bookingTravelerRef: service[`common_${version}:ServiceData`].BookingTravelerRef
+      airSegmentRef: service[`common_${this.uapi_version}:ServiceData`].AirSegmentRef,
+      bookingTravelerRef: service[`common_${this.uapi_version}:ServiceData`].BookingTravelerRef
     };
-    if (Object.prototype.hasOwnProperty.call(service[`common_${version}:ServiceData`], `common_${version}:SeatAttributes`)) {
+    if (Object.prototype.hasOwnProperty.call(service[`common_${this.uapi_version}:ServiceData`], `common_${this.uapi_version}:SeatAttributes`)) {
       Object.assign(serviceData, {
-        seatAttributes: service[`common_${version}:ServiceData`][`common_${version}:SeatAttributes`].map((i) => {
+        seatAttributes: service[`common_${this.uapi_version}:ServiceData`][`common_${this.uapi_version}:SeatAttributes`].map((i) => {
           return { value: i.Value };
         })
       });
     }
-    if (Object.prototype.hasOwnProperty.call(service[`common_${version}:ServiceData`], `common_${version}:CabinClass`)) {
+    if (Object.prototype.hasOwnProperty.call(service[`common_${this.uapi_version}:ServiceData`], `common_${this.uapi_version}:CabinClass`)) {
       Object.assign(serviceData, {
         cabinClass: {
-          type: service[`common_${version}:ServiceData`][`common_${version}:CabinClass`].Type
+          type: service[`common_${this.uapi_version}:ServiceData`][`common_${this.uapi_version}:CabinClass`].Type
         }
       });
     }
@@ -600,10 +600,10 @@ function formatOptionalService(service, version) {
     });
   }
 
-  if (Object.prototype.hasOwnProperty.call(service, `common_${version}:ServiceInfo`)) {
+  if (Object.prototype.hasOwnProperty.call(service, `common_${this.uapi_version}:ServiceInfo`)) {
     Object.assign(optionalService, {
       serviceInfo: {
-        description: service[`common_${version}:ServiceInfo`][`common_${version}:Description`]
+        description: service[`common_${this.uapi_version}:ServiceInfo`][`common_${this.uapi_version}:Description`]
       },
     });
   }
