@@ -1396,15 +1396,28 @@ function seatMap(rsp) {
     return format.formatOptionalService(optionalService);
   }) : null;
 
-  const seatmap = rsp['air:Rows'].map((rowsBySegment) => {
+  const segmentCount = Object.keys(rsp['air:AirSegment']).length;
+  const segmentKeys = Object.keys(rsp['air:AirSegment'])
+    .map((key) => {
+      return key;
+    });
+
+  // TODO: this is workaround to avoid air:Rows got collapsed due to bug in mergeLeafRecursive - uapi-parser.js:96
+  const seatmap = segmentKeys.map((key) => {
+    const rows = segmentCount > 1 ? rsp['air:Rows'].find(row => row.SegmentRef === key)['air:Row'] : rsp['air:Rows'];
     return {
-      segment: format.formatSegment(rsp['air:AirSegment'][rowsBySegment.SegmentRef]),
-      rows: rowsBySegment['air:Row'].map((row) => {
+      segment: format.formatSegment(rsp['air:AirSegment'][key]),
+      rows: rows.map((row) => {
         return {
           rowNumber: row.Number,
           seats: row['air:Facility'].map((facility) => {
             const remark = facility[`common_${this.uapi_version}:Remark`];
-            const characteristics = [...row['air:Characteristic'].map(c => c.Value)];
+
+            let characteristics = [];
+
+            if (row['air:Characteristic']) {
+              characteristics.push(...row['air:Characteristic'].map(c => c.Value));
+            }
 
             if (facility['air:Characteristic']) {
               characteristics.push(...facility['air:Characteristic'].map(c => c.Value));
