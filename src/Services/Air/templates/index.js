@@ -21,6 +21,8 @@ const providerReservationDivide = require('./PROVIDER_RESERVATION_DIVIDE_REQ.han
 const acceptScheduleChange = require('./AIR_ACK_SCHEDULE_CHANGE_REQ.handlebars');
 const availability = require('./AIR_AVAILABILITY_REQUEST.handlebars');
 const airFareDisplay = require('./AIR_FARE_DISPLAY_REQUEST.handlebar');
+const seatMap = require('./SEAT_MAP.handlebars');
+const airMerchandisingFulfillment = require('./AIR_MERCHANDISING_FULFILLMENT.handlebars');
 
 module.exports = {
   createReservation,
@@ -46,4 +48,6 @@ module.exports = {
   acceptScheduleChange,
   availability,
   airFareDisplay,
+  seatMap,
+  airMerchandisingFulfillment,
 };

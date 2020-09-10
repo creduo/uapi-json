@@ -311,5 +311,29 @@ module.exports = function (settings) {
       debug,
       options
     ),
+
+    seatMap: uApiRequest(
+      config.AirService.url,
+      auth,
+      templates.seatMap,
+      'air:SeatMapRsp',
+      AirValidator.SEAT_MAP,
+      AirParser.AIR_ERRORS,
+      AirParser.SEAT_MAP,
+      debug,
+      options
+    ),
+    airMerchandisingFulfillment: uApiRequest(
+      config.AirService.url,
+      auth,
+      templates.airMerchandisingFulfillment,
+      'air:AirMerchandisingFulfillmentRsp',
+      AirValidator.AIR_MERCHANDISING_FULFILLMENT,
+      AirParser.AIR_ERRORS,
+      AirParser.AIR_MERCHANDISING_FULFILLMENT,
+      debug,
+      options
+    ),
+
   };
 };

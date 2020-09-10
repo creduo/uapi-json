@@ -569,6 +569,83 @@ function setReferencesForSegments(segments) {
   });
 }
 
+function formatOptionalService(service) {
+  const optionalService = {
+    type: service.Type,
+    totalPrice: service.TotalPrice,
+    supplierCode: service.SupplierCode,
+    createDate: service.CreateDate,
+    sequenceNumber: service.SequenceNumber,
+    serviceSubCode: service.ServiceSubCode,
+    ssrCode: service.SSRCode,
+    issuanceReason: service.IssuanceReason,
+    key: service.Key,
+    inclusiveOfTax: service.InclusiveOfTax,
+    interlineSettlementAllowed: service.InterlineSettlementAllowed,
+    geographySpecification: service.GeographySpecification,
+    source: service.Source,
+    viewableOnly: service.ViewableOnly,
+    quantity: service.Quantity,
+    basePrice: service.BasePrice,
+    taxes: service.Taxes,
+    isRepriceRequired: service.IsRepriceRequired,
+  };
+  if (Object.prototype.hasOwnProperty.call(service, `common_${this.uapi_version}:ServiceData`)) {
+    const serviceData = {
+      airSegmentRef: service[`common_${this.uapi_version}:ServiceData`].AirSegmentRef,
+      bookingTravelerRef: service[`common_${this.uapi_version}:ServiceData`].BookingTravelerRef
+    };
+    if (Object.prototype.hasOwnProperty.call(service[`common_${this.uapi_version}:ServiceData`], `common_${this.uapi_version}:SeatAttributes`)) {
+      Object.assign(serviceData, {
+        seatAttributes: service[`common_${this.uapi_version}:ServiceData`][`common_${this.uapi_version}:SeatAttributes`].map((i) => {
+          return { value: i.Value };
+        })
+      });
+    }
+    if (Object.prototype.hasOwnProperty.call(service[`common_${this.uapi_version}:ServiceData`], `common_${this.uapi_version}:CabinClass`)) {
+      Object.assign(serviceData, {
+        cabinClass: {
+          type: service[`common_${this.uapi_version}:ServiceData`][`common_${this.uapi_version}:CabinClass`].Type
+        }
+      });
+    }
+
+    Object.assign(optionalService, {
+      serviceData
+    });
+  }
+
+  if (Object.prototype.hasOwnProperty.call(service, `common_${this.uapi_version}:ServiceInfo`)) {
+    Object.assign(optionalService, {
+      serviceInfo: {
+        description: service[`common_${this.uapi_version}:ServiceInfo`][`common_${this.uapi_version}:Description`]
+      },
+    });
+  }
+
+  if (Object.prototype.hasOwnProperty.call(service, 'air:EMD')) {
+    Object.assign(optionalService, {
+      emd: {
+        associatedItem: service['air:EMD'].AssociatedItem,
+        booking: service['air:EMD'].Booking,
+        commissionable: service['air:EMD'].Commissionable,
+        fulfillmentType: service['air:EMD'].FulfillmentType,
+        fulfillmentTypeDescription: service['air:EMD'].FulfillmentTypeDescription,
+        refundReissueIndicator: service['air:EMD'].RefundReissueIndicator,
+      }
+    });
+  }
+  if (Object.prototype.hasOwnProperty.call(service, 'air:FeeApplication')) {
+    Object.assign(optionalService, {
+      feeApplication: {
+        code: service['air:FeeApplication'].Code,
+        _: service['air:FeeApplication']._,
+      }
+    });
+  }
+  return optionalService;
+}
+
 module.exports = {
   formatLowFaresSearch,
   formatFarePricingInfo,
@@ -582,5 +659,6 @@ module.exports = {
   getBaggage,
   getBaggageInfo,
   buildPassenger,
-  setReferencesForSegments
+  setReferencesForSegments,
+  formatOptionalService
 };

@@ -896,7 +896,31 @@ function extractBookings(obj) {
           );
         }
 
-        return format.buildPassenger(name, traveler);
+        // TODO: Move this to buildPassenger
+        let seatAssignments = [];
+        const seatAssignmentObject = traveler[`common_${this.uapi_version}:AirSeatAssignment`];
+
+        Object.keys(seatAssignmentObject).forEach((key) => {
+          const seatAssignment = seatAssignmentObject[key];
+          seatAssignments.push({
+            key: seatAssignment.Key,
+            status: seatAssignment.Status,
+            seat: seatAssignment.Seat,
+            seatTypeCode: seatAssignment.SeatTypeCode,
+            uapi_segment_ref: seatAssignment.SegmentRef,
+            uapi_flight_detail_ref: seatAssignment.FlightDetailsRef,
+            elStat: seatAssignment.ElStat
+          });
+        });
+
+        // TODO: Add seatAssignment
+
+        return Object.assign(
+          format.buildPassenger(name, traveler),
+          seatAssignments.length > 0 ? {
+            seatAssignments,
+          } : null
+        );
       }
     );
 
@@ -1438,6 +1462,102 @@ function airFareDisplay(rsp) {
   };
 }
 
+function seatMap(rsp) {
+  let messages = [];
+
+  if (rsp[`common_${this.uapi_version}:ResponseMessage`]) {
+    messages = rsp[`common_${this.uapi_version}:ResponseMessage`].map((msg) => {
+      return {
+        providerCode: msg.ProviderCode,
+        code: msg.Code,
+        type: msg.Type,
+        text: msg._,
+      };
+    });
+  }
+
+  const segments = Object.keys(rsp['air:AirSegment']).map((segKey) => {
+    const seg = rsp['air:AirSegment'][segKey];
+    return format.formatSegment(seg);
+  });
+
+  const travelers = Object.keys(rsp['air:SearchTraveler']).map((paxKey) => {
+    const pax = rsp['air:SearchTraveler'][paxKey];
+    return {
+      key: pax.Key,
+      code: pax.Code,
+      age: pax.Age,
+      name: {
+        firstName: pax[`common_${this.uapi_version}:Name`].First,
+        lastName: pax[`common_${this.uapi_version}:Name`].Last,
+        prefix: pax[`common_${this.uapi_version}:Name`].Prefix,
+      },
+    };
+  });
+
+  const optionalServices = rsp['air:OptionalServices'] ? Object.keys(rsp['air:OptionalServices']).map((optionalServiceKey) => {
+    const optionalService = rsp['air:OptionalServices'][optionalServiceKey];
+
+    return format.formatOptionalService(optionalService);
+  }) : null;
+
+  const segmentCount = Object.keys(rsp['air:AirSegment']).length;
+  const segmentKeys = Object.keys(rsp['air:AirSegment'])
+    .map((key) => {
+      return key;
+    });
+
+  // TODO: this is workaround to avoid air:Rows got collapsed
+  //  due to bug in mergeLeafRecursive - uapi-parser.js:96
+  const seatmap = segmentKeys.map((key) => {
+    const rows = segmentCount > 1 ? rsp['air:Rows'].find(row => row.SegmentRef === key)['air:Row'] : rsp['air:Rows'];
+    return {
+      segment: format.formatSegment(rsp['air:AirSegment'][key]),
+      rows: rows.map((row) => {
+        return {
+          rowNumber: row.Number,
+          seats: row['air:Facility'].map((facility) => {
+            const remark = facility[`common_${this.uapi_version}:Remark`];
+
+            let characteristics = [];
+
+            if (row['air:Characteristic']) {
+              characteristics.push(...row['air:Characteristic'].map(c => c.Value));
+            }
+
+            if (facility['air:Characteristic']) {
+              characteristics.push(...facility['air:Characteristic'].map(c => c.Value));
+            }
+            return Object.assign({
+              seatCode: facility.SeatCode,
+              type: facility.Type,
+              characteristics,
+              availability: facility.Availability,
+              isAvailable: (facility.Availability === 'Available'),
+              isPaid: facility.Paid !== 'false',
+              remark,
+            }, facility.OptionalServiceRef ? {
+              optionalService: format.formatOptionalService(rsp['air:OptionalServices'][facility.OptionalServiceRef])
+            } : null);
+          })
+        };
+      })
+    };
+  });
+
+  return {
+    messages,
+    segments,
+    travelers,
+    optionalServices,
+    seatmap,
+  };
+}
+
+function airMerchandisingFulfillment(rsp) {
+  return extractBookings.call(this, rsp);
+}
+
 module.exports = {
   AIR_LOW_FARE_SEARCH_REQUEST: lowFaresSearchRequest,
   AIR_PRICE_REQUEST: airPrice,
@@ -1466,4 +1586,6 @@ module.exports = {
   AIR_AVAILABILITY: availability,
   AIR_FARE_DISPLAY: airFareDisplay,
   AIR_FARE_RULES: extractFareRules,
+  SEAT_MAP: seatMap,
+  AIR_MERCHANDISING_FULFILLMENT: airMerchandisingFulfillment,
 };

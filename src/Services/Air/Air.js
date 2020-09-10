@@ -49,6 +49,10 @@ module.exports = (settings) => {
       return service.gdsQueue(options);
     },
 
+    seatMap(options) {
+      return service.seatMap(options);
+    },
+
     addSegments(options) {
       if (
         !options.version

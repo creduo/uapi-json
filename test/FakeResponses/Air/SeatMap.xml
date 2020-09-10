@@ -1,0 +1,2595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SOAP:Envelope xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP:Body>
+    <air:SeatMapRsp xmlns:air="http://www.travelport.com/schema/air_v47_0" xmlns:common_v47_0="http://www.travelport.com/schema/common_v47_0" TraceId="ee9fa5de-cd3e-49dc-ba61-e573614ae07f" TransactionId="15A41B940A07647895C4A04A3FE665B7" ResponseTime="15071">
+      <common_v47_0:ResponseMessage Code="934" Type="Warning" ProviderCode="ACH">ENSURE PASSENGER MEETS GOVERNMENT DESIGNATED EXIT ROW CRITERIA</common_v47_0:ResponseMessage>
+      <common_v47_0:ResponseMessage Code="738" Type="Warning" ProviderCode="ACH">Valid Credit Card Payment Types: ,VI,UP,MC,AX,TP</common_v47_0:ResponseMessage>
+      <common_v47_0:HostToken Key="H8PiTE4R2BKAYrrTAAAAAA==">UALUA{IS###}GBP{CC###ET}ACHSDv01LPD1:a234b5d8-7833-4b33-bdb2-69362d07127c</common_v47_0:HostToken>
+      <common_v47_0:HostToken Key="H8PiTE4R2BKAZrrTAAAAAA==">UALUA{IS###}GBP{CC###ET}ACHSDv01LPD1:233fa0a2-eb7f-4aa8-ae7e-2ab664d68152</common_v47_0:HostToken>
+      <air:AirSegment Key="6AuUuD3R2BKAgiskFAAAAA==" Group="0" Carrier="UA" CabinClass="Economy" FlightNumber="1882" ProviderCode="ACH" Origin="LAX" Destination="EWR" DepartureTime="2020-09-16T21:15:00.000-07:00" ArrivalTime="2020-09-17T05:23:00.000-04:00" ClassOfService="G" Equipment="781" Status="HK" ChangeOfPlane="false" HostTokenRef="H8PiTE4R2BKAYrrTAAAAAA==" SupplierCode="UA" OptionalServicesIndicator="false" />
+      <air:AirSegment Key="6AuUuD3R2BKAiiskFAAAAA==" Group="0" Carrier="UA" CabinClass="Economy" FlightNumber="628" ProviderCode="ACH" Origin="EWR" Destination="LAX" DepartureTime="2020-09-23T20:00:00.000-04:00" ArrivalTime="2020-09-23T23:03:00.000-07:00" ClassOfService="G" Equipment="752" Status="HK" ChangeOfPlane="false" HostTokenRef="H8PiTE4R2BKAZrrTAAAAAA==" SupplierCode="UA" OptionalServicesIndicator="false" />
+      <air:SearchTraveler Key="WW92WWM5cU5yNVdjczJUOA==" Code="ADT" Age="40">
+        <common_v47_0:Name Prefix="Mr" First="John" Last="Smith" />
+      </air:SearchTraveler>
+      <air:OptionalServices>
+        <air:OptionalServicesTotal />
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP77.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.832+00:00" Key="H8PiTE4R2BKAarrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA__PR" BasePrice="GBP77.00" ApproximateTotalPrice="GBP77.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAgiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Economy Plus</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="1" ServiceSubCode="SSC" ServiceType="F" CommercialName="Economy Plus">
+            <air:Text Type="Strapline" LanguageCode="EN">Enjoy extra legroom in Economy Plus®</air:Text>
+            <air:Text Type="MarketingAgent" LanguageCode="EN">Purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299
+
+              • Extra space to work and relax
+              • Sit near the front of the Economy cabin
+              • Purchase earns Premier Qualifying Dollars
+
+              MileagePlus Premier member benefits:
+
+              • Premier Platinum: Complimentary access for themselves and up to eight companions.
+              • Premier Gold: Complimentary access for themselves and one companion.
+              • Premier Silver: Complimentary space-available access for themselves and one companion at time of check-in.</air:Text>
+            <air:Text Type="MarketingConsumer" LanguageCode="EN">Nothing gets your trip started on the right foot like extra legroom; purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299</air:Text>
+            <air:Title Type="External" LanguageCode="EN">Economy Plus</air:Title>
+            <air:Title Type="Short" LanguageCode="EN">ECOPLS</air:Title>
+            <air:ImageLocation Type="Agent" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ImageLocation Type="Consumer" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ServiceGroup Code="SA">
+              <air:ServiceSubGroup Code="EA" />
+            </air:ServiceGroup>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAgiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP22.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.832+00:00" Key="H8PiTE4R2BKAbrrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA__PRAI" BasePrice="GBP22.00" ApproximateTotalPrice="GBP22.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAgiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Preferred</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="2" ServiceSubCode="SSC" ServiceType="X" CommercialName="Preferred">
+            <air:Title Type="External" LanguageCode="EN">Preferred</air:Title>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAgiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP30.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKAcrrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA__PRAI" BasePrice="GBP30.00" ApproximateTotalPrice="GBP30.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAgiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Preferred</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="3" ServiceSubCode="SSC" ServiceType="X" CommercialName="Preferred">
+            <air:Title Type="External" LanguageCode="EN">Preferred</air:Title>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAgiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP85.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKAdrrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA" BasePrice="GBP85.00" ApproximateTotalPrice="GBP85.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAgiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Economy Plus (Limited Recline)</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="4" ServiceSubCode="SSC" ServiceType="X" CommercialName="Economy Plus (Limited Recline)">
+            <air:Title Type="External" LanguageCode="EN">Economy Plus (Limited Recline)</air:Title>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAgiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP82.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKAerrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA" BasePrice="GBP82.00" ApproximateTotalPrice="GBP82.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAgiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Economy Plus (Limited Recline)</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="5" ServiceSubCode="SSC" ServiceType="X" CommercialName="Economy Plus (Limited Recline)">
+            <air:Title Type="External" LanguageCode="EN">Economy Plus (Limited Recline)</air:Title>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAgiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP68.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKAfrrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA" BasePrice="GBP68.00" ApproximateTotalPrice="GBP68.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAgiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Economy Plus (Limited Recline)</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="6" ServiceSubCode="SSC" ServiceType="X" CommercialName="Economy Plus (Limited Recline)">
+            <air:Title Type="External" LanguageCode="EN">Economy Plus (Limited Recline)</air:Title>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAgiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP97.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKAgrrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA__PR" BasePrice="GBP97.00" ApproximateTotalPrice="GBP97.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAgiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Economy Plus</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="7" ServiceSubCode="SSC" ServiceType="F" CommercialName="Economy Plus">
+            <air:Text Type="Strapline" LanguageCode="EN">Enjoy extra legroom in Economy Plus®</air:Text>
+            <air:Text Type="MarketingAgent" LanguageCode="EN">Purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299
+
+              • Extra space to work and relax
+              • Sit near the front of the Economy cabin
+              • Purchase earns Premier Qualifying Dollars
+
+              MileagePlus Premier member benefits:
+
+              • Premier Platinum: Complimentary access for themselves and up to eight companions.
+              • Premier Gold: Complimentary access for themselves and one companion.
+              • Premier Silver: Complimentary space-available access for themselves and one companion at time of check-in.</air:Text>
+            <air:Text Type="MarketingConsumer" LanguageCode="EN">Nothing gets your trip started on the right foot like extra legroom; purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299</air:Text>
+            <air:Title Type="External" LanguageCode="EN">Economy Plus</air:Title>
+            <air:Title Type="Short" LanguageCode="EN">ECOPLS</air:Title>
+            <air:ImageLocation Type="Agent" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ImageLocation Type="Consumer" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ServiceGroup Code="SA">
+              <air:ServiceSubGroup Code="EA" />
+            </air:ServiceGroup>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAgiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP92.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKAhrrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA__PR" BasePrice="GBP92.00" ApproximateTotalPrice="GBP92.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAgiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Economy Plus</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="8" ServiceSubCode="SSC" ServiceType="F" CommercialName="Economy Plus">
+            <air:Text Type="Strapline" LanguageCode="EN">Enjoy extra legroom in Economy Plus®</air:Text>
+            <air:Text Type="MarketingAgent" LanguageCode="EN">Purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299
+
+              • Extra space to work and relax
+              • Sit near the front of the Economy cabin
+              • Purchase earns Premier Qualifying Dollars
+
+              MileagePlus Premier member benefits:
+
+              • Premier Platinum: Complimentary access for themselves and up to eight companions.
+              • Premier Gold: Complimentary access for themselves and one companion.
+              • Premier Silver: Complimentary space-available access for themselves and one companion at time of check-in.</air:Text>
+            <air:Text Type="MarketingConsumer" LanguageCode="EN">Nothing gets your trip started on the right foot like extra legroom; purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299</air:Text>
+            <air:Title Type="External" LanguageCode="EN">Economy Plus</air:Title>
+            <air:Title Type="Short" LanguageCode="EN">ECOPLS</air:Title>
+            <air:ImageLocation Type="Agent" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ImageLocation Type="Consumer" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ServiceGroup Code="SA">
+              <air:ServiceSubGroup Code="EA" />
+            </air:ServiceGroup>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAgiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP108.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKAirrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA__PR" BasePrice="GBP108.00" ApproximateTotalPrice="GBP108.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAgiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Economy Plus</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="9" ServiceSubCode="SSC" ServiceType="F" CommercialName="Economy Plus">
+            <air:Text Type="Strapline" LanguageCode="EN">Enjoy extra legroom in Economy Plus®</air:Text>
+            <air:Text Type="MarketingAgent" LanguageCode="EN">Purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299
+
+              • Extra space to work and relax
+              • Sit near the front of the Economy cabin
+              • Purchase earns Premier Qualifying Dollars
+
+              MileagePlus Premier member benefits:
+
+              • Premier Platinum: Complimentary access for themselves and up to eight companions.
+              • Premier Gold: Complimentary access for themselves and one companion.
+              • Premier Silver: Complimentary space-available access for themselves and one companion at time of check-in.</air:Text>
+            <air:Text Type="MarketingConsumer" LanguageCode="EN">Nothing gets your trip started on the right foot like extra legroom; purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299</air:Text>
+            <air:Title Type="External" LanguageCode="EN">Economy Plus</air:Title>
+            <air:Title Type="Short" LanguageCode="EN">ECOPLS</air:Title>
+            <air:ImageLocation Type="Agent" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ImageLocation Type="Consumer" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ServiceGroup Code="SA">
+              <air:ServiceSubGroup Code="EA" />
+            </air:ServiceGroup>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAgiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP111.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKAjrrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA__PR" BasePrice="GBP111.00" ApproximateTotalPrice="GBP111.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAgiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Economy Plus</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="10" ServiceSubCode="SSC" ServiceType="F" CommercialName="Economy Plus">
+            <air:Text Type="Strapline" LanguageCode="EN">Enjoy extra legroom in Economy Plus®</air:Text>
+            <air:Text Type="MarketingAgent" LanguageCode="EN">Purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299
+
+              • Extra space to work and relax
+              • Sit near the front of the Economy cabin
+              • Purchase earns Premier Qualifying Dollars
+
+              MileagePlus Premier member benefits:
+
+              • Premier Platinum: Complimentary access for themselves and up to eight companions.
+              • Premier Gold: Complimentary access for themselves and one companion.
+              • Premier Silver: Complimentary space-available access for themselves and one companion at time of check-in.</air:Text>
+            <air:Text Type="MarketingConsumer" LanguageCode="EN">Nothing gets your trip started on the right foot like extra legroom; purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299</air:Text>
+            <air:Title Type="External" LanguageCode="EN">Economy Plus</air:Title>
+            <air:Title Type="Short" LanguageCode="EN">ECOPLS</air:Title>
+            <air:ImageLocation Type="Agent" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ImageLocation Type="Consumer" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ServiceGroup Code="SA">
+              <air:ServiceSubGroup Code="EA" />
+            </air:ServiceGroup>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAgiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP82.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKAkrrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA__PR" BasePrice="GBP82.00" ApproximateTotalPrice="GBP82.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAiiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Economy Plus</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="1" ServiceSubCode="SSC" ServiceType="F" CommercialName="Economy Plus">
+            <air:Text Type="Strapline" LanguageCode="EN">Enjoy extra legroom in Economy Plus®</air:Text>
+            <air:Text Type="MarketingAgent" LanguageCode="EN">Purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299
+
+              • Extra space to work and relax
+              • Sit near the front of the Economy cabin
+              • Purchase earns Premier Qualifying Dollars
+
+              MileagePlus Premier member benefits:
+
+              • Premier Platinum: Complimentary access for themselves and up to eight companions.
+              • Premier Gold: Complimentary access for themselves and one companion.
+              • Premier Silver: Complimentary space-available access for themselves and one companion at time of check-in.</air:Text>
+            <air:Text Type="MarketingConsumer" LanguageCode="EN">Nothing gets your trip started on the right foot like extra legroom; purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299</air:Text>
+            <air:Title Type="External" LanguageCode="EN">Economy Plus</air:Title>
+            <air:Title Type="Short" LanguageCode="EN">ECOPLS</air:Title>
+            <air:ImageLocation Type="Agent" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ImageLocation Type="Consumer" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ServiceGroup Code="SA">
+              <air:ServiceSubGroup Code="EA" />
+            </air:ServiceGroup>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAiiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP77.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKAlrrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA__PR" BasePrice="GBP77.00" ApproximateTotalPrice="GBP77.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAiiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Economy Plus</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="2" ServiceSubCode="SSC" ServiceType="F" CommercialName="Economy Plus">
+            <air:Text Type="Strapline" LanguageCode="EN">Enjoy extra legroom in Economy Plus®</air:Text>
+            <air:Text Type="MarketingAgent" LanguageCode="EN">Purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299
+
+              • Extra space to work and relax
+              • Sit near the front of the Economy cabin
+              • Purchase earns Premier Qualifying Dollars
+
+              MileagePlus Premier member benefits:
+
+              • Premier Platinum: Complimentary access for themselves and up to eight companions.
+              • Premier Gold: Complimentary access for themselves and one companion.
+              • Premier Silver: Complimentary space-available access for themselves and one companion at time of check-in.</air:Text>
+            <air:Text Type="MarketingConsumer" LanguageCode="EN">Nothing gets your trip started on the right foot like extra legroom; purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299</air:Text>
+            <air:Title Type="External" LanguageCode="EN">Economy Plus</air:Title>
+            <air:Title Type="Short" LanguageCode="EN">ECOPLS</air:Title>
+            <air:ImageLocation Type="Agent" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ImageLocation Type="Consumer" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ServiceGroup Code="SA">
+              <air:ServiceSubGroup Code="EA" />
+            </air:ServiceGroup>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAiiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP66.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKAmrrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA__PR" BasePrice="GBP66.00" ApproximateTotalPrice="GBP66.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAiiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Economy Plus</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="3" ServiceSubCode="SSC" ServiceType="F" CommercialName="Economy Plus">
+            <air:Text Type="Strapline" LanguageCode="EN">Enjoy extra legroom in Economy Plus®</air:Text>
+            <air:Text Type="MarketingAgent" LanguageCode="EN">Purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299
+
+              • Extra space to work and relax
+              • Sit near the front of the Economy cabin
+              • Purchase earns Premier Qualifying Dollars
+
+              MileagePlus Premier member benefits:
+
+              • Premier Platinum: Complimentary access for themselves and up to eight companions.
+              • Premier Gold: Complimentary access for themselves and one companion.
+              • Premier Silver: Complimentary space-available access for themselves and one companion at time of check-in.</air:Text>
+            <air:Text Type="MarketingConsumer" LanguageCode="EN">Nothing gets your trip started on the right foot like extra legroom; purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299</air:Text>
+            <air:Title Type="External" LanguageCode="EN">Economy Plus</air:Title>
+            <air:Title Type="Short" LanguageCode="EN">ECOPLS</air:Title>
+            <air:ImageLocation Type="Agent" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ImageLocation Type="Consumer" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ServiceGroup Code="SA">
+              <air:ServiceSubGroup Code="EA" />
+            </air:ServiceGroup>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAiiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP60.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKAnrrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA__PR" BasePrice="GBP60.00" ApproximateTotalPrice="GBP60.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAiiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Economy Plus</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="4" ServiceSubCode="SSC" ServiceType="F" CommercialName="Economy Plus">
+            <air:Text Type="Strapline" LanguageCode="EN">Enjoy extra legroom in Economy Plus®</air:Text>
+            <air:Text Type="MarketingAgent" LanguageCode="EN">Purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299
+
+              • Extra space to work and relax
+              • Sit near the front of the Economy cabin
+              • Purchase earns Premier Qualifying Dollars
+
+              MileagePlus Premier member benefits:
+
+              • Premier Platinum: Complimentary access for themselves and up to eight companions.
+              • Premier Gold: Complimentary access for themselves and one companion.
+              • Premier Silver: Complimentary space-available access for themselves and one companion at time of check-in.</air:Text>
+            <air:Text Type="MarketingConsumer" LanguageCode="EN">Nothing gets your trip started on the right foot like extra legroom; purchase Economy Plus® for your flight.
+
+              Additional charge per flight per person: From $9 to $299</air:Text>
+            <air:Title Type="External" LanguageCode="EN">Economy Plus</air:Title>
+            <air:Title Type="Short" LanguageCode="EN">ECOPLS</air:Title>
+            <air:ImageLocation Type="Agent" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ImageLocation Type="Consumer" ImageWidth="60" ImageHeight="60">https://cdn.travelport.com/united/UA_general_medium_1532.jpg</air:ImageLocation>
+            <air:ServiceGroup Code="SA">
+              <air:ServiceSubGroup Code="EA" />
+            </air:ServiceGroup>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAiiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP56.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKAorrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA" BasePrice="GBP56.00" ApproximateTotalPrice="GBP56.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAiiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Economy Plus (Limited Recline)</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="5" ServiceSubCode="SSC" ServiceType="X" CommercialName="Economy Plus (Limited Recline)">
+            <air:Title Type="External" LanguageCode="EN">Economy Plus (Limited Recline)</air:Title>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAiiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP51.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKAprrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA" BasePrice="GBP51.00" ApproximateTotalPrice="GBP51.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAiiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Economy Plus (Limited Recline)</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="6" ServiceSubCode="SSC" ServiceType="X" CommercialName="Economy Plus (Limited Recline)">
+            <air:Title Type="External" LanguageCode="EN">Economy Plus (Limited Recline)</air:Title>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAiiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP60.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKAqrrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA" BasePrice="GBP60.00" ApproximateTotalPrice="GBP60.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAiiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Economy Plus (Limited Recline)</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="7" ServiceSubCode="SSC" ServiceType="X" CommercialName="Economy Plus (Limited Recline)">
+            <air:Title Type="External" LanguageCode="EN">Economy Plus (Limited Recline)</air:Title>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAiiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP22.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKArrrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA__PRAI" BasePrice="GBP22.00" ApproximateTotalPrice="GBP22.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAiiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Preferred</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="8" ServiceSubCode="SSC" ServiceType="X" CommercialName="Preferred">
+            <air:Title Type="External" LanguageCode="EN">Preferred</air:Title>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAiiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+        <air:OptionalService Type="PreReservedSeatAssignment" TotalPrice="GBP30.00" SupplierCode="UA" PurchaseWindow="BookingOnly" CreateDate="2020-03-26T07:00:23.833+00:00" Key="H8PiTE4R2BKAsrrTAAAAAA==" Source="ACH" Quantity="1" ProviderDefinedType="SA__PRAI" BasePrice="GBP30.00" ApproximateTotalPrice="GBP30.00" IsRepriceRequired="false">
+          <common_v47_0:ServiceData BookingTravelerRef="WW92WWM5cU5yNVdjczJUOA==" AirSegmentRef="6AuUuD3R2BKAiiskFAAAAA==" />
+          <common_v47_0:ServiceInfo>
+            <common_v47_0:Description>Preferred</common_v47_0:Description>
+          </common_v47_0:ServiceInfo>
+          <air:BrandingInfo Key="9" ServiceSubCode="SSC" ServiceType="X" CommercialName="Preferred">
+            <air:Title Type="External" LanguageCode="EN">Preferred</air:Title>
+            <air:AirSegmentRef Key="6AuUuD3R2BKAiiskFAAAAA==" />
+          </air:BrandingInfo>
+        </air:OptionalService>
+      </air:OptionalServices>
+      <air:Rows SegmentRef="6AuUuD3R2BKAgiskFAAAAA==">
+        <air:Row Number="30" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="30-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAdrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Bulkhead" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="30-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAerrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Bulkhead" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="30-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAdrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Bulkhead" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="30-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAdrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Bulkhead" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="30-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAfrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Bulkhead" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="30-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAdrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Bulkhead" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="30-J" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAdrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Bulkhead" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="30-K" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAerrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Bulkhead" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="30-L" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAdrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Bulkhead" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+          <air:Characteristic Value="Buffer row" />
+        </air:Row>
+        <air:Row Number="31" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="31-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="31-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAhrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="31-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="31-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="31-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAarrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="31-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="31-J" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="31-K" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAhrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="31-L" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="32" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="32-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="32-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAhrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="32-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="32-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="32-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAarrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="32-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="32-J" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="32-K" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAhrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="32-L" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="33" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="33-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="33-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAhrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="33-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="33-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="33-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAarrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="33-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="33-J" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="33-K" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAhrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="33-L" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="34" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="34-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="34-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAhrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="34-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="34-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="34-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAarrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="34-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="34-J" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="34-K" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAhrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="34-L" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAgrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="35" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="35-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="35-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="35-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="35-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="35-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="35-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="35-J" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="35-K" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="35-L" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="36" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="36-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="36-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="36-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="36-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="36-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="36-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="36-J" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="36-K" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="36-L" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="37" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="37-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="37-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="37-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="37-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="37-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="37-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="37-J" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="37-K" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="37-L" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="38" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="38-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="38-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="38-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="38-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="38-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="38-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="38-J" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="38-K" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="38-L" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="39" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="39-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="39-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="39-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="39-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="39-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="39-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="39-J" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="39-K" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="39-L" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="40" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="40-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="40-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="40-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="40-D" Availability="Blocked">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="40-E" Availability="Blocked">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="40-F" Availability="Blocked">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="40-J" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAcrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="40-K" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="40-L" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAbrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="1041" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="1041-A" Availability="Blocked">
+            <air:Characteristic Value="Window" />
+            <air:Characteristic Value="No seat at this location" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1041-B" Availability="Blocked">
+            <air:Characteristic Value="No seat at this location" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1041-C" Availability="Blocked">
+            <air:Characteristic Value="No seat at this location" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1041-D" Availability="Blocked">
+            <air:Characteristic Value="Galley" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1041-E" Availability="Blocked">
+            <air:Characteristic Value="Galley" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1041-F" Availability="Blocked">
+            <air:Characteristic Value="Galley" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1041-J" Availability="Blocked">
+            <air:Characteristic Value="No seat at this location" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1041-K" Availability="Blocked">
+            <air:Characteristic Value="No seat at this location" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1041-L" Availability="Blocked">
+            <air:Characteristic Value="Window" />
+            <air:Characteristic Value="No seat at this location" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="1042" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="1042-A" Availability="Blocked">
+            <air:Characteristic Value="Window" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1042-B" Availability="Blocked">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1042-C" Availability="Blocked">
+            <air:Characteristic Value="Aisle" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1042-D" Availability="Blocked">
+            <air:Characteristic Value="No seat at this location" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1042-E" Availability="Blocked">
+            <air:Characteristic Value="No seat at this location" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1042-F" Availability="Blocked">
+            <air:Characteristic Value="No seat at this location" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1042-J" Availability="Blocked">
+            <air:Characteristic Value="Aisle" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1042-K" Availability="Blocked">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1042-L" Availability="Blocked">
+            <air:Characteristic Value="Window" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="42" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="42-A" Availability="Reserved">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="42-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAirrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="42-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAjrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="42-D" Availability="Blocked">
+            <air:Characteristic Value="Galley" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="42-E" Availability="Blocked">
+            <air:Characteristic Value="Galley" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="42-F" Availability="Blocked">
+            <air:Characteristic Value="Galley" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="42-J" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAjrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="42-K" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAirrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="42-L" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAjrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Exit row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="43" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="43-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="43-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="43-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="43-D" Availability="Blocked">
+            <air:Characteristic Value="No seat at this location" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="43-E" Availability="Blocked">
+            <air:Characteristic Value="No seat at this location" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="43-F" Availability="Blocked">
+            <air:Characteristic Value="No seat at this location" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="43-J" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="43-K" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="43-L" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="44" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="44-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="44-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="44-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="44-D" Availability="Blocked">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Blocked" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="44-E" Availability="Blocked">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Blocked" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="44-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAdrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Bulkhead" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="44-J" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="44-K" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="44-L" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+          <air:Characteristic Value="Buffer row" />
+        </air:Row>
+        <air:Row Number="45" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="45-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="45-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="45-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="45-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="45-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="45-F" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="45-J" Availability="Reserved">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="45-K" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="45-L" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="46" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="46-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="46-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="46-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="46-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="46-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="46-F" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="46-J" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="46-K" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="46-L" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="47" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="47-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="47-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="47-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="47-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="47-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="47-F" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="47-J" Availability="Blocked">
+            <air:Characteristic Value="Blocked" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="47-K" Availability="Blocked">
+            <air:Characteristic Value="Blocked" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="47-L" Availability="Blocked">
+            <air:Characteristic Value="Blocked" />
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="48" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="48-A" Availability="Blocked">
+            <air:Characteristic Value="Blocked" />
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="48-B" Availability="Blocked">
+            <air:Characteristic Value="Blocked" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="48-C" Availability="Blocked">
+            <air:Characteristic Value="Blocked" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="48-D" Availability="Blocked">
+            <air:Characteristic Value="Blocked" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="48-E" Availability="Blocked">
+            <air:Characteristic Value="Blocked" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="48-F" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="48-J" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="48-K" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="48-L" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="49" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="49-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="49-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="49-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="49-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="49-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="49-F" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="49-J" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="49-K" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="49-L" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="50" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="50-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="50-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="50-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="50-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="50-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="50-F" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="50-J" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="50-K" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="50-L" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="51" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="51-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="51-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="51-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="51-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="51-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="51-F" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="51-J" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="51-K" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="51-L" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="52" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="52-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="52-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="52-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="52-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="52-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="52-F" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="52-J" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="52-K" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="52-L" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="53" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="53-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="53-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="53-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="53-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="53-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="53-F" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="53-J" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="53-K" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="53-L" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="54" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="54-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="54-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="54-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="54-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="54-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="54-F" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="54-J" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="54-K" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="54-L" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="55" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="55-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="55-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="55-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="55-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="55-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="55-F" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="55-J" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="55-K" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="55-L" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="56" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="56-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="56-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="56-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="56-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="56-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="56-F" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="56-J" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="56-K" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="56-L" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="57" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="57-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="57-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="57-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="57-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="57-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="57-F" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="57-J" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="57-K" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="57-L" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="58" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="58-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="58-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="58-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="58-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="58-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="58-F" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="58-J" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="58-K" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="58-L" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="59" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="59-A" Availability="Blocked">
+            <air:Characteristic Value="Window" />
+            <air:Characteristic Value="No seat at this location" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="59-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="59-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="59-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="59-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="59-F" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="59-J" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="59-K" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="59-L" Availability="Blocked">
+            <air:Characteristic Value="Window" />
+            <air:Characteristic Value="No seat at this location" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="60" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="60-A" Availability="Blocked">
+            <air:Characteristic Value="Window" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="60-B" Availability="Blocked">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="60-C" Availability="Blocked">
+            <air:Characteristic Value="Aisle" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="60-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="60-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="60-F" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="60-J" Availability="Blocked">
+            <air:Characteristic Value="Aisle" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="60-K" Availability="Blocked">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="60-L" Availability="Blocked">
+            <air:Characteristic Value="Window" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+      </air:Rows>
+      <air:Rows SegmentRef="6AuUuD3R2BKAiiskFAAAAA==">
+        <air:Row Number="1004" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="1004-A" Availability="Blocked">
+            <air:Characteristic Value="Window" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1004-B" Availability="Blocked">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1004-C" Availability="Blocked">
+            <air:Characteristic Value="Aisle" />
+            <air:Characteristic Value="Toilet" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1004-D" Availability="Blocked">
+            <air:Characteristic Value="Galley" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1004-E" Availability="Blocked">
+            <air:Characteristic Value="Galley" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1004-F" Availability="Blocked">
+            <air:Characteristic Value="Window" />
+            <air:Characteristic Value="Galley" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="1005" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="1005-A" Availability="Blocked">
+            <air:Characteristic Value="Window" />
+            <air:Characteristic Value="No seat at this location" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1005-B" Availability="Blocked">
+            <air:Characteristic Value="No seat at this location" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1005-C" Availability="Blocked">
+            <air:Characteristic Value="No seat at this location" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1005-D" Availability="Blocked">
+            <air:Characteristic Value="No seat at this location" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1005-E" Availability="Blocked">
+            <air:Characteristic Value="No seat at this location" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="1005-F" Availability="Blocked">
+            <air:Characteristic Value="Window" />
+            <air:Characteristic Value="No seat at this location" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="7" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="7-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAkrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="7-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAlrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="7-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAkrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="7-D" Availability="Blocked">
+            <air:Characteristic Value="Closet" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="7-E" Availability="Blocked">
+            <air:Characteristic Value="Closet" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="7-F" Availability="Blocked">
+            <air:Characteristic Value="Window" />
+            <air:Characteristic Value="Closet" />
+          </air:Facility>
+          <air:Characteristic Value="Exit row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="8" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="8-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAmrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="8-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAnrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="8-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAmrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="8-D" Availability="Blocked">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Blocked" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="8-E" Availability="Blocked">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Blocked" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="8-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAorrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Bulkhead" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+          <air:Characteristic Value="Buffer row" />
+        </air:Row>
+        <air:Row Number="9" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="9-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAmrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="9-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAnrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="9-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAmrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="9-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAmrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="9-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAnrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="9-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAmrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="10" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="10-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAmrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="10-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAnrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="10-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAmrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="10-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAmrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="10-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAnrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="10-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAmrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="11" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="11-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAmrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="11-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAnrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="11-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAmrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="11-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAmrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="11-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAnrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="11-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAmrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="12" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="12-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAorrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="12-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAprrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="12-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAorrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="12-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAorrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="12-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAprrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="12-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAorrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="20" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="20-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAqrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="20-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAorrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="20-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAqrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="20-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAqrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="20-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAorrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="20-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAqrrTAAAAAA==">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus (Limited Recline)</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Exit row" />
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="21" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="21-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAkrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="21-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAlrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="21-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAkrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="21-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAkrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="21-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAlrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="21-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAkrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Economy Plus</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Exit row" />
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="22" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="22-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="22-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="22-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAsrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="22-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAsrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="22-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="22-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="23" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="23-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="23-B" Availability="Blocked">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Blocked" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="23-C" Availability="Blocked">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Blocked" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="23-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAsrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="23-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="23-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="24" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="24-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="24-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="24-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAsrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="24-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAsrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="24-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="24-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="25" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="25-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="25-B" Availability="Blocked">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Blocked" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="25-C" Availability="Blocked">
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Blocked" />
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="25-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAsrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="25-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="25-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="26" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="26-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="26-B" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="26-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAsrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="26-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAsrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="26-E" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="26-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Wing" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Overwing row" />
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="27" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="27-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="27-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="27-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAsrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="27-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAsrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="27-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="27-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="28" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="28-A" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="28-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="28-C" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAsrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="28-D" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKAsrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Aisle" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="28-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="28-F" Availability="Available" Paid="true" OptionalServiceRef="H8PiTE4R2BKArrrTAAAAAA==">
+            <air:Characteristic Value="Preferential" />
+            <air:Characteristic Value="Window" />
+            <common_v47_0:Remark>Preferred</common_v47_0:Remark>
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="29" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="29-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="29-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="29-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="29-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="29-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="29-F" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="30" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="30-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="30-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="30-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="30-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="30-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="30-F" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="31" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="31-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="31-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="31-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="31-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="31-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="31-F" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="32" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="32-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="32-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="32-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="32-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="32-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="32-F" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="34" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="34-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="34-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="34-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="34-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="34-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="34-F" Availability="Reserved">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="35" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="35-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="35-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="35-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="35-D" Availability="Reserved">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="35-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="35-F" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="36" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="36-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="36-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="36-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="36-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="36-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="36-F" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="37" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="37-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="37-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="37-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="37-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="37-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="37-F" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="38" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="38-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="38-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="38-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="38-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="38-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="38-F" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="39" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="39-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="39-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="39-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="39-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="39-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="39-F" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+        <air:Row Number="40" SearchTravelerRef="WW92WWM5cU5yNVdjczJUOA==">
+          <air:Facility Type="Seat" SeatCode="40-A" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="40-B" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="40-C" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="40-D" Availability="Available">
+            <air:Characteristic Value="Aisle" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="40-E" Availability="Available">
+            <air:Characteristic Value="Center seat (not window, not aisle)" />
+          </air:Facility>
+          <air:Facility Type="Seat" SeatCode="40-F" Availability="Available">
+            <air:Characteristic Value="Window" />
+          </air:Facility>
+          <air:Characteristic Value="Maindeck row" />
+        </air:Row>
+      </air:Rows>
+    </air:SeatMapRsp>
+  </SOAP:Body>
+</SOAP:Envelope>

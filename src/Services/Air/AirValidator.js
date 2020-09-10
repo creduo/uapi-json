@@ -207,4 +207,15 @@ module.exports = {
     validate(),
     transform()
   ),
+
+  SEAT_MAP: compose(
+    validate(),
+    transform()
+  ),
+
+  AIR_MERCHANDISING_FULFILLMENT: compose(
+    validate(),
+    transform()
+  ),
+
 };

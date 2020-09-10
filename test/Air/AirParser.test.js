@@ -2255,6 +2255,52 @@ describe('#AirParser', () => {
     });
   });
 
+  describe('SEAT_MAP', () => {
+    it('should test parsing of SeatMap request', () => {
+      const uParser = new Parser('air:SeatMapRsp', 'v47_0', {});
+      const parseFunction = airParser.SEAT_MAP;
+      const xml = fs.readFileSync(`${xmlFolder}/SeatMap.xml`).toString();
+      return uParser.parse(xml)
+        .then((json) => {
+          const jsonResult = parseFunction.call(uParser, json);
+
+          console.debug(jsonResult);
+
+          jsonResult.seatmap.forEach((seg) => {
+            console.log(`\nFlight ${seg.segment.airline} ${seg.segment.flightNumber} ${seg.segment.from} - ${seg.segment.to}`);
+            seg.rows.forEach((row) => {
+              console.log('Row :', row.seats.reduce((acc, seat) => acc + (seat.isAvailable ? ' _' : ' X'), ''), row.rowNumber );
+            });
+          });
+        });
+    });
+
+    it('should test parsing of SeatMap request with multiple passengers', () => {
+      const uParser = new Parser('air:SeatMapRsp', 'v47_0', {});
+      const parseFunction = airParser.SEAT_MAP;
+      const xml = fs.readFileSync(`${xmlFolder}/SeatMap.multiple-passengers.xml`).toString();
+      return uParser.parse(xml)
+        .then((json) => {
+          const jsonResult = parseFunction.call(uParser, json);
+          console.debug(jsonResult);
+        });
+    });
+  });
+
+  describe('AIR_MERCHANDISING_FULFILLMENT', () => {
+    it('should test parsing of AirMerchandisingFulfillment request', () => {
+      const uParser = new Parser('universal:AirMerchandisingFulfillmentRsp', 'v47_0', {});
+      const parseFunction = airParser.AIR_MERCHANDISING_FULFILLMENT;
+      const xml = fs.readFileSync(`${xmlFolder}/AirMerchandisingFulfillment.xml`).toString();
+      return uParser.parse(xml)
+        .then((json) => {
+          const jsonResult = parseFunction.call(uParser, json);
+          testBooking(jsonResult);
+        });
+    });
+  });
+
+
   describe('AIR_ERROR', () => {
     it('should correctly handle archived booking', async () => {
       try {
