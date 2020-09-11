@@ -875,27 +875,31 @@ function extractBookings(obj) {
         let seatAssignments = [];
         const seatAssignmentObject = traveler[`common_${this.uapi_version}:AirSeatAssignment`];
 
-        Object.keys(seatAssignmentObject).forEach((key) => {
-          const seatAssignment = seatAssignmentObject[key];
-          seatAssignments.push({
-            key: seatAssignment.Key,
-            status: seatAssignment.Status,
-            seat: seatAssignment.Seat,
-            seatTypeCode: seatAssignment.SeatTypeCode,
-            uapi_segment_ref: seatAssignment.SegmentRef,
-            uapi_flight_detail_ref: seatAssignment.FlightDetailsRef,
-            elStat: seatAssignment.ElStat
+        if (seatAssignmentObject) {
+          Object.keys(seatAssignmentObject).forEach((key) => {
+            const seatAssignment = seatAssignmentObject[key];
+            seatAssignments.push({
+              key: seatAssignment.Key,
+              status: seatAssignment.Status,
+              seat: seatAssignment.Seat,
+              seatTypeCode: seatAssignment.SeatTypeCode,
+              uapi_segment_ref: seatAssignment.SegmentRef,
+              uapi_flight_detail_ref: seatAssignment.FlightDetailsRef,
+              elStat: seatAssignment.ElStat
+            });
           });
-        });
 
-        // TODO: Add seatAssignment
+          // TODO: Add seatAssignment
 
-        return Object.assign(
-          format.buildPassenger(name, traveler),
-          seatAssignments.length > 0 ? {
-            seatAssignments,
-          } : null
-        );
+          return Object.assign(
+            format.buildPassenger(name, traveler),
+            seatAssignments.length > 0 ? {
+              seatAssignments,
+            } : null
+          );
+        }
+
+        return format.buildPassenger(name, traveler);
       }
     );
 
