@@ -53,6 +53,10 @@ module.exports = (settings) => {
       return service.seatMap(options);
     },
 
+    airMerchandisingFulfillment(options) {
+      return service.airMerchandisingFulfillment(options);
+    },
+
     addSegments(options) {
       if (
         !options.version
