@@ -17,7 +17,7 @@ module.exports = `
                 UniversalLocatorCode="{{uapi_ur_locator}}" />
             <air:AirSolution>
                 {{#each passengers}}
-                <air:SearchTraveler Code="{{passengerTypeCode}}" BookingTravelerRef="{{{uapi_traveler_ref}}}" Key="{{@index}}"
+                <air:SearchTraveler Code="{{passengerTypeCode}}" BookingTravelerRef="{{{uapi_traveler_ref}}}" Key="{{{uapi_traveler_ref}}}"
                                 DOB="{{birthDate}}" Age="{{age}}">
                     <com:Name Prefix="{{prefix}}" First="{{firstName}}" Last="{{lastName}}" />
                 </air:SearchTraveler>
@@ -25,7 +25,7 @@ module.exports = `
                 
                 {{#each segments}}
                 <air:AirSegment 
-                    Key="{{@index}}"
+                    Key="{{{uapi_segment_ref}}}"
                     ProviderCode="{{provider}}"
                     Group="{{#if group}}{{group}}{{else}}0{{/if}}"
                     Carrier="{{airline}}" FlightNumber="{{flightNumber}}"
@@ -49,7 +49,7 @@ module.exports = `
             </air:OptionalServices>
             {{/if}}
             {{#each seats}}
-                <air:SpecificSeatAssignment BookingTravelerRef="{{uapi_traveler_ref}}" SegmentRef="{{uapi_segment_ref}}" SeatId="{{seat_id}}" />
+                <air:SpecificSeatAssignment BookingTravelerRef="{{{uapi_traveler_ref}}}" SegmentRef="{{{uapi_segment_ref}}}" SeatId="{{seat_id}}" />
             {{/each}}
         </univ:AirMerchandisingFulfillmentReq>
     </soap:Body>
