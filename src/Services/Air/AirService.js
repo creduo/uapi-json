@@ -327,7 +327,7 @@ module.exports = function (settings) {
       config.AirService.url,
       auth,
       templates.airMerchandisingFulfillment,
-      'air:AirMerchandisingFulfillmentRsp',
+      'universal:AirMerchandisingFulfillmentRsp',
       AirValidator.AIR_MERCHANDISING_FULFILLMENT,
       AirParser.AIR_ERRORS,
       AirParser.AIR_MERCHANDISING_FULFILLMENT,
