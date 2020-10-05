@@ -1520,6 +1520,7 @@ function seatMap(rsp) {
       rows: rows.map((row) => {
         return {
           rowNumber: row.Number,
+          searchTravelerReference: row.SearchTravelerRef,
           seats: row['air:Facility'].map((facility) => {
             const remark = facility[`common_${this.uapi_version}:Remark`];
 
