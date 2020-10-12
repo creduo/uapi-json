@@ -96,6 +96,7 @@ function formatSegment(segment) {
     airline: segment.Carrier,
     flightNumber: segment.FlightNumber,
     uapi_segment_ref: segment.Key,
+    uapiSegmentReference: segment.Key,
   };
 
   if (segment['air:FlightDetails']) {
@@ -534,6 +535,27 @@ function buildPassenger(name, traveler) {
   );
 }
 
+/**
+ * This function adds segment references based on group parameter.
+ * @param segments - required
+ * @return [{*}]
+ */
+function setReferencesForSegments(segments) {
+  return segments.map((segment, idx) => {
+    const currentGroup = segment.group;
+    const nextSegment = segments[idx + 1] || {};
+    const nextGroup = nextSegment.group;
+    const nextSegmentReference = currentGroup === nextGroup
+      ? nextSegment.uapiSegmentReference
+      : null;
+
+    return {
+      ...segment,
+      nextSegmentReference,
+    };
+  });
+}
+
 module.exports = {
   formatLowFaresSearch,
   formatFarePricingInfo,
@@ -547,4 +569,5 @@ module.exports = {
   getBaggage,
   getBaggageInfo,
   buildPassenger,
+  setReferencesForSegments
 };
