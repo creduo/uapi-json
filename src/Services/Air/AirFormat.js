@@ -529,15 +529,19 @@ function setIndexesForSegments(
   };
 }
 
-function buildPassenger(name, traveler) {
-  if (traveler.TravelerType && traveler.TravelerType === 'INF') {
-    if (name.First && typeof name.First === 'string') {
-      const infantGender = name.First.match(/MSTR|MISS$/gi);
+function buildPassenger(nameObject, travelerObject) {
+  const traveler = Object.assign({}, travelerObject);
+  const name = Object.assign({}, nameObject);
 
-      if (infantGender[0] && (!traveler.Gender)) {
-        name.First = name.First.replace(/MSTR|MISS$/gi, '');
-        console.log('infantGender:', infantGender[0]);
-        traveler.Gender = infantGender[0] === 'MSTR' ? 'M' : 'F';
+  if (!traveler.Gender) {
+    const matchedGender = name.First.match(/(?:MSTR|MISS|MRS|MR|)$/gi);
+
+    if (matchedGender) {
+      name.First = name.First.replace(/(?:MSTR|MISS|MRS|MR)$/gi, '');
+      if (matchedGender[0] === 'MR' || matchedGender[0] === 'MSTR') {
+        traveler.Gender = 'M';
+      } else if (matchedGender[0] === 'MISS' || matchedGender[0] === 'MRS') {
+        traveler.Gender = 'F';
       }
     }
   }
@@ -549,14 +553,15 @@ function buildPassenger(name, traveler) {
       uapi_passenger_ref: traveler.Key,
     },
     traveler.DOB ? {
-      birthDate: moment(traveler.DOB).format('YYYY-MM-DD'),
+      birthDate: moment(traveler.DOB)
+        .format('YYYY-MM-DD'),
     } : null,
     traveler.TravelerType ? {
       ageCategory: traveler.TravelerType,
     } : null,
-    traveler.Gender ? {
-      gender: traveler.Gender,
-    } : null
+    {
+      gender: traveler.Gender ? traveler.Gender : null
+    }
   );
 }
 
