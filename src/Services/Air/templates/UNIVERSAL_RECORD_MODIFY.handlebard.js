@@ -14,7 +14,15 @@ module.exports = `
       {{/if}}
       <univ:RecordIdentifier ProviderCode="{{provider}}" ProviderLocatorCode="{{pnr}}" UniversalLocatorCode="{{universalRecordLocatorCode}}"/>
       <univ:UniversalModifyCmd Key="BOOKING_MODIFY_SEGMENTS"> 
-        <univ:AirAdd ReservationLocatorCode="{{reservationLocatorCode}}" > 
+        <univ:AirAdd ReservationLocatorCode="{{reservationLocatorCode}}" {{#if bookingTravelerRef}}BookingTravelerRef="{{{bookingTravelerRef}}}"{{/if}}>
+          {{#ssr}}
+            {{#equal type "FQTV"}}
+              <com:LoyaltyCard SupplierType="Air" SupplierCode="{{carrier}}" CardNumber="{{text}}" />
+            {{else}}
+              <com:SSR Type="{{type}}"{{#if carrier}} Carrier="{{carrier}}"{{/if}}{{#if status}} Status="{{{status}}}"{{/if}} FreeText="{{text}}" {{#if segmentRef}} SegmentRef="{{{segmentRef}}}"{{/if}}{{#if providerReservationInfoRef}} ProviderReservationInfoRef="{{{providerReservationInfoRef}}}"{{/if}} />
+            {{/equal}}
+          {{/ssr}}
+ 
           {{#segments}}
           <air:AirSegment
             ArrivalTime="{{arrival}}"
