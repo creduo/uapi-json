@@ -2302,7 +2302,7 @@ describe('#AirParser', () => {
     it('should test parsing of AirMerchandisingFulfillment request', () => {
       const uParser = new Parser('universal:AirMerchandisingFulfillmentRsp', 'v47_0', {});
       const parseFunction = airParser.AIR_MERCHANDISING_FULFILLMENT;
-      const xml = fs.readFileSync(`${xmlFolder}/AirMerchandisingFulfillment.xml`).toString();
+      const xml = fs.readFileSync(`${xmlFolder}/AirMerchandisingFulfillmentRsp.xml`).toString();
       return uParser.parse(xml)
         .then((json) => {
           const jsonResult = parseFunction.call(uParser, json);
