@@ -218,4 +218,8 @@ module.exports = {
     transform()
   ),
 
+  AIR_UNIVERSAL_RECORD_MODIFY: compose(
+    validate(),
+    transform()
+  ),
 };

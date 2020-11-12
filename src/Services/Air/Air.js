@@ -12,6 +12,14 @@ module.exports = (settings) => {
   const service = airService(validateServiceSettings(settings));
   const log = (settings.options && settings.options.logFunction) || console.log;
   return {
+    addSSR(options) {
+      return service.addSSR(options);
+    },
+
+    deleteSSR(options) {
+      return service.deleteSSR(options);
+    },
+
     shop(options) {
       if (options.async === true) {
         return service.searchLowFaresAsync(options);
