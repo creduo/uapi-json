@@ -2083,14 +2083,12 @@ describe('#AirParser', () => {
         .readFileSync(`${xmlFolder}/AirExchangeQuote-error-no-residual-value.xml`)
         .toString();
 
-      return uParser.parse(xml)
-        .then((json) => {
-          const errData = uParser.mergeLeafRecursive(json['SOAP:Fault'][0]);
-          return parseFunction.call(uParser, errData);
-        })
-        .catch((err) => {
-          expect(err).to.be.an.instanceof(AirRuntimeError.NoResidualValue);
-        });
+      return uParser.parse(xml).then((json) => {
+        const errData = uParser.mergeLeafRecursive(json['SOAP:Fault'][0]);
+        return parseFunction.call(uParser, errData);
+      }).catch((err) => {
+        expect(err).to.be.an.instanceof(AirRuntimeError.NoResidualValue);
+      });
     });
 
     it('should throw correct error if no tickets exists', () => {
@@ -2102,14 +2100,12 @@ describe('#AirParser', () => {
         .readFileSync(`${xmlFolder}/AirExchangeQuote-error-no-tickets.xml`)
         .toString();
 
-      return uParser.parse(xml)
-        .then((json) => {
-          const errData = uParser.mergeLeafRecursive(json['SOAP:Fault'][0]);
-          return parseFunction.call(uParser, errData);
-        })
-        .catch((err) => {
-          expect(err).to.be.an.instanceof(AirRuntimeError.TicketsNotIssued);
-        });
+      return uParser.parse(xml).then((json) => {
+        const errData = uParser.mergeLeafRecursive(json['SOAP:Fault'][0]);
+        return parseFunction.call(uParser, errData);
+      }).catch((err) => {
+        expect(err).to.be.an.instanceof(AirRuntimeError.TicketsNotIssued);
+      });
     });
   });
 
@@ -2284,7 +2280,7 @@ describe('#AirParser', () => {
           jsonResult.seatmap.forEach((seg) => {
             console.log(`\nFlight ${seg.segment.airline} ${seg.segment.flightNumber} ${seg.segment.from} - ${seg.segment.to}`);
             seg.rows.forEach((row) => {
-              console.log('Row :', row.seats.reduce((acc, seat) => acc + (seat.isAvailable ? ' _' : ' X'), ''), row.rowNumber );
+              console.log('Row :', row.seats.reduce((acc, seat) => acc + (seat.isAvailable ? ' _' : ' X'), ''), row.rowNumber);
             });
           });
         });
