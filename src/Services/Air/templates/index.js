@@ -15,6 +15,7 @@ const gdsQueuePlace = require('./GDS_QUEUE_PLACE.handlebars');
 const universalRecordCancelUr = require('./UNIVERSAL_RECORD_CANCEL_UR.handlebars');
 const universalRecordFoid = require('./UNIVERSAL_RECORD_FOID.handlebars');
 const universalRecordModify = require('./UNIVERSAL_RECORD_MODIFY.handlebard');
+const universalRecordDelete = require('./UNIVERSAL_RECORD_DELETE.handlebard');
 const universalRecordImport = require('./UNIVERSAL_RECORD_IMPORT_REQUEST.handlebars');
 const universalRecordRetrieve = require('./UNIVERSAL_RECORD_RETRIEVE_REQUEST.handlebars');
 const providerReservationDivide = require('./PROVIDER_RESERVATION_DIVIDE_REQ.handlebars');
@@ -42,6 +43,7 @@ module.exports = {
   universalRecordCancelUr,
   universalRecordFoid,
   universalRecordModify,
+  universalRecordDelete,
   universalRecordImport,
   universalRecordRetrieve,
   providerReservationDivide,

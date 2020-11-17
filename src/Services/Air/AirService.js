@@ -176,6 +176,28 @@ module.exports = function (settings) {
       debug,
       options
     ),
+    addSSR: uApiRequest(
+      config.UniversalRecord.url,
+      auth,
+      templates.universalRecordModify,
+      'universal:UniversalRecordModifyRsp',
+      AirValidator.AIR_UNIVERSAL_RECORD_MODIFY,
+      AirParser.AIR_ERRORS,
+      AirParser.UNIVERSAL_RECORD_MODIFY,
+      debug,
+      options
+    ),
+    deleteSSR: uApiRequest(
+      config.UniversalRecord.url,
+      auth,
+      templates.universalRecordDelete,
+      'universal:UniversalRecordModifyRsp',
+      AirValidator.AIR_UNIVERSAL_RECORD_MODIFY,
+      AirParser.AIR_ERRORS,
+      AirParser.UNIVERSAL_RECORD_MODIFY,
+      debug,
+      options
+    ),
     cancelUR: uApiRequest(
       config.UniversalRecord.url,
       auth,

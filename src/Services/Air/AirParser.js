@@ -142,6 +142,19 @@ const ticketParse = function (obj) {
 
 const nullParsing = obj => obj;
 
+function modifySSR(obj) {
+  let checkedResponseMessage = false;
+  if (obj[`common_${this.uapi_version}:ResponseMessage`]) {
+    const responseMessage = obj[`common_${this.uapi_version}:ResponseMessage`];
+    responseMessage.forEach((msg) => {
+      if (msg._ === 'Universal record successfully modified.') {
+        checkedResponseMessage = true;
+      }
+    });
+  }
+  return checkedResponseMessage;
+}
+
 function fillAirFlightInfoResponseItem(data) {
   const item = data['air:FlightInfoDetail'];
   return {
@@ -897,7 +910,8 @@ function extractBookings(obj) {
         }
 
         // TODO: Move this to buildPassenger
-        let seatAssignments = [];
+        // Seat Assignment
+        const seatAssignments = [];
         const seatAssignmentObject = traveler[`common_${this.uapi_version}:AirSeatAssignment`];
 
         if (seatAssignmentObject) {
@@ -913,18 +927,54 @@ function extractBookings(obj) {
               elStat: seatAssignment.ElStat
             });
           });
-
-          // TODO: Add seatAssignment
-
-          return Object.assign(
-            format.buildPassenger(name, traveler),
-            seatAssignments.length > 0 ? {
-              seatAssignments,
-            } : null
-          );
         }
 
-        return format.buildPassenger(name, traveler);
+        // LoyaltyCard
+        const loyaltyCards = [];
+        const loyaltyCardObject = traveler[`common_${this.uapi_version}:LoyaltyCard`];
+
+        if (loyaltyCardObject) {
+          Object.keys(loyaltyCardObject).forEach((key) => {
+            const card = loyaltyCardObject[key];
+            loyaltyCards.push({
+              key: card.Key,
+              supplierType: card.SupplierType,
+              supplierCode: card.SupplierCode,
+              cardNumber: card.CardNumber
+            });
+          });
+        }
+
+        // SSR
+        const ssr = [];
+        const ssrObject = traveler[`common_${this.uapi_version}:SSR`];
+
+        if (ssrObject) {
+          Object.keys(ssrObject).forEach((key) => {
+            const s = ssrObject[key];
+            ssr.push({
+              key: s.Key,
+              status: s.Status,
+              type: s.Type,
+              freeText: s.FreeText,
+              carrier: s.Carrier,
+              providerReservationInfoRef: s.ProviderReservationInfoRef
+            });
+          });
+        }
+
+        return Object.assign(
+          format.buildPassenger(name, traveler),
+          seatAssignments.length > 0 ? {
+            seatAssignments,
+          } : null,
+          loyaltyCards.length > 0 ? {
+            loyaltyCards,
+          } : null,
+          ssr.length > 0 ? {
+            ssr,
+          } : null
+        );
       }
     );
 
@@ -1576,7 +1626,7 @@ module.exports = {
   GDS_QUEUE_PLACE_RESPONSE: gdsQueue,
   AIR_CANCEL_UR: nullParsing,
   UNIVERSAL_RECORD_FOID: nullParsing,
-  UNIVERSAL_RECORD_MODIFY: nullParsing,
+  UNIVERSAL_RECORD_MODIFY: modifySSR,
   AIR_ERRORS: AirErrorHandler, // errors handling
   FLIGHT_TIME_TABLE: flightTimeTableRsp,
   AIR_FLIGHT_INFORMATION: airFlightInfoRsp,

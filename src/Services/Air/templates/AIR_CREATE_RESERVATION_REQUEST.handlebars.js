@@ -66,7 +66,20 @@ module.exports = `
                 {{/if}}
             </com:BookingTraveler>
             {{/each}}
-
+            {{#if agencyContactInfo}}
+            <com:AgencyContactInfo>
+                {{#each agencyContactInfo.phoneNumber}}
+                <com:PhoneNumber 
+                        Type="{{type}}" 
+                        {{#if number}}Number="{{number}}"{{/if}}
+                        {{#if extension}}Extension="{{extension}}"{{/if}}
+                        {{#if text}}Text="{{text}}"{{/if}}
+                        {{#if countryCode}}CountryCode="{{countryCode}}"{{/if}}
+                        {{#if location}}Location="{{location}}"{{/if}}>
+                </com:PhoneNumber>
+                {{/each}}
+            </com:AgencyContactInfo>
+            {{/if}}
             {{#if overrideContinuityCheck}}<com:ContinuityCheckOverride>yes</com:ContinuityCheckOverride>{{/if}}
 
             <air:AirPricingSolution {{#each air:AirPricingSolution}}{{@key}}="{{{this}}}" {{/each}}>
