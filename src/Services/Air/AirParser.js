@@ -1143,6 +1143,8 @@ function extractBookings(obj) {
               baggage,
               fareBasisCodes,
               timeToReprice: pricingInfo.LatestTicketingTime,
+              latestTicketingTime: pricingInfo.LatestTicketingTime,
+              trueLastDateToTicket: pricingInfo.TrueLastDateToTicket
             },
             parseFareCalculation(pricingInfo['air:FareCalc'])
           );
