@@ -15,8 +15,7 @@ module.exports = `
       <univ:RecordIdentifier ProviderCode="{{provider}}" ProviderLocatorCode="{{pnr}}" UniversalLocatorCode="{{universalRecordLocatorCode}}"/>
       <univ:UniversalModifyCmd Key="BOOKING_MODIFY_SEGMENTS">
       {{#ssr}} 
-        <univ:AirDelete ReservationLocatorCode="{{reservationLocatorCode}}" Element="{{element}}" {{#if bookingTravelerRef}}BookingTravelerRef="{{{bookingTravelerRef}}}" {{/if}}{{#if key}}Key="{{{key}}}"{{/if}}>
-        </univ:AirDelete>
+        <univ:AirDelete ReservationLocatorCode="{{reservationLocatorCode}}" Element="{{element}}" {{#if bookingTravelerRef}}BookingTravelerRef="{{{bookingTravelerRef}}}" {{/if}}{{#if key}}Key="{{{key}}}"{{/if}}/>
       {{/ssr}}
       </univ:UniversalModifyCmd>
     </univ:UniversalRecordModifyReq>
