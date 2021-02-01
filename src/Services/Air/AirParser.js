@@ -14,6 +14,7 @@ const {
 
 const fareCalculationPattern = /^([\s\S]+)END($|\s)/;
 const firstOriginPattern = /^(?:s-)?(?:\d{2}[a-z]{3}\d{2}\s+)?([a-z]{3})/i;
+const noAgreementPattern = /NO AGENCY AGREEMENT/ig;
 
 const parseFareCalculation = (str) => {
   const fareCalculation = str.match(fareCalculationPattern)[1];
@@ -424,6 +425,17 @@ function airPriceRspPricingSolutionXML(obj) {
   };
 }
 
+const processUAPIError = (rsp) => {
+  if (rsp.faultstring) {
+    throw new RequestRuntimeError.UAPIServiceError({
+      ...rsp,
+      faultstring: rsp.faultstring.toUpperCase()
+    });
+  }
+
+  throw new RequestRuntimeError.UnhandledError(null, new AirRuntimeError(rsp));
+};
+
 const AirErrorHandler = function (rsp) {
   let errorInfo;
   let code;
@@ -434,7 +446,7 @@ const AirErrorHandler = function (rsp) {
     );
     code = errorInfo[`common_${this.uapi_version}:Code`];
   } catch (err) {
-    throw new RequestRuntimeError.UnhandledError(null, new AirRuntimeError(rsp));
+    processUAPIError(rsp);
   }
   const pcc = utils.getErrorPcc(rsp.faultstring);
   switch (code) {
@@ -466,13 +478,13 @@ const AirErrorHandler = function (rsp) {
     case '3037': // No availability on chosen flights, unable to fare quote
       throw new AirRuntimeError.NoResultsFound(rsp);
     default:
-      throw new RequestRuntimeError.UnhandledError(null, new AirRuntimeError(rsp));
+      processUAPIError(rsp);
   }
 };
 
-function getTicketFromEtr(etr, obj) {
+function getTicketFromEtr(etr, obj, allowNoProviderLocatorCodeRetrieval = false) {
   // Checking if pricing info exists
-  if (!etr.ProviderLocatorCode) {
+  if (!allowNoProviderLocatorCodeRetrieval && !etr.ProviderLocatorCode) {
     throw new AirRuntimeError.TicketInfoIncomplete(etr);
   }
 
@@ -630,10 +642,10 @@ function getTicketFromEtr(etr, obj) {
     commission
       ? {
         commission: {
-          [commission.Type === 'PercentBase' ? 'percent' : 'amount']:
-            commission.Type === 'PercentBase'
-              ? parseFloat(commission.Percentage)
-              : parseFloat(commission.Amount.slice(3)),
+          type: commission.Type === 'PercentBase' ? 'Z' : 'ZA',
+          value: commission.Type === 'PercentBase'
+            ? parseFloat(commission.Percentage)
+            : parseFloat(commission.Amount.slice(3))
         },
       }
       : null,
@@ -653,13 +665,22 @@ function getTicketFromEtr(etr, obj) {
   return response;
 }
 
-const airGetTicket = function (obj) {
+const airGetTicket = function (obj, parseParams = {
+  allowNoProviderLocatorCodeRetrieval: false
+}) {
   const failure = obj['air:DocumentFailureInfo'];
   if (failure) {
     if (failure.Code === '3273') {
       throw new AirRuntimeError.DuplicateTicketFound(obj);
     }
     throw new AirRuntimeError.TicketRetrieveError(obj);
+  }
+
+  const responseMessages = obj[`common_${this.uapi_version}:ResponseMessage`] || [];
+  const hasNoAgreementResponse = responseMessages.find(({ _: message, Code }) => Code === '12009' && noAgreementPattern.test(message));
+
+  if (hasNoAgreementResponse) {
+    throw new AirRuntimeError.NoAgreement({ screen: hasNoAgreementResponse._ });
   }
 
   const etr = obj['air:ETR'];
@@ -671,10 +692,13 @@ const airGetTicket = function (obj) {
 
   if (multipleTickets) {
     return Object.values(etr)
-      .map(innerEtr => getTicketFromEtr.call(this, innerEtr, obj));
+      .map(innerEtr => (
+        getTicketFromEtr.call(this, innerEtr, obj, parseParams.allowNoProviderLocatorCodeRetrieval)
+      ));
   }
 
-  return getTicketFromEtr.call(this, etr, obj);
+
+  return getTicketFromEtr.call(this, etr, obj, parseParams.allowNoProviderLocatorCodeRetrieval);
 };
 
 const responseHasNoTickets = rsp => (
@@ -693,7 +717,7 @@ function airGetTicketsErrorHandler(rsp) {
     );
     code = errorInfo[`common_${this.uapi_version}:Code`];
   } catch (err) {
-    throw new RequestRuntimeError.UnhandledError(null, new AirRuntimeError(rsp));
+    processUAPIError(rsp);
   }
   // General Air Service error
   if (code === '3000') {
@@ -707,7 +731,7 @@ function airGetTicketsErrorHandler(rsp) {
         pcc: utils.getErrorPcc(rsp.faultstring),
       });
     default:
-      throw new RequestRuntimeError.UnhandledError(null, new AirRuntimeError(rsp));
+      return processUAPIError(rsp);
   }
 }
 

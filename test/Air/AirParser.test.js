@@ -259,6 +259,23 @@ describe('#AirParser', () => {
         );
         throw new Error('Skipped error!');
       } catch (err) {
+        expect(err).to.be.an.instanceof(RequestRuntimeError.UAPIServiceError);
+        expect(err.data).to.deep.eq({
+          faultcode: 'Server.Business',
+          faultstring: 'RECORD LOCATOR NOT FOUND.',
+          detail: {
+            'common_v47_0:ErrorInfo': {
+              'common_v47_0:Code': '3130', 'common_v47_0:Service': 'WEBSVC', 'common_v47_0:Type': 'Business', 'common_v47_0:Description': 'Record locator not found.', 'common_v47_0:TransactionId': '838261280A07425809813A4629F6C7D1', 'xmlns:common_v47_0': 'https://www.travelport.com/schema/common_v47_0'
+            }
+          }
+        });
+      }
+    });
+    it('should correctly handle errors without faultstring', async () => {
+      try {
+        airParser.AIR_GET_TICKETS_ERROR_HANDLER.uapi_version = 'v47_0';
+        airParser.AIR_GET_TICKETS_ERROR_HANDLER({ faultcode: 'Server.Security' });
+      } catch (err) {
         expect(err).to.be.an.instanceof(RequestRuntimeError.UnhandledError);
       }
     });
@@ -370,7 +387,7 @@ describe('#AirParser', () => {
           expect(result.priceInfoDetailsAvailable).to.equal(false);
           expect(result.noAdc).to.equal(true);
           expect(result.totalPrice).to.equal('UAH0');
-          expect(result.commission).to.be.deep.equal({ percent: 0.1 });
+          expect(result.commission).to.be.deep.equal({ type: 'Z', value: 0.1 });
         });
     });
 
@@ -420,7 +437,7 @@ describe('#AirParser', () => {
         .then(json => parseFunction.call(uParser, json))
         .then((result) => {
           testTicket(result);
-          expect(result.commission).to.be.deep.equal({ amount: 0 });
+          expect(result.commission).to.be.deep.equal({ type: 'ZA', value: 0 });
           expect(result.tourCode).to.be.equal('IT151920');
         });
     });
@@ -433,7 +450,7 @@ describe('#AirParser', () => {
         .then(json => parseFunction.call(uParser, json))
         .then((result) => {
           testTicket(result);
-          expect(result.commission).to.be.deep.equal({ percent: 0.1 });
+          expect(result.commission).to.be.deep.equal({ type: 'Z', value: 0.1 });
         });
     });
 
@@ -511,9 +528,22 @@ describe('#AirParser', () => {
 
       return uParser.parse(xml)
         .then(json => parseFunction.call(uParser, json))
-        .then(() => Promise.reject(new Error('Error has not occured')))
+        .then(() => Promise.reject(new Error('Error has not occurred')))
         .catch((err) => {
           expect(err).to.be.an.instanceof(AirRuntimeError.TicketRetrieveError);
+        });
+    });
+
+    it('should return no agreement error if present in response message', () => {
+      const uParser = new Parser('air:AirRetrieveDocumentRsp', 'v47_0', {});
+      const parseFunction = airParser.AIR_GET_TICKET;
+      const xml = fs.readFileSync(`${xmlFolder}/getTicket_NO_AGREEMENT_RESPONSE_MESSAGE.xml`).toString();
+
+      return uParser.parse(xml)
+        .then(json => parseFunction.call(uParser, json))
+        .then(() => Promise.reject(new Error('Error has not occured')))
+        .catch((err) => {
+          expect(err).to.be.an.instanceof(AirRuntimeError.NoAgreement);
         });
     });
 
@@ -523,12 +553,13 @@ describe('#AirParser', () => {
       const xml = fs.readFileSync(`${xmlFolder}/getTicket_FAILED.xml`).toString();
       uParser.parse(xml)
         .then(json => parseFunction.call(uParser, json))
-        .then(() => done(new Error('Error has not occured')))
+        .then(() => done(new Error('Error has not occurred')))
         .catch((err) => {
           expect(err).to.be.an.instanceof(AirRuntimeError.TicketRetrieveError);
           done();
         });
     });
+
     it('should parse imported ticket', () => {
       const uParser = new Parser('air:AirRetrieveDocumentRsp', 'v47_0', {});
       const parseFunction = airParser.AIR_GET_TICKET;
@@ -678,6 +709,91 @@ describe('#AirParser', () => {
           });
         });
     });
+
+    it('should throw AirRuntimeError.TicketInfoIncomplete', (done) => {
+      const uParser = new Parser('air:AirRetrieveDocumentRsp', 'v47_0', {});
+      const parseFunction = airParser.AIR_GET_TICKET;
+      const xml = fs.readFileSync(`${xmlFolder}/getTicketNoReservationLocator.xml`).toString();
+      uParser.parse(xml)
+        .then(json => parseFunction.call(uParser, json))
+        .then(() => done(new Error('Error has not occurred')))
+        .catch((err) => {
+          expect(err).to.be.an.instanceof(AirRuntimeError.TicketInfoIncomplete);
+          done();
+        });
+    });
+
+    it('should parse ticket with allowNoProviderLocatorCodeRetrieval', (done) => {
+      const uParser = new Parser('air:AirRetrieveDocumentRsp', 'v47_0', {});
+      const parseFunction = airParser.AIR_GET_TICKET;
+      const xml = fs.readFileSync(`${xmlFolder}/getTicketNoReservationLocator.xml`).toString();
+      uParser.parse(xml)
+        .then(json => parseFunction.call(
+          uParser,
+          json,
+          { allowNoProviderLocatorCodeRetrieval: true }
+        ))
+        .then((res) => {
+          console.log(JSON.stringify(res, null, 2));
+          expect(res).to.deep.eq({
+            uapi_ur_locator: '7XC9IB',
+            uapi_reservation_locator: '7XC9IC',
+            ticketNumber: '0809903654876',
+            platingCarrier: 'LO',
+            pnr: undefined,
+            ticketingPcc: '7J8J',
+            issuedAt: '2020-07-31T00:00:00.000+02:00',
+            farePricingMethod: null,
+            farePricingType: null,
+            priceInfoAvailable: true,
+            priceInfoDetailsAvailable: false,
+            taxes: 'UAH1015',
+            taxesInfo: [],
+            passengers: [
+              {
+                firstName: 'MARKMR',
+                lastName: 'OMARO'
+              },
+            ],
+            tickets: [
+              {
+                ticketNumber: '0809903654876',
+                coupons: [
+                  {
+                    key: 'SGNQhOBAAA/Bn2KYVCAAAA==',
+                    ticketNumber: '0809903654876',
+                    couponNumber: '1',
+                    from: 'KBP',
+                    to: 'WAW',
+                    departure: '2021-05-15T14:50:00.000+03:00',
+                    airline: 'LO',
+                    flightNumber: '752',
+                    fareBasisCode: 'Y1SAV0',
+                    status: 'O',
+                    notValidBefore: '2021-05-15',
+                    notValidAfter: '2021-05-15',
+                    bookingClass: 'Y',
+                    stopover: true
+                  },
+                ]
+              },
+            ],
+            noAdc: false,
+            isConjunctionTicket: false,
+            fareCalculation: 'IEV LO WAW 312.00 NUC312.00',
+            firstOrigin: 'IEV',
+            roe: '1.0',
+            totalPrice: 'UAH9641',
+            tourCode: undefined,
+            basePrice: 'USD312.00',
+            equivalentBasePrice: 'UAH8626'
+          });
+          done();
+        })
+        .catch((e) => {
+          done(e);
+        });
+    });
   });
   describe('AIR_LOW_FARE_SEARCH()', () => {
     it('should test parsing of low fare search request', () => {
@@ -765,6 +881,40 @@ describe('#AirParser', () => {
         .catch(
           err => expect(err).to.be.an.instanceof(AirRuntimeError.NoResultsFound)
         );
+    });
+
+    it('should handle uapi error', async () => {
+      const uParser = new Parser('air:AirRetrieveDocumentRsp', 'v47_0', {});
+      const parseFunction = airParser.AIR_ERRORS;
+      const xml = fs.readFileSync(`${xmlFolder}/AirGetTickets-error-general.xml`).toString();
+      return uParser.parse(xml)
+        .then(
+          (json) => {
+            const errData = uParser.mergeLeafRecursive(json['SOAP:Fault'][0]); // parse error data
+            return parseFunction.call(uParser, errData);
+          }
+        )
+        .catch((err) => {
+          expect(err).to.be.an.instanceof(RequestRuntimeError.UAPIServiceError);
+          expect(err.data).to.deep.eq({
+            faultcode: 'Server.Business',
+            faultstring: 'RECORD LOCATOR NOT FOUND.',
+            detail: {
+              'common_v47_0:ErrorInfo': {
+                'common_v47_0:Code': '3130', 'common_v47_0:Service': 'WEBSVC', 'common_v47_0:Type': 'Business', 'common_v47_0:Description': 'Record locator not found.', 'common_v47_0:TransactionId': '838261280A07425809813A4629F6C7D1', 'xmlns:common_v47_0': 'https://www.travelport.com/schema/common_v47_0'
+              }
+            }
+          });
+        });
+    });
+
+    it('should correctly handle errors without faultstring', async () => {
+      try {
+        airParser.AIR_ERRORS.uapi_version = 'v47_0';
+        airParser.AIR_ERRORS({ faultcode: 'Server.Security' });
+      } catch (err) {
+        expect(err).to.be.an.instanceof(RequestRuntimeError.UnhandledError);
+      }
     });
 
     it('should throw AirRuntimeError.NoResultsFound error2', () => {

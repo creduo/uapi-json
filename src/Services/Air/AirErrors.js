@@ -39,6 +39,8 @@ Object.assign(AirValidationError, createErrorsList({
   PlatingCarrierInvalid: 'Plating Carrier Invalid',
   SearchIdMissing: 'SearchId is missing',
   VersionMissing: 'Version is missing in request',
+  AllowDirectAccessInvalid: 'Invalid value provided for allowDirectAccess',
+  AllowDirectAccessCarriersNotSpecified: 'Carriers not specified for carrier specific display',
 }, AirValidationError));
 
 const GdsValidationError = createErrorClass(
@@ -128,8 +130,9 @@ Object.assign(AirRuntimeError, createErrorsList({
   ExchangeTokenIncorrect: 'Can\'t parse exchange token. Please resolve it again.',
   DuplicateTicketFound: 'Duplicate ticket number found. Provide PNR, UR locator',
   NoPNRFoundInUR: ['No PNR found in Universal record', errorCodes.NotFound],
-  NoAgreement: ['There is no agreement between current pcc, and one you try to reach', errorCodes.Unauthorized],
+  NoAgreement: ['There is no agreement between current pcc, and one you try to reach', errorCodes.Validation],
   UnableToRetrieve: ['Unable to retrieve PNR. Please contact your local Travelport Helpdesk.', errorCodes.NotFound],
+  CouldNotRetrieveCurrency: 'We could not retrieve currency for commission from any fare in the booking. Please check fare quotes.'
 }, AirRuntimeError));
 
 const AirFlightInfoRuntimeError = createErrorClass(

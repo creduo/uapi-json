@@ -11,9 +11,7 @@ module.exports = `
                 <com:OverridePCC ProviderCode="{{provider}}" PseudoCityCode="{{emulatePcc}}"/>
             {{/if}}
             {{#nextResultReference}}
-                <com:NextResultReference ProviderCode="{{provider}}" >
-                    {{nextResultReference}}
-                </com:NextResultReference>
+                <com:NextResultReference ProviderCode="{{../provider}}">{{{.}}}</com:NextResultReference>
             {{/nextResultReference}}
             {{#legs}}
             <air:SearchAirLeg>
@@ -24,12 +22,20 @@ module.exports = `
                     <com:CityOrAirport Code="{{to}}" PreferCity="true"/>
                 </air:SearchDestination>
                 <air:SearchDepTime PreferredTime="{{departureDate}}"/>
-                <air:AirLegModifiers>
+                <air:AirLegModifiers {{#if ../allowDirectAccess}}AllowDirectAccess="true"{{/if}}>
                     {{#*inline "connectionPoint"}}
                       <com:ConnectionPoint>
                         <com:CityOrAirport Code="{{connection}}" />
                       </com:ConnectionPoint>
                     {{/inline}}
+
+                    {{#if ../carriers}}
+                    <air:PermittedCarriers>
+                    {{#each ../carriers as |carrier|}}
+                        <com:Carrier Code="{{carrier}}" />
+                    {{/each}}
+                    </air:PermittedCarriers>
+                    {{/if}}
 
                     {{#if ../permittedConnectionPoints}}
                     <air:PermittedConnectionPoints>
@@ -97,7 +103,6 @@ module.exports = `
             {{#passengers}}
                 <com:SearchPassenger Code="{{ageCategory}}"{{#if child}} Age="9"{{/if}} xmlns:com="http://www.travelport.com/schema/common_v47_0"/>
             {{/passengers}}
-
         </air:AvailabilitySearchReq>
     </soap:Body>
 </soap:Envelope>
