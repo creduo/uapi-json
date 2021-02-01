@@ -817,10 +817,17 @@ function extractBookings(obj) {
       .reduce(
         (acc, key) => {
           const reservationRef = remarksObj[key].ProviderReservationInfoRef;
+          const remark = {
+            ...remarksObj[key],
+            RemarkData: remarksObj[key][`common_${this.uapi_version}:RemarkData`]
+          };
+
+          delete remark[`common_${this.uapi_version}:RemarkData`];
+
           return Object.assign(
             acc,
             {
-              [reservationRef]: (acc[reservationRef] || []).concat(remarksObj[key]),
+              [reservationRef]: (acc[reservationRef] || []).concat(remark),
             }
           );
         },
@@ -1200,6 +1207,7 @@ function extractBookings(obj) {
         emails,
         bookingPCC: providerInfo.OwningPCC,
         tickets,
+        remarks
       },
       splitBookings.length > 0
         ? { splitBookings }
