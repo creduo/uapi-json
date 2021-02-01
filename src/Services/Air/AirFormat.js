@@ -532,15 +532,14 @@ function setIndexesForSegments(
 function buildPassenger(nameObject, travelerObject) {
   const traveler = Object.assign({}, travelerObject);
   const name = Object.assign({}, nameObject);
-
   if (!traveler.Gender) {
-    const matchedGender = name.First.match(/(?:MSTR|MISS|MRS|MR|)$/gi);
+    const matchedGender = name.First.match(/(?:MSTR|MISS|MRS|MR|MS)$/gi);
 
     if (matchedGender) {
-      name.First = name.First.replace(/(?:MSTR|MISS|MRS|MR)$/gi, '');
+      name.First = name.First.replace(/(?:MSTR|MISS|MRS|MR|MS)$/gi, '');
       if (matchedGender[0] === 'MR' || matchedGender[0] === 'MSTR') {
         traveler.Gender = 'M';
-      } else if (matchedGender[0] === 'MISS' || matchedGender[0] === 'MRS') {
+      } else if (matchedGender[0] === 'MISS' || matchedGender[0] === 'MRS' || matchedGender[0] === 'MS') {
         traveler.Gender = 'F';
       }
     }
