@@ -66,6 +66,7 @@ module.exports = `
                 {{/if}}
             </com:BookingTraveler>
             {{/each}}
+            {{#if overrideContinuityCheck}}<com:ContinuityCheckOverride>yes</com:ContinuityCheckOverride>{{/if}}
             {{#if agencyContactInfo}}
             <com:AgencyContactInfo>
                 {{#each agencyContactInfo.phoneNumber}}
@@ -80,7 +81,6 @@ module.exports = `
                 {{/each}}
             </com:AgencyContactInfo>
             {{/if}}
-            {{#if overrideContinuityCheck}}<com:ContinuityCheckOverride>yes</com:ContinuityCheckOverride>{{/if}}
 
             <air:AirPricingSolution {{#each air:AirPricingSolution}}{{@key}}="{{{this}}}" {{/each}}>
                 {{{air:AirPricingSolution_XML.air:AirSegment_XML}}}
