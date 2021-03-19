@@ -876,6 +876,10 @@ function extractBookings(obj) {
     )
       ? resRemarks.reduce(
         (acc, remark) => {
+          if (!remark[`common_${this.uapi_version}:RemarkData`]) {
+            return acc;
+          }
+
           const splitMatch = remark[`common_${this.uapi_version}:RemarkData`].match(/^SPLIT\s.*([A-Z0-9]{6})$/);
           if (!splitMatch) {
             return acc;
