@@ -8,6 +8,7 @@ const assert = require('assert');
 const moment = require('moment');
 const auth = require('../testconfig');
 const { AirRuntimeError } = require('../../src/Services/Air/AirErrors');
+const { RequestSoapError } = require('../../src/Request/RequestErrors');
 
 const { expect } = chai;
 chai.use(sinonChai);
@@ -15,6 +16,13 @@ chai.use(sinonChai);
 const responsesDir = path.join(__dirname, '..', 'FakeResponses', 'Air');
 const terminalResponsesDir = path.join(__dirname, '..', 'FakeResponses', 'Terminal');
 
+const getAirServiceMock = ({ methods = {}, options = {} }) => {
+  const createAirService = proxyquire('../../src/Services/Air/Air', {
+    './AirService': () => ({ ...methods }),
+  });
+
+  return createAirService({ auth, ...options });
+};
 
 describe('#AirService', () => {
   const getURByPNRSampleBooked = [
@@ -36,6 +44,18 @@ describe('#AirService', () => {
       ],
     },
   ];
+  const fq = {
+    pricingInfos: [{
+      totalPrice: 'UAH10',
+    },
+    {
+      totalPrice: 'UAH11',
+    }]
+  };
+  const getURbyPNRSampleWithCurrency = getURbyPNRSampleTicketed.map(booking => ({
+    ...booking,
+    fareQuotes: [fq, fq]
+  }));
   const getURbyPNRSampleTicketedWithEmptyTickets = [
     {
       pnr: 'PNR001',
@@ -45,24 +65,19 @@ describe('#AirService', () => {
       tickets: [],
     },
   ];
+
   describe('shop', () => {
     it('should check if correct function from service is called', () => {
       const searchLowFares = sinon.spy(() => {});
-      const service = () => ({ searchLowFares });
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-      createAirService({ auth }).shop({});
+      const air = getAirServiceMock({ methods: { searchLowFares } });
+      air.shop({});
       expect(searchLowFares.calledOnce).to.be.equal(true);
     });
 
     it('should check if correct function from service is called with async option', () => {
       const searchLowFaresAsync = sinon.spy(() => {});
-      const service = () => ({ searchLowFaresAsync });
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-      createAirService({ auth }).shop({ async: true });
+      const air = getAirServiceMock({ methods: { searchLowFaresAsync } });
+      air.shop({ async: true });
       expect(searchLowFaresAsync.calledOnce).to.be.equal(true);
     });
   });
@@ -70,11 +85,8 @@ describe('#AirService', () => {
   describe('retrieveShop', () => {
     it('should check if correct function from service is called', () => {
       const searchLowFaresRetrieve = sinon.spy(() => {});
-      const service = () => ({ searchLowFaresRetrieve });
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-      createAirService({ auth }).retrieveShop({});
+      const air = getAirServiceMock({ methods: { searchLowFaresRetrieve } });
+      air.retrieveShop({});
       expect(searchLowFaresRetrieve.calledOnce).to.be.equal(true);
     });
   });
@@ -82,11 +94,8 @@ describe('#AirService', () => {
   describe('availability', () => {
     it('should check if correct function from service is called', () => {
       const availability = sinon.spy(() => {});
-      const service = () => ({ availability });
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-      createAirService({ auth }).availability({});
+      const air = getAirServiceMock({ methods: { availability } });
+      air.availability({});
       expect(availability.calledOnce).to.be.equal(true);
     });
   });
@@ -94,11 +103,8 @@ describe('#AirService', () => {
   describe('addSegments', () => {
     it('should check if correct function from service is called', () => {
       const addSegments = sinon.spy(() => {});
-      const service = () => ({ addSegments });
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-      createAirService({ auth }).addSegments({
+      const air = getAirServiceMock({ methods: { addSegments } });
+      air.addSegments({
         version: 1,
         universalRecordLocatorCode: 'CODE',
         reservationLocatorCode: 'CODE'
@@ -109,11 +115,14 @@ describe('#AirService', () => {
       const addSegments = sinon.spy(() => {});
       const getBooking = sinon.spy(() => {});
       const getUniversalRecordByPNR = sinon.spy(() => Promise.resolve([{ pnr: 'PNR000' }]));
-      const service = () => ({ addSegments, getBooking, getUniversalRecordByPNR });
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
+      const air = getAirServiceMock({
+        methods: {
+          addSegments,
+          getBooking,
+          getUniversalRecordByPNR
+        }
       });
-      createAirService({ auth }).addSegments({ pnr: 'PNR000' });
+      air.addSegments({ pnr: 'PNR000' });
       expect(getUniversalRecordByPNR.calledOnce).to.be.equal(true);
     });
   });
@@ -121,11 +130,8 @@ describe('#AirService', () => {
   describe('toQueue', () => {
     it('should check if correct function from service is called', () => {
       const gdsQueue = sinon.spy(() => {});
-      const service = () => ({ gdsQueue });
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-      createAirService({ auth }).toQueue({});
+      const air = getAirServiceMock({ methods: { gdsQueue } });
+      air.toQueue({});
       expect(gdsQueue.calledOnce).to.be.equal(true);
     });
   });
@@ -141,20 +147,21 @@ describe('#AirService', () => {
         () => Promise.resolve({ foo: 123 })
       );
       const createReservation = sinon.spy((options) => {
-        expect(options.foo).to.be.equal(123);
         expect(options.ActionStatusType).to.be.equal('TAU');
+        expect(options.foo).to.be.equal(123);
         expect(options.rule).to.be.equal(params.rule);
         expect(options.passengers).to.be.equal(params.passengers);
         return Promise.resolve();
       });
       const cancelUR = sinon.spy(() => {});
-      const service = () => ({ airPricePricingSolutionXML, createReservation });
 
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
+      const air = getAirServiceMock({
+        methods: {
+          airPricePricingSolutionXML, createReservation
+        }
       });
 
-      return createAirService({ auth }).book(params).then(() => {
+      return air.book(params).then(() => {
         expect(airPricePricingSolutionXML.calledOnce).to.be.equal(true);
         expect(createReservation.calledOnce).to.be.equal(true);
         expect(cancelUR.calledOnce).to.be.equal(false);
@@ -180,13 +187,10 @@ describe('#AirService', () => {
         return Promise.resolve();
       });
       const cancelUR = sinon.spy(() => {});
-      const service = () => ({ airPricePricingSolutionXML, createReservation });
 
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
+      const air = getAirServiceMock({ methods: { airPricePricingSolutionXML, createReservation } });
 
-      return createAirService({ auth }).book(params).then(() => {
+      return air.book(params).then(() => {
         expect(airPricePricingSolutionXML.calledOnce).to.be.equal(true);
         expect(createReservation.calledOnce).to.be.equal(true);
         expect(cancelUR.calledOnce).to.be.equal(false);
@@ -207,17 +211,16 @@ describe('#AirService', () => {
         expect(options.LocatorCode).to.be.equal(123);
         return Promise.resolve();
       });
-      const service = () => ({
-        airPricePricingSolutionXML,
-        createReservation,
-        cancelUR,
+
+      const air = getAirServiceMock({
+        methods: {
+          airPricePricingSolutionXML,
+          createReservation,
+          cancelUR
+        }
       });
 
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-
-      return createAirService({ auth }).book(params)
+      return air.book(params)
         .then(() => {
           throw new Error('Cant be success.');
         })
@@ -243,17 +246,16 @@ describe('#AirService', () => {
         expect(options.LocatorCode).to.be.equal(123);
         return Promise.resolve();
       });
-      const service = () => ({
-        airPricePricingSolutionXML,
-        createReservation,
-        cancelUR,
+
+      const air = getAirServiceMock({
+        methods: {
+          cancelUR,
+          airPricePricingSolutionXML,
+          createReservation,
+        }
       });
 
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-
-      return createAirService({ auth }).book(params)
+      return air.book(params)
         .then(() => {
           throw new Error('Cant be success.');
         })
@@ -279,17 +281,16 @@ describe('#AirService', () => {
         expect(options.LocatorCode).to.be.equal(123);
         return Promise.resolve();
       });
-      const service = () => ({
-        airPricePricingSolutionXML,
-        createReservation,
-        cancelUR,
+
+      const air = getAirServiceMock({
+        methods: {
+          createReservation,
+          airPricePricingSolutionXML,
+          cancelUR
+        }
       });
 
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-
-      return createAirService({ auth }).book(params)
+      return air.book(params)
         .then(() => {
           throw new Error('Cant be success.');
         })
@@ -315,17 +316,16 @@ describe('#AirService', () => {
         expect(options.LocatorCode).to.be.equal(123);
         return Promise.resolve();
       });
-      const service = () => ({
-        airPricePricingSolutionXML,
-        createReservation,
-        cancelUR,
+
+      const air = getAirServiceMock({
+        methods: {
+          airPricePricingSolutionXML,
+          createReservation,
+          cancelUR
+        }
       });
 
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-
-      return createAirService({ auth }).book(params)
+      return air.book(params)
         .then(() => {
           throw new Error('Cant be success.');
         })
@@ -349,17 +349,12 @@ describe('#AirService', () => {
         expect(options.LocatorCode).to.be.equal(123);
         return Promise.resolve();
       });
-      const service = () => ({
-        airPricePricingSolutionXML,
-        createReservation,
-        cancelUR,
+
+      const air = getAirServiceMock({
+        methods: { airPricePricingSolutionXML, createReservation, cancelUR }
       });
 
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-
-      return createAirService({ auth }).book(params)
+      return air.book(params)
         .then(() => {
           throw new Error('Cant be success.');
         })
@@ -385,17 +380,12 @@ describe('#AirService', () => {
         expect(options.LocatorCode).to.be.equal(123);
         return Promise.resolve();
       });
-      const service = () => ({
-        airPricePricingSolutionXML,
-        createReservation,
-        cancelUR,
+
+      const air = getAirServiceMock({
+        methods: { createReservation, airPricePricingSolutionXML, cancelUR }
       });
 
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-
-      return createAirService({ auth }).book(params)
+      return air.book(params)
         .then(() => {
           throw new Error('Cant be success.');
         })
@@ -411,11 +401,8 @@ describe('#AirService', () => {
   describe('retrieve UR', () => {
     it('should check if correct function from service is called', () => {
       const getUniversalRecord = sinon.spy(() => {});
-      const service = () => ({ getUniversalRecord });
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-      createAirService({ auth }).getUniversalRecord({});
+      const air = getAirServiceMock({ methods: { getUniversalRecord } });
+      air.getUniversalRecord({});
       expect(getUniversalRecord.calledOnce).to.be.equal(true);
     });
   });
@@ -704,27 +691,106 @@ describe('#AirService', () => {
   });
 
   describe('ticket', () => {
-    it('should check if correct function from service is called', () => {
+    it('should automatically get currency for commission', () => {
+      const params = { pnr: 'PNR001' };
+
+      const getUniversalRecordByPNR = sinon.spy(
+        () => Promise.resolve(getURbyPNRSampleWithCurrency)
+      );
+      const foid = sinon.spy(() => {});
+      const ticket = sinon.spy((options) => {
+        expect(options.currency).to.be.equal('UAH');
+        expect(options.ReservationLocator).to.be.equal('ABCDEF');
+        return Promise.resolve();
+      });
+
+      const air = getAirServiceMock({
+        methods: {
+          getUniversalRecordByPNR,
+          ticket,
+          foid,
+        }
+      });
+
+      return air.ticket(params).then(() => {
+        expect(getUniversalRecordByPNR.calledOnce).to.be.equal(true);
+        expect(ticket.calledOnce).to.be.equal(true);
+        expect(foid.calledOnce).to.be.equal(false);
+      });
+    });
+
+    it('should throw an error when currency is not found in totalPrice', () => {
+      const params = { pnr: 'PNR001' };
+
+      const getUniversalRecordByPNR = sinon.spy(
+        () => Promise.resolve(getURbyPNRSampleTicketed.map(booking => ({
+          ...booking,
+          fareQuotes: [{
+            pricingInfos: [{
+              totalPrice: '10',
+            }]
+          }]
+        })))
+      );
+      const ticket = sinon.spy(() => Promise.reject(new Error('No Call')));
+      const foid = sinon.spy(() => Promise.reject(new Error('No Call')));
+
+      const air = getAirServiceMock({ methods: { getUniversalRecordByPNR, foid, ticket } });
+
+      return air.ticket(params)
+        .catch((err) => {
+          expect(err).to.be.instanceOf(AirRuntimeError.CouldNotRetrieveCurrency);
+          expect(getUniversalRecordByPNR.calledOnce).to.be.equal(true);
+          expect(ticket.calledOnce).to.be.equal(false);
+          expect(foid.calledOnce).to.be.equal(false);
+        });
+    });
+
+    it('should throw an error when currency is not found', () => {
       const params = { pnr: 'PNR001' };
 
       const getUniversalRecordByPNR = sinon.spy(
         () => Promise.resolve(getURbyPNRSampleTicketed)
+      );
+      const ticket = sinon.spy(() => Promise.reject(new Error('Should not be called')));
+      const foid = sinon.spy(() => Promise.reject(new Error('Should not be called')));
+
+      const air = getAirServiceMock({
+        methods: {
+          foid,
+          getUniversalRecordByPNR,
+          ticket,
+        }
+      });
+
+      return air.ticket(params).catch((err) => {
+        expect(err).to.be.instanceOf(AirRuntimeError.CouldNotRetrieveCurrency);
+        expect(getUniversalRecordByPNR.calledOnce).to.be.equal(true);
+        expect(ticket.calledOnce).to.be.equal(false);
+        expect(foid.calledOnce).to.be.equal(false);
+      });
+    });
+
+    it('should check if correct function from service is called', () => {
+      const params = { pnr: 'PNR001' };
+
+      const getUniversalRecordByPNR = sinon.spy(
+        () => Promise.resolve(getURbyPNRSampleWithCurrency)
       );
       const ticket = sinon.spy((options) => {
         expect(options.ReservationLocator).to.be.equal('ABCDEF');
         return Promise.resolve();
       });
       const foid = sinon.spy(() => {});
-      const service = () => ({ getUniversalRecordByPNR, ticket, foid });
 
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
+      const air = getAirServiceMock({
+        methods: { foid, ticket, getUniversalRecordByPNR }
       });
 
-      return createAirService({ auth }).ticket(params).then(() => {
-        expect(getUniversalRecordByPNR.calledOnce).to.be.equal(true);
+      return air.ticket(params).then(() => {
         expect(ticket.calledOnce).to.be.equal(true);
         expect(foid.calledOnce).to.be.equal(false);
+        expect(getUniversalRecordByPNR.calledOnce).to.be.equal(true);
       });
     });
 
@@ -732,7 +798,7 @@ describe('#AirService', () => {
       const params = { pnr: 'PNR001' };
 
       const getUniversalRecordByPNR = sinon.spy(
-        () => Promise.resolve(getURbyPNRSampleTicketed)
+        () => Promise.resolve(getURbyPNRSampleWithCurrency)
       );
       const ticketResponses = [
         Promise.resolve(),
@@ -745,15 +811,23 @@ describe('#AirService', () => {
       });
 
       const foid = sinon.spy(() => Promise.resolve({}));
+      const log = sinon.spy(() => {});
       const service = () => ({ getUniversalRecordByPNR, ticket, foid });
 
       const createAirService = proxyquire('../../src/Services/Air/Air', {
         './AirService': service,
       });
 
-      return createAirService({ auth }).ticket(params).then(() => {
+      return createAirService({
+        auth,
+        debug: true,
+        options: {
+          logFunction: log,
+        }
+      }).ticket(params).then(() => {
         expect(getUniversalRecordByPNR.calledTwice).to.be.equal(true);
         expect(ticket.calledTwice).to.be.equal(true);
+        expect(log.calledOnce).to.be.equal(true);
         expect(foid.calledOnce).to.be.equal(true);
       });
     });
@@ -763,7 +837,7 @@ describe('#AirService', () => {
       const params = { pnr: 'PNR001' };
 
       const getUniversalRecordByPNR = sinon.spy(
-        () => Promise.resolve(getURbyPNRSampleTicketed)
+        () => Promise.resolve(getURbyPNRSampleWithCurrency)
       );
       const ticketResponses = [
         Promise.resolve(),
@@ -775,13 +849,10 @@ describe('#AirService', () => {
         return ticketResponses.pop();
       });
 
-      const service = () => ({ getUniversalRecordByPNR, ticket });
 
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
+      const air = getAirServiceMock({ methods: { getUniversalRecordByPNR, ticket } });
 
-      return createAirService({ auth, debug: 1 }).ticket(params).then(() => {
+      return air.ticket(params).then(() => {
         expect(getUniversalRecordByPNR.calledOnce).to.be.equal(true);
         expect(ticket.calledTwice).to.be.equal(true);
       });
@@ -793,7 +864,7 @@ describe('#AirService', () => {
       const params = { pnr: 'PNR001' };
 
       const getUniversalRecordByPNR = sinon.spy(
-        () => Promise.resolve(getURbyPNRSampleTicketed)
+        () => Promise.resolve(getURbyPNRSampleWithCurrency)
       );
       const ticketResponses = [
         () => Promise.resolve(),
@@ -807,13 +878,10 @@ describe('#AirService', () => {
       });
 
       const foid = sinon.spy(() => Promise.resolve({}));
-      const service = () => ({ getUniversalRecordByPNR, ticket, foid });
 
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
+      const air = getAirServiceMock({ methods: { getUniversalRecordByPNR, ticket, foid } });
 
-      return createAirService({ auth, debug: 1 }).ticket(params).then(() => {
+      return air.ticket(params).then(() => {
         expect(getUniversalRecordByPNR.callCount).to.be.equal(2);
         expect(foid.calledOnce).to.be.equal(true);
         expect(ticket.callCount).to.be.equal(3);
@@ -824,7 +892,7 @@ describe('#AirService', () => {
       const params = { pnr: 'PNR001' };
 
       const getUniversalRecordByPNR = sinon.spy(
-        () => Promise.resolve(getURbyPNRSampleTicketed)
+        () => Promise.resolve(getURbyPNRSampleWithCurrency)
       );
       const ticketResponses = [
         Promise.reject(new AirRuntimeError.NoValidFare()),
@@ -858,11 +926,8 @@ describe('#AirService', () => {
         expect(options.flightInfoCriteria).to.be.an('array');
       });
 
-      const service = () => ({ flightInfo });
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-      createAirService({ auth }).flightInfo({});
+      const air = getAirServiceMock({ methods: { flightInfo } });
+      air.flightInfo({});
       expect(flightInfo.calledOnce).to.be.equal(true);
     });
 
@@ -871,11 +936,12 @@ describe('#AirService', () => {
         expect(options.flightInfoCriteria).to.be.an('array');
       });
 
-      const service = () => ({ flightInfo });
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
+      const air = getAirServiceMock({
+        methods: {
+          flightInfo
+        }
       });
-      createAirService({ auth }).flightInfo([{}]);
+      air.flightInfo([{}]);
       expect(flightInfo.calledOnce).to.be.equal(true);
     });
   });
@@ -896,6 +962,21 @@ describe('#AirService', () => {
   });
 
   describe('getTicket', () => {
+    it('should fail if service fails with error', async () => {
+      const getTicket = sinon.stub().rejects(new RequestSoapError.SoapUnexpectedError());
+      const AirService = () => ({ getTicket });
+      const createAirService = proxyquire('../../src/Services/Air/Air', {
+        './AirService': AirService,
+      });
+      const air = createAirService({ auth });
+      try {
+        await air.getTicket({ ticketNumber: '0649902789376' });
+        throw new Error('Error was not thrown');
+      } catch (err) {
+        expect(err).to.be.an.instanceof(RequestSoapError);
+        expect(getTicket).to.be.calledOnceWith({ ticketNumber: '0649902789376', allowNoProviderLocatorCodeRetrieval: false });
+      }
+    });
     it('should fail when no itinerary present to import', () => {
       const AirService = () => ({
         getUniversalRecordByPNR: () => Promise.reject(new AirRuntimeError()),
@@ -919,87 +1000,43 @@ describe('#AirService', () => {
     });
 
     it('should get ticket data if duplicate ticket found', () => {
-      const getTicket = sinon.stub();
-      getTicket.onCall(0).returns(
-        Promise.reject(new AirRuntimeError.DuplicateTicketFound())
-      );
-      getTicket.onCall(1).returns(
-        Promise.resolve({
-          pnr: 'PNR001',
-          ticketNumber: '1234567890123',
-        })
-      );
+      const getTicket = sinon.stub().rejects(new AirRuntimeError.DuplicateTicketFound());
+      const getTickets = sinon.stub().resolves([{
+        pnr: 'PNR001',
+        ticketNumber: '0649902789376',
+      }]);
       // Spies
       const cancelTicket = sinon.spy(() => Promise.resolve(true));
-      const getBookingByTicketNumber = sinon.spy(() => Promise.resolve('PNR001'));
+      const getPNRByTicketNumber = sinon.spy(() => Promise.resolve('PNR001'));
       const getUniversalRecordByPNR = sinon.spy(() => Promise.resolve(getURbyPNRSampleTicketed));
       // Services
-      const service = () => ({
-        getTicket,
-        cancelTicket,
-        getUniversalRecordByPNR,
+
+      const air = getAirServiceMock({
+        methods: {
+          getTicket,
+          getTickets,
+          cancelTicket,
+          getUniversalRecordByPNR
+        }
       });
 
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-
-      const AirService = createAirService({ auth });
-      AirService.getBookingByTicketNumber = getBookingByTicketNumber.bind(AirService);
+      const AirService = air;
+      AirService.getPNRByTicketNumber = getPNRByTicketNumber.bind(AirService);
 
       return AirService.getTicket({ ticketNumber: '0649902789376' })
         .then((res) => {
           expect(res).to.be.an('object').and.to.have.property('ticketNumber');
-          expect(res.ticketNumber).to.equal('1234567890123');
-          expect(getTicket.calledTwice).to.be.equal(true);
-          expect(getBookingByTicketNumber.calledOnce).to.be.equal(true);
+          expect(res.ticketNumber).to.equal('0649902789376');
+          expect(getTicket.calledOnce).to.be.equal(true);
+          expect(getTickets.calledOnce).to.be.equal(true);
+          expect(getPNRByTicketNumber.calledOnce).to.be.equal(true);
           expect(getUniversalRecordByPNR.calledOnce).to.be.equal(true);
         });
     });
-
-    it('should test if getBookingByTicketNumber is called when not complete', () => {
-      const params = { ticketNumber: 123, pnr: 'PNR001' };
-
-      const getTicketResults = [
-        Promise.resolve(),
-        Promise.reject(new AirRuntimeError.TicketInfoIncomplete()),
-      ];
-
-      const getTicket = sinon.spy(() => getTicketResults.pop());
-
-      const getBookingByTicketNumber = sinon.spy((options) => {
-        expect(options.ticketNumber).to.be.equal(123);
-        return Promise.resolve('PNR001');
-      });
-
-      const getUniversalRecordByPNR = sinon.spy((options) => {
-        expect(options.pnr).to.be.equal('PNR001');
-        return Promise.resolve(getURbyPNRSampleTicketed);
-      });
-
-      const service = () => ({
-        getTicket,
-        getUniversalRecordByPNR,
-      });
-
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-
-      const AirService = createAirService({ auth });
-      AirService.getBookingByTicketNumber = getBookingByTicketNumber.bind(AirService);
-      AirService.importBooking = getUniversalRecordByPNR.bind(AirService);
-
-      return AirService.getTicket(params).then(() => {
-        expect(getTicket.calledTwice).to.be.equal(true);
-        expect(getBookingByTicketNumber.calledOnce).to.be.equal(true);
-        expect(getUniversalRecordByPNR.calledOnce).to.be.equal(true);
-      });
-    });
   });
 
-  describe('getBookingByTicketNumber', () => {
-    it('should fail when ticket data not available by ticket number', (done) => {
+  describe('getPNRByTicketNumber', () => {
+    it('should fail when ticket data not available by ticket number', async () => {
       const response = fs.readFileSync(
         path.join(terminalResponsesDir, 'getTicketNotExists.txt')
       ).toString();
@@ -1012,15 +1049,15 @@ describe('#AirService', () => {
         '../Terminal/Terminal': createTerminalService,
       });
       const service = createAirService({ auth });
-      service.getBookingByTicketNumber({ ticketNumber: '0649902789000' })
-        .then(() => done(new Error('Error has not occured')))
-        .catch((err) => {
-          expect(err).to.be.an.instanceof(AirRuntimeError.GetPnrError);
-          expect(err.causedBy).to.be.an.instanceof(AirRuntimeError.PnrParseError);
-          done();
-        });
+
+      try {
+        await service.getPNRByTicketNumber({ ticketNumber: '0649902789000' });
+        expect('should be rejected').to.be.eq('but not rejected');
+      } catch (err) {
+        expect(err).to.be.instanceof(AirRuntimeError.ParseTicketPNRError);
+      }
     });
-    it('should fail when something fails in executeCommand', (done) => {
+    it('should fail when something fails in executeCommand', async () => {
       const createTerminalService = () => ({
         // The only command is executed, no analyze needed
         executeCommand: () => Promise.reject(new Error('Some error')),
@@ -1030,13 +1067,13 @@ describe('#AirService', () => {
         '../Terminal/Terminal': createTerminalService,
       });
       const service = createAirService({ auth });
-      service.getBookingByTicketNumber({ ticketNumber: '0649902789000' })
-        .then(() => done(new Error('Error has not occured')))
-        .catch((err) => {
-          expect(err).to.be.an.instanceof(AirRuntimeError.GetPnrError);
-          expect(err.causedBy).to.be.an.instanceof(Error);
-          done();
-        });
+
+      try {
+        await service.getPNRByTicketNumber({ ticketNumber: '0649902789000' });
+        expect('should be rejected').to.be.eq('but not rejected');
+      } catch (err) {
+        expect(err).to.be.instanceof(Error);
+      }
     });
     it('should fail when something fails in closeSession', (done) => {
       const createTerminalService = () => ({
@@ -1048,15 +1085,14 @@ describe('#AirService', () => {
         '../Terminal/Terminal': createTerminalService,
       });
       const service = createAirService({ auth });
-      service.getBookingByTicketNumber({ ticketNumber: '0649902789000' })
+      service.getPNRByTicketNumber({ ticketNumber: '0649902789000' })
         .then(() => done(new Error('Error has not occured')))
         .catch((err) => {
           expect(err).to.be.an.instanceof(Error);
           done();
         });
     });
-    it('should fail when no TerminalService enabled for uAPI credentials');
-    it('should return PNR when response is OK', (done) => {
+    it('should return PNR when response is OK', async () => {
       const response = fs.readFileSync(
         path.join(terminalResponsesDir, 'getTicketVoid.txt')
       ).toString();
@@ -1069,33 +1105,46 @@ describe('#AirService', () => {
         '../Terminal/Terminal': createTerminalService,
       });
       const service = createAirService({ auth });
-      service.getBookingByTicketNumber({ ticketNumber: '0649902789376' })
-        .then((pnr) => {
-          expect(pnr).to.equal('8167L2');
-          done();
-        })
-        .catch(err => done(err));
+
+      const pnr = await service.getPNRByTicketNumber({ ticketNumber: '0649902789000' });
+      expect(pnr).to.equal('8167L2');
     });
   });
 
   describe('getTickets', () => {
     it('should throw an error when some function fails', async () => {
-      const AirService = () => ({
-        getUniversalRecordByPNR: () => Promise.resolve({ uapi_reservation_locator: 'RLC001' }),
-        getTickets: () => Promise.reject(new Error('Some error')),
-      });
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': AirService,
-      });
-      const service = createAirService({ auth });
+      const errorCases = [
+        {
+          InstanceError: AirRuntimeError.UnableToRetrieveTickets,
+          CausedByInstanceError: Error
+        },
+        {
+          InstanceError: AirRuntimeError.NoAgreement,
+          CausedByInstanceError: AirRuntimeError.NoAgreement
+        }];
 
-      try {
-        await service.getTickets({ uapi_reservation_locator: 'RLC001' });
-        throw new Error('No error thrown!');
-      } catch (err) {
-        expect(err).to.be.an.instanceof(AirRuntimeError.UnableToRetrieveTickets);
-        expect(err.causedBy).to.be.an.instanceof(Error);
-      }
+      await Promise.all(errorCases.map(async ({ InstanceError, CausedByInstanceError }) => {
+        const AirService = () => ({
+          getUniversalRecordByPNR: () => Promise.resolve({ uapi_reservation_locator: 'RLC001' }),
+          getTickets: () => Promise.reject(new CausedByInstanceError('Some error')),
+        });
+        const createAirService = proxyquire('../../src/Services/Air/Air', {
+          './AirService': AirService,
+        });
+        const service = createAirService({ auth });
+
+        try {
+          await service.getTickets({ uapi_reservation_locator: 'RLC001' });
+          throw new Error('No error thrown!');
+        } catch (err) {
+          console.log(err);
+          expect(err).to.be.an.instanceof(InstanceError);
+
+          if (err.causedBy) {
+            expect(err.causedBy).to.be.an.instanceof(CausedByInstanceError);
+          }
+        }
+      }));
     });
     it('should work with right responses', (done) => {
       const importBookingVoidResponse = JSON.parse(
@@ -1251,15 +1300,11 @@ describe('#AirService', () => {
 
   describe('cancelTicket', () => {
     it('should throw a general error', () => {
-      const service = () => ({
-        getTicket: () => Promise.reject(new Error('Some error')),
+      const air = getAirServiceMock({
+        methods: { getTicket: () => Promise.reject(new Error('Some error')) }
       });
 
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-
-      return createAirService({ auth })
+      return air
         .cancelTicket()
         .then(() => Promise.reject(new Error('Error has not occured')))
         .catch((err) => {
@@ -1293,18 +1338,13 @@ describe('#AirService', () => {
           expect(cancelTicket).to.have.callCount(1);
         });
     });
-    it('should get ticket data if incomplete and be OK', () => {
+    it('should get ticket data if incomplete and be OK', async () => {
       // Get ticket stub to return 2 different values on different calls
-      const getTicket = sinon.stub();
-      getTicket.onCall(0).returns(
-        Promise.reject(new AirRuntimeError.TicketInfoIncomplete())
-      );
-      getTicket.onCall(1).returns(
-        Promise.resolve({
-          pnr: 'PNR001',
-          ticketNumber: '1234567890123',
-        })
-      );
+      const getTicket = sinon.stub().rejects(new AirRuntimeError.TicketInfoIncomplete());
+      const getTickets = sinon.stub().resolves([{
+        pnr: 'PNR001',
+        ticketNumber: '1234567890123',
+      }]);
       // Spies
       const cancelTicket = sinon.spy(() => Promise.resolve(true));
       const getUniversalRecordByPNR = sinon.spy(() => Promise.resolve(getURByPNRSampleBooked));
@@ -1313,6 +1353,7 @@ describe('#AirService', () => {
       // Services
       const airService = () => ({
         getTicket,
+        getTickets,
         cancelTicket,
         getUniversalRecordByPNR,
       });
@@ -1326,17 +1367,14 @@ describe('#AirService', () => {
       });
 
       const service = createAirService({ auth });
+      await service.cancelTicket({ ticketNumber: '1234567890123' });
 
-      return service.cancelTicket({
-        ticketNumber: '1234567890123',
-      })
-        .then(() => {
-          expect(getTicket).to.have.callCount(2);
-          expect(cancelTicket).to.have.callCount(1);
-          expect(getUniversalRecordByPNR).to.have.callCount(1);
-          expect(executeCommand).to.have.callCount(1);
-          expect(closeSession).to.have.callCount(1);
-        });
+      expect(getTicket).to.have.callCount(1);
+      expect(getTickets).to.have.callCount(1);
+      expect(cancelTicket).to.have.callCount(1);
+      expect(getUniversalRecordByPNR).to.have.callCount(1);
+      expect(executeCommand).to.have.callCount(1);
+      expect(closeSession).to.have.callCount(1);
     });
   });
   describe('cancelBooking', () => {
@@ -1859,14 +1897,11 @@ describe('#AirService', () => {
     });
   });
 
-  describe('prcing', () => {
+  describe('pricing', () => {
     it('should check if correct function from service is called', () => {
       const airPrice = sinon.spy(() => {});
-      const service = () => ({ airPrice });
-      const createAirService = proxyquire('../../src/Services/Air/Air', {
-        './AirService': service,
-      });
-      createAirService({ auth }).airPrice({});
+      const air = getAirServiceMock({ methods: { airPrice } });
+      air.airPrice({});
       expect(airPrice.calledOnce).to.be.equal(true);
     });
   });

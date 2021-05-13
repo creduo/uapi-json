@@ -40,6 +40,8 @@ Object.assign(AirValidationError, createErrorsList({
   PlatingCarrierInvalid: 'Plating Carrier Invalid',
   SearchIdMissing: 'SearchId is missing',
   VersionMissing: 'Version is missing in request',
+  AllowDirectAccessInvalid: 'Invalid value provided for allowDirectAccess',
+  AllowDirectAccessCarriersNotSpecified: 'Carriers not specified for carrier specific display',
 }, AirValidationError));
 
 const GdsValidationError = createErrorClass(
@@ -89,7 +91,7 @@ Object.assign(AirParsingError, createErrorsList({
 // Runtime errors
 const AirRuntimeError = createErrorClass(
   'AirRuntimeError',
-  ['Air service runtime error', 598],
+  ['Air service runtime error', errorCodes.UapiFailure],
   errorTypes.RuntimeError
 );
 Object.assign(AirRuntimeError, createErrorsList({
@@ -106,10 +108,8 @@ Object.assign(AirRuntimeError, createErrorsList({
   InvalidRequestData: 'Request data is invalid',
   NoValidFare: 'No valid fare for input criteria.',
   TravelersListError: 'Not all BookingTravelers present in list or wrong lookup keys provided',
-  PnrParseError: 'Failed to parse PNR from ticket information request response',
-  GetPnrError: 'Failed to obtain PNR from ticket information',
+  ParseTicketPNRError: ['Failed to parse PNR from ticket information', errorCodes.Validation],
   UnableToRetrieveTickets: ['Unable to retrieve tickets list', errorCodes.NotFound],
-  TicketRetrieveError: 'Unable to retrieve ticket',
   TicketInfoIncomplete: 'Ticket information is incomplete',
   RequestInconsistency: 'Request faced race condition. Please retry again',
   MissingPaxListAndBooking: 'Cant find anything for your request. List and booking are missing',
@@ -129,8 +129,9 @@ Object.assign(AirRuntimeError, createErrorsList({
   ExchangeTokenIncorrect: 'Can\'t parse exchange token. Please resolve it again.',
   DuplicateTicketFound: 'Duplicate ticket number found. Provide PNR, UR locator',
   NoPNRFoundInUR: ['No PNR found in Universal record', errorCodes.NotFound],
-  NoAgreement: ['There is no agreement between current pcc, and one you try to reach', errorCodes.Unauthorized],
+  NoAgreement: ['There is no agreement between current pcc, and one you try to reach', errorCodes.Validation],
   UnableToRetrieve: ['Unable to retrieve PNR. Please contact your local Travelport Helpdesk.', errorCodes.NotFound],
+  CouldNotRetrieveCurrency: 'We could not retrieve currency for commission from any fare in the booking. Please check fare quotes.'
 }, AirRuntimeError));
 
 const AirFlightInfoRuntimeError = createErrorClass(

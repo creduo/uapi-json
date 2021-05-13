@@ -14,6 +14,7 @@ const {
 
 const fareCalculationPattern = /^([\s\S]+)END($|\s)/;
 const firstOriginPattern = /^(?:s-)?(?:\d{2}[a-z]{3}\d{2}\s+)?([a-z]{3})/i;
+const noAgreementPattern = /NO AGENCY AGREEMENT/ig;
 
 const parseFareCalculation = (str) => {
   const fareCalculation = str.match(fareCalculationPattern)[1];
@@ -461,6 +462,40 @@ function airPriceRspPricingSolutionXML(obj) {
   };
 }
 
+function processUAPIError(source = {}, fallbackMessage = 'UAPI Service resulted in an error') {
+  if (source.faultstring) {
+    throw new RequestRuntimeError.UAPIServiceError({
+      ...source,
+      faultstring: source.faultstring.toUpperCase()
+    });
+  }
+
+  const responseMessages = source[`common_${this.uapi_version}:ResponseMessage`];
+
+  if (Array.isArray(responseMessages) && responseMessages.length) {
+    const [responseMessage = {}] = responseMessages;
+    const { _: message = fallbackMessage } = responseMessage;
+
+    throw new RequestRuntimeError.UAPIServiceError({
+      ...source,
+      faultstring: message.toUpperCase()
+    });
+  }
+
+  const documentFailureInfo = source['air:DocumentFailureInfo'];
+
+  if (documentFailureInfo) {
+    const { Message: message = fallbackMessage } = documentFailureInfo;
+
+    throw new RequestRuntimeError.UAPIServiceError({
+      ...source,
+      faultstring: message.toUpperCase()
+    });
+  }
+
+  throw new RequestRuntimeError.UnhandledError(null, new AirRuntimeError(source));
+}
+
 const AirErrorHandler = function (rsp) {
   let errorInfo;
   let code;
@@ -471,7 +506,7 @@ const AirErrorHandler = function (rsp) {
     );
     code = errorInfo[`common_${this.uapi_version}:Code`];
   } catch (err) {
-    throw new RequestRuntimeError.UnhandledError(null, new AirRuntimeError(rsp));
+    processUAPIError.call(this, rsp);
   }
   const pcc = utils.getErrorPcc(rsp.faultstring);
   switch (code) {
@@ -492,10 +527,17 @@ const AirErrorHandler = function (rsp) {
     case '3003':
       throw new AirRuntimeError.InvalidRequestData(rsp);
     case '3000': {
-      const messages = errorInfo['air:AirSegmentError'].map(err => err['air:ErrorMessage']);
+      if (rsp.faultstring === 'At least one valid locator code or ticket number or tcr number or service fee info should have been specified') {
+        throw new AirRuntimeError.TicketInfoIncomplete(rsp);
+      }
+
+      const airSegmentErrors = errorInfo['air:AirSegmentError'] || [];
+      const messages = airSegmentErrors.map(err => err['air:ErrorMessage']);
+
       if (messages.indexOf('Booking is not complete due to waitlisted segment') !== -1) {
         throw new AirRuntimeError.SegmentWaitlisted(rsp);
       }
+
       // else // unknown error, fall back to SegmentBookingFailed
       throw new AirRuntimeError.SegmentBookingFailed(rsp);
     }
@@ -503,13 +545,13 @@ const AirErrorHandler = function (rsp) {
     case '3037': // No availability on chosen flights, unable to fare quote
       throw new AirRuntimeError.NoResultsFound(rsp);
     default:
-      throw new RequestRuntimeError.UnhandledError(null, new AirRuntimeError(rsp));
+      processUAPIError.call(this, rsp);
   }
 };
 
-function getTicketFromEtr(etr, obj) {
+function getTicketFromEtr(etr, obj, allowNoProviderLocatorCodeRetrieval = false) {
   // Checking if pricing info exists
-  if (!etr.ProviderLocatorCode) {
+  if (!allowNoProviderLocatorCodeRetrieval && !etr.ProviderLocatorCode) {
     throw new AirRuntimeError.TicketInfoIncomplete(etr);
   }
 
@@ -667,10 +709,10 @@ function getTicketFromEtr(etr, obj) {
     commission
       ? {
         commission: {
-          [commission.Type === 'PercentBase' ? 'percent' : 'amount']:
-            commission.Type === 'PercentBase'
-              ? parseFloat(commission.Percentage)
-              : parseFloat(commission.Amount.slice(3)),
+          type: commission.Type === 'PercentBase' ? 'Z' : 'ZA',
+          value: commission.Type === 'PercentBase'
+            ? parseFloat(commission.Percentage)
+            : parseFloat(commission.Amount.slice(3))
         },
       }
       : null,
@@ -690,28 +732,43 @@ function getTicketFromEtr(etr, obj) {
   return response;
 }
 
-const airGetTicket = function (obj) {
+const airGetTicket = function (obj, parseParams = {
+  allowNoProviderLocatorCodeRetrieval: false
+}) {
   const failure = obj['air:DocumentFailureInfo'];
+
   if (failure) {
     if (failure.Code === '3273') {
       throw new AirRuntimeError.DuplicateTicketFound(obj);
     }
-    throw new AirRuntimeError.TicketRetrieveError(obj);
+
+    processUAPIError.call(this, obj, 'Unable to retrieve ticket');
+  }
+
+  const responseMessages = obj[`common_${this.uapi_version}:ResponseMessage`] || [];
+  const hasNoAgreementResponse = responseMessages.find(({ _: message, Code }) => Code === '12009' && noAgreementPattern.test(message));
+
+  if (hasNoAgreementResponse) {
+    throw new AirRuntimeError.NoAgreement({ screen: hasNoAgreementResponse._ });
   }
 
   const etr = obj['air:ETR'];
+
   if (!etr) {
-    throw new AirRuntimeError.TicketRetrieveError(obj);
+    processUAPIError.call(this, obj, 'Unable to retrieve ticket');
   }
 
   const multipleTickets = !!etr[Object.keys(etr)[0]].ProviderLocatorCode;
 
   if (multipleTickets) {
     return Object.values(etr)
-      .map(innerEtr => getTicketFromEtr.call(this, innerEtr, obj));
+      .map(innerEtr => (
+        getTicketFromEtr.call(this, innerEtr, obj, parseParams.allowNoProviderLocatorCodeRetrieval)
+      ));
   }
 
-  return getTicketFromEtr.call(this, etr, obj);
+
+  return getTicketFromEtr.call(this, etr, obj, parseParams.allowNoProviderLocatorCodeRetrieval);
 };
 
 const responseHasNoTickets = rsp => (
@@ -730,7 +787,7 @@ function airGetTicketsErrorHandler(rsp) {
     );
     code = errorInfo[`common_${this.uapi_version}:Code`];
   } catch (err) {
-    throw new RequestRuntimeError.UnhandledError(null, new AirRuntimeError(rsp));
+    processUAPIError.call(this, rsp);
   }
   // General Air Service error
   if (code === '3000') {
@@ -744,7 +801,7 @@ function airGetTicketsErrorHandler(rsp) {
         pcc: utils.getErrorPcc(rsp.faultstring),
       });
     default:
-      throw new RequestRuntimeError.UnhandledError(null, new AirRuntimeError(rsp));
+      return processUAPIError.call(this, rsp);
   }
 }
 
@@ -1428,7 +1485,8 @@ function availability(rsp) {
   itinerarySolution['air:AirSegmentRef'].forEach((segmentRef, key) => {
     const segment = rsp['air:AirSegmentList'][segmentRef];
     const isConnected = connectedSegments.find(s => s === key);
-    const availInfo = segment['air:AirAvailInfo'].find(info => info.ProviderCode === this.provider);
+    const availInfoList = segment['air:AirAvailInfo'] || [];
+    const availInfo = availInfoList.find(info => info.ProviderCode === this.provider);
 
     if (!availInfo) {
       return;

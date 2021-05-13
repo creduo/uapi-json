@@ -50,6 +50,7 @@ Low Fare Shop functionality combines air availability and a fare quote request t
 | solutionResult | `Boolean` | Set true to retrieve [AirPricingSolution](https://support.travelport.com/webhelp/uapi/Content/Air/Low_Fare_Shopping/Low_Fare_Shopping_(Synchronous).htm#AirPricingSolutions), default is False (retrieves [AirPricePoint](https://support.travelport.com/webhelp/uapi/Content/Air/Low_Fare_Shopping/Low_Fare_Shopping_by_Price_Points.htm). <i>Optional.</i> |.
 | maxSolutions | `number` | Maximum number of solutions. <i>Optional.</i> |.
 | carriers | `Array<String>` | Array of carriers' codes. <i>Optional.</i> |
+| allowDirectAccess | `Boolean` | When passed, first  carrier is taken from the carriers list and the search is done in carrier specific display.
 | preferredConnectionPoints | `Array<String>` | Array of IATA codes. <i>Optional.</i> |
 | prohibitedConnectionPoints | `Array<String>` | Array of IATA codes. <i>Optional.</i> |
 | permittedConnectionPoints | `Array<String>` | Array of IATA codes. <i>Optional.</i> |
@@ -235,7 +236,7 @@ Ticketing function returns `true` if the process is finished with success or `Er
 
 | Param | Type | Description |
 | --- | --- | --- |
-| commission | <code>Object{amount&#124;percent}</code> | If amount is passed than it should be provided with currency. Ex: `{ comission: { amount: 'UAH10' }}`. If percent - it should be string with float number |
+| commission | <code>Object {type: String "Z"&#124;ZA", value: Number 50 }</code> | Values for both percentage and amount types are numbers, currency for amount type will be calculated automatically based on the information from booking's FQs. Ex: amount - `{ commission: { type: ZA, value: 10 }}`, percent - `{ commission: { type: Z, value: 50 } }`. |
 | fop | `Form Of Payment` | See `Form Of Payment` description [below](#fop). |
 | pnr | `String` | 1G PNR. |
 

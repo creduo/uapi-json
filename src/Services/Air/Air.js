@@ -8,6 +8,11 @@ const createTerminalService = require('../Terminal/Terminal');
 const { AirRuntimeError } = require('./AirErrors');
 const validateServiceSettings = require('../../utils/validate-service-settings');
 
+const RETRYABLE_GET_TICKET_ERRORS = [
+  AirRuntimeError.TicketInfoIncomplete,
+  AirRuntimeError.DuplicateTicketFound,
+];
+
 module.exports = (settings) => {
   const service = airService(validateServiceSettings(settings));
   const log = (settings.options && settings.options.logFunction) || console.log;
@@ -211,17 +216,45 @@ module.exports = (settings) => {
     },
 
     ticket(options) {
-      return (options.ReservationLocator
-        ? Promise.resolve(options.ReservationLocator)
-        : this.getBooking(options).then(booking => booking.uapi_reservation_locator)
-      )
-        .then(ReservationLocator => retry({ retries: 3 }, (again, number) => {
+      return this.getBooking(options)
+        .then((booking) => {
+          const { fareQuotes = [] } = booking;
+          const currency = fareQuotes.reduce((accCurrency, fq) => {
+            if (accCurrency !== null) {
+              return accCurrency;
+            }
+
+            const { pricingInfos = [] } = fq;
+
+            return pricingInfos.reduce((totalPriceCurrency, pricingInfo) => {
+              if (totalPriceCurrency !== null) {
+                return totalPriceCurrency;
+              }
+
+              return pricingInfo.totalPrice
+                ? pricingInfo.totalPrice.slice(0, 3).trim()
+                : null;
+            }, null);
+          }, null);
+
+          if (!currency || !/[A-Z]{3}/i.test(currency)) {
+            return Promise.reject(new AirRuntimeError.CouldNotRetrieveCurrency(options));
+          }
+
+          return {
+            ReservationLocator: booking.uapi_reservation_locator,
+            currency,
+          };
+        })
+        .then(({ ReservationLocator, currency }) => retry({ retries: 3 }, (again, number) => {
           if (settings.debug && number > 1) {
             log(`ticket ${options.pnr} issue attempt number ${number}`);
           }
+
           return service.ticket({
             ...options,
             ReservationLocator,
+            currency
           })
             .catch((err) => {
               if (err instanceof AirRuntimeError.TicketingFoidRequired) {
@@ -248,23 +281,18 @@ module.exports = (settings) => {
       return service.flightInfo(parameters);
     },
 
-    getTicket(options) {
-      return service.getTicket(options)
-        .catch((err) => {
-          if (!(err instanceof AirRuntimeError.TicketInfoIncomplete)
-            && !(err instanceof AirRuntimeError.DuplicateTicketFound)) {
-            return Promise.reject(err);
-          }
-          return this.getPNRByTicketNumber({
-            ticketNumber: options.ticketNumber,
-          })
-            .then(pnr => this.getBooking({ pnr }))
-            .then(booking => service.getTicket({
-              ...options,
-              pnr: booking.pnr,
-              uapi_ur_locator: booking.uapi_ur_locator,
-            }));
-        });
+    async getTicket(options) {
+      const { ticketNumber, allowNoProviderLocatorCodeRetrieval = false } = options;
+      try {
+        return await service.getTicket({ ticketNumber, allowNoProviderLocatorCodeRetrieval });
+      } catch (err) {
+        if (!RETRYABLE_GET_TICKET_ERRORS.some(ErrorClass => err instanceof ErrorClass)) {
+          throw err;
+        }
+        const pnr = await this.getPNRByTicketNumber({ ticketNumber });
+        const tickets = await this.getTickets({ pnr });
+        return tickets.find(t => t.ticketNumber === ticketNumber);
+      }
     },
 
     async getTickets(options) {
@@ -275,26 +303,26 @@ module.exports = (settings) => {
       try {
         return await service.getTickets({ reservationLocatorCode });
       } catch (err) {
+        if (err instanceof AirRuntimeError.NoAgreement) {
+          throw err;
+        }
+
         throw new AirRuntimeError.UnableToRetrieveTickets(options, err);
       }
     },
 
-    getBookingByTicketNumber(options) {
+    async getPNRByTicketNumber(options) {
       const terminal = createTerminalService(settings);
-      return terminal.executeCommand(`*TE/${options.ticketNumber}`)
-        .then(
-          response => terminal.closeSession()
-            .then(() => response.match(/RLOC [^\s]{2} ([^\s]{6})/)[1])
-            .catch(() => Promise.reject(new AirRuntimeError.PnrParseError(response)))
-        )
-        .catch(
-          err => Promise.reject(new AirRuntimeError.GetPnrError(options, err))
-        );
-    },
+      const screen = await terminal.executeCommand(`*TE/${options.ticketNumber}`);
+      const [_, pnr = null] = screen.match(/RLOC [^\s]{2} ([^\s]{6})/) || [];
 
-    getPNRByTicketNumber(options) {
-      console.warn('DEPRECATED, will be dropped in next major version, use getBookingByTicketNumber');
-      return this.getBookingByTicketNumber(options);
+      await terminal.closeSession().catch(() => null);
+
+      if (!pnr) {
+        throw new AirRuntimeError.ParseTicketPNRError({ options, screen });
+      }
+
+      return pnr;
     },
 
     searchBookingsByPassengerName(options) {
