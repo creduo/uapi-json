@@ -36,6 +36,13 @@ module.exports = `
                     {{/each}}
                     </air:PermittedCarriers>
                     {{/if}}
+                    {{#if ../prohibitedCarriers}}
+                    <air:ProhibitedCarriers>
+                        {{#each ../prohibitedCarriers as |prohibitedCarrier|}}
+                            <com:Carrier Code="{{.}}" />
+                        {{/each}}
+                    </air:ProhibitedCarriers>
+                    {{/if}}
 
                     {{#if ../permittedConnectionPoints}}
                     <air:PermittedConnectionPoints>
@@ -86,6 +93,13 @@ module.exports = `
                     <com:Carrier Code="{{.}}" xmlns:com="http://www.travelport.com/schema/common_v47_0"/>
                     {{/carriers}}
                 </air:PermittedCarriers>
+                {{/if}}
+                {{#if prohibitedCarriers}}
+                <air:ProhibitedCarriers>
+                    {{#prohibitedCarriers}}
+                        <com:Carrier Code="{{.}}" />
+                    {{/prohibitedCarriers}}
+                </air:ProhibitedCarriers>
                 {{/if}}
 
             </air:AirSearchModifiers>

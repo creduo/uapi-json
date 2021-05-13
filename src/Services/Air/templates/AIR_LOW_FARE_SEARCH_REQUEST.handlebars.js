@@ -98,6 +98,13 @@ module.exports = `
                     {{/carriers}}
                 </air:PermittedCarriers>
                 {{/if}}
+                {{#if prohibitedCarriers}}
+                <air:ProhibitedCarriers>
+                    {{#prohibitedCarriers}}
+                        <com:Carrier Code="{{.}}" />
+                    {{/prohibitedCarriers}}
+                </air:ProhibitedCarriers>
+                {{/if}}
               {{#if flightType}}
               <air:FlightType 
                   RequireSingleCarrier="false"
