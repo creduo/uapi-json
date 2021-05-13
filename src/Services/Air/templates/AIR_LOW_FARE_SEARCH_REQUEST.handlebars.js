@@ -91,6 +91,13 @@ module.exports = `
                     {{/carriers}}
                 </air:PermittedCarriers>
                 {{/if}}
+                {{#if prohibitedCarriers}}
+                <air:ProhibitedCarriers>
+                    {{#prohibitedCarriers}}
+                        <com:Carrier Code="{{.}}" />
+                    {{/prohibitedCarriers}}
+                </air:ProhibitedCarriers>
+                {{/if}}
             </air:AirSearchModifiers>
             {{#passengers}}
             <com:SearchPassenger Code="{{ageCategory}}"{{#if child}} Age="9"{{/if}} xmlns:com="http://www.travelport.com/schema/common_v47_0"/>
